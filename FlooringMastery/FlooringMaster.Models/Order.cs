@@ -8,7 +8,16 @@ namespace FlooringMastery.Models
 {
     public class Order
     {
-        public string OrderNumber { get; set; }
+        public Order()
+        {
+            State myState = new State();
+            OrderState = myState;
+
+            Product myProduct = new Product();
+            OrderProduct = myProduct;
+        }
+
+        public int OrderNumber { get; set; }
         public string CustomerName { get; set; }
         public Product OrderProduct { get; set; }
         public State OrderState { get; set; }
