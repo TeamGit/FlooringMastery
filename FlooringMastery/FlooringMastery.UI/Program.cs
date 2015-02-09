@@ -26,16 +26,39 @@ namespace FlooringMastery.UI
             //}
             //Console.ReadLine();
 
-            TestProducts myProductTester = new TestProducts();
-            myProductTester.GetProducts();
+            //TestProducts myProductTester = new TestProducts();
+            //myProductTester.GetProducts();
 
-            foreach (var s in WorkingMemory.ProductList)
+            //foreach (var s in WorkingMemory.ProductList)
+            //{
+            //    Console.WriteLine(s.ProductType);
+            //    Console.WriteLine(s.CostPerSquareFoot);
+            //    Console.WriteLine(s.LaborCostPerSquareFoot);
+            //}
+            //Console.ReadLine();
+
+            TestOrders myOrderTester = new TestOrders();
+            myOrderTester.GetAllOrders();
+
+            foreach (var s in WorkingMemory.OrderList)
             {
-                Console.WriteLine(s.ProductType);
-                Console.WriteLine(s.CostPerSquareFoot);
-                Console.WriteLine(s.LaborCostPerSquareFoot);
+                Console.WriteLine(s.OrderNumber);
+                Console.WriteLine(s.CustomerName);
+                Console.WriteLine(s.OrderState.StateAbbreviation);
+                Console.WriteLine(s.OrderState.TaxRate);
+                Console.WriteLine(s.OrderProduct.ProductType);
+                Console.WriteLine(s.Area);
+                Console.WriteLine(s.OrderProduct.CostPerSquareFoot);
+                Console.WriteLine(s.OrderProduct.LaborCostPerSquareFoot);
+                Console.WriteLine(s.TotalMaterialCost);
+                Console.WriteLine(s.TotalLaborCost);
+                Console.WriteLine(s.TotalTax);
+                Console.WriteLine(s.TotalCost);
+
             }
             Console.ReadLine();
+
+
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Remoting;
 using System.Text;
 using System.Threading.Tasks;
+using FlooringMastery.BLL;
 using FlooringMastery.Models;
 
 namespace FlooringMaster.Data
@@ -126,7 +127,7 @@ namespace FlooringMaster.Data
                             newOrder.TotalCost = totalCost;
                         }
 
-
+                        WorkingMemory.OrderList.Add(newOrder);
                     }
 
                 }
