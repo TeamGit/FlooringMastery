@@ -1,0 +1,50 @@
+Alabama, AL, 0.085
+Alaska, AK, 0.0625
+Arizona, AZ, 0.75
+Arkansas, AR, 0.085
+California, CA, 0.085
+Colorado, CO, 0.085
+Connecticut, CT, 0.085
+Delaware, DE, 0.085
+Florida, FL, 0.085
+Georgia, GA, 0.085
+Hawaii, HI, 0.085
+Idaho, ID, 0.085
+Illinois, IL, 0.0625
+Indiana, IN, 0.0625
+Iowa, IA, 0.0625
+Kansas, KS, 0.0625
+Kentucky, KY, 0.0625
+Louisiana, LA, 0.0625
+Maine, ME, 0.0625
+Maryland, MD, 0.0625
+Massachusetts, MA, 0.0625
+Michigan, MI, 0.0625
+Minnesota, MN, 0.0625
+Mississippi, MS, 0.0625
+Missouri, MO, 0.0625
+Montana, MT, 0.0625
+Nebraska, NE, 0.0625
+Nevada, NV, 0.0625
+New Hampshire, NH, 0.0625
+New Jersey, NJ, 0.0625
+New Mexico, NM, 0.0625
+New York, NY, 0.0625
+North Carolina, NC, 0.75
+North Dakota, ND, 0.75
+Ohio, OH, 0.75
+Oklahoma, OK, 0.75
+Oregon, OR, 0.75
+Pennsylvania, PA, 0.75
+Rhode Island, RI, 0.75
+South Carolina, SC, 0.75
+South Dakota, SD, 0.75
+Tennessee, TN, 0.75
+Texas, TX, 0.75
+Utah, UT, 0.75
+Vermont, VT, 0.75
+Virginia, VA, 0.75
+Washington, WA, 0.75
+West Virginia, WV, 0.75
+Wisconsin, WI, 0.75
+Wyoming, WY, 0.75

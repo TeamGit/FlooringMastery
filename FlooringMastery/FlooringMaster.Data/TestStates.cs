@@ -12,6 +12,9 @@ namespace FlooringMaster.Data
 {
     public class TestStates : IContainStates
     {
+        /// <summary>
+        /// Read a file, read each line into a state object and store it in a list
+        /// </summary>
         public void GetStates()
         {
             using (StreamReader sr = new StreamReader("TestStates.txt"))
@@ -27,15 +30,15 @@ namespace FlooringMaster.Data
                         Enums.StateNames stateName;
                         string stringStateName;
 
-                        stringStateName = StripSpaces(WholeStateArray[1]);
+                        stringStateName = StripSpaces(WholeStateArray[0]);
 
-                        if (Enums.StateNames.TryParse(WholeStateArray[1], out stateName))
+                        if (Enums.StateNames.TryParse(WholeStateArray[0], out stateName))
                         {
                             newState.StateName = stateName;
                         }
 
                         Enums.StateAbbreviations stateAbbrevs;
-                        if (Enums.StateAbbreviations.TryParse(WholeStateArray[0], out stateAbbrevs))
+                        if (Enums.StateAbbreviations.TryParse(WholeStateArray[1], out stateAbbrevs))
                         {
                             newState.StateAbbreviation = stateAbbrevs;
                         }
@@ -50,6 +53,7 @@ namespace FlooringMaster.Data
                     }
                 }
         }
+
         /// <summary>
         /// Given a string return the string with spaces removed
         /// </summary>
@@ -66,7 +70,6 @@ namespace FlooringMaster.Data
                 }
             }
             return output;
-            making changes for NonSerializedAttribute reason
         }
 
     }
