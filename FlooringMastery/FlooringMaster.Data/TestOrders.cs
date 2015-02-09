@@ -38,6 +38,9 @@ namespace FlooringMaster.Data
 
         }
 
+        /// <summary>
+        /// Read in multiple orders from a text file
+        /// </summary>
         public void GetAllOrders()
         {
             using (StreamReader sr = new StreamReader("TestOrders.txt"))

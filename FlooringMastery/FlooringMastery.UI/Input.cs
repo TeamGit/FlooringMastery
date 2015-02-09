@@ -8,6 +8,11 @@ namespace FlooringMastery.UI
 {
     public static class Input
     {
+        /// <summary>
+        /// Given a prompt, continually prompt the user until they enter a non-empty string
+        /// </summary>
+        /// <param name="prompt"></param>
+        /// <returns></returns>
         public static string GetString(string prompt)
         {
             string input = null;
@@ -21,10 +26,5 @@ namespace FlooringMastery.UI
             
             return input;
         }
-
-
-
-
-
     }
 }

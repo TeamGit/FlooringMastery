@@ -7,6 +7,9 @@ using FlooringMastery.Models;
 
 namespace FlooringMastery.BLL
 {
+    /// <summary>
+    /// This class contains lists which hold values read in from repositories
+    /// </summary>
     public static class WorkingMemory
     {
         public static List<State> StateList = new List<State>();
