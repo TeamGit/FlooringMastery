@@ -8,7 +8,7 @@ using FlooringMastery.Models;
 
 namespace FlooringMaster.Data
 {
-    public class TestData : IContainData
+    public class TestOrders : IContainOrders
     {
         /// <summary>
         /// Returns a order object

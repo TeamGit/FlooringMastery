@@ -45,13 +45,13 @@
     <Compile Include="Output.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Screens\HomeScreen.cs" />
+    <Compile Include="Screens\Screen.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Screens\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\FlooringMaster.Data\FlooringMastery.Data.csproj">
       <Project>{4cca3d09-2570-4edf-b0bc-f0b681145ef2}</Project>

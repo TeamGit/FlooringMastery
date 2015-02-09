@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FlooringMastery.Models;
 
 namespace FlooringMaster.Data
 {
-    class ProdData : IContainData
+    class ProdStates : IContainStates
     {
-        public Order GetOrder()
+        public void GetStates()
         {
-            return new Order();
-            //code goes here to pull from data file
+            throw new NotImplementedException();
         }
     }
 }

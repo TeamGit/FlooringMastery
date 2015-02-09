@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FlooringMastery.Models;
 
-namespace FlooringMastery.BLL
+namespace FlooringMaster.Data
 {
-    public class Class1
+    interface IContainOrders
     {
+        Order GetOrder();
     }
 }

@@ -7,8 +7,12 @@ using FlooringMastery.Models;
 
 namespace FlooringMaster.Data
 {
-    interface IContainData
+    class ProdOrders : IContainOrders
     {
-        Order GetOrder();
+        public Order GetOrder()
+        {
+            return new Order();
+            //code goes here to pull from data file
+        }
     }
 }

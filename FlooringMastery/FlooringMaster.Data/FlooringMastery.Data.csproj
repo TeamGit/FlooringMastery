@@ -39,15 +39,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IContainData.cs" />
-    <Compile Include="ProdData.cs" />
+    <Compile Include="IContainOrders.cs" />
+    <Compile Include="IContainProducts.cs" />
+    <Compile Include="IContainStates.cs" />
+    <Compile Include="ProdOrders.cs" />
+    <Compile Include="ProdProducts.cs" />
+    <Compile Include="ProdStates.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestData.cs" />
+    <Compile Include="TestOrders.cs" />
+    <Compile Include="TestProducts.cs" />
+    <Compile Include="TestStates.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FlooringMaster.Models\FlooringMastery.Models.csproj">
       <Project>{c6f80c87-b6cb-4041-b1ba-b22fc8e516b5}</Project>
       <Name>FlooringMastery.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlooringMastery.BLL\FlooringMastery.BLL.csproj">
+      <Project>{def5ce79-4226-403f-b2d7-972fa20a29c9}</Project>
+      <Name>FlooringMastery.BLL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

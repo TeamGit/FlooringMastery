@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using FlooringMaster.Data;
 using FlooringMastery.Models;
+using FlooringMastery.UI.Screens;
+using FlooringMastery.BLL;
 
 namespace FlooringMastery.UI
 {
@@ -12,11 +14,19 @@ namespace FlooringMastery.UI
     {
         static void Main(string[] args)
         {
-            TestData myData = new TestData();
+            TestStates myTester = new TestStates();
+            myTester.GetStates();
 
-            Order myOrder = myData.GetOrder();
+            foreach (var s in WorkingMemory.StateList)
+            {
+                Console.WriteLine(s.StateAbbreviation);
+                Console.WriteLine(s.StateName);
+                Console.WriteLine(s.TaxRate);
+                Console.WriteLine();
+            }
+            Console.ReadLine();
 
-            Output.DisplaySingleOrder(myOrder);
+
         }
     }
 }
