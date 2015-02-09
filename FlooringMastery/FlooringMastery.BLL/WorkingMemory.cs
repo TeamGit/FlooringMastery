@@ -9,6 +9,8 @@ namespace FlooringMastery.BLL
 {
     public static class WorkingMemory
     {
-        public static List<State> StateList = new List<State>(); 
+        public static List<State> StateList = new List<State>();
+
+        public static List<Product> ProductList = new List<Product>(); 
     }
 }

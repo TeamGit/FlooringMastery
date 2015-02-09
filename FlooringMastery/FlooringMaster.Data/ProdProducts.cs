@@ -8,5 +8,9 @@ namespace FlooringMaster.Data
 {
     class ProdProducts : IContainProducts
     {
+        public void GetProducts()
+        {
+            return;
+        }
     }
 }

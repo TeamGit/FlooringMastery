@@ -10,5 +10,6 @@ namespace FlooringMaster.Data
     interface IContainOrders
     {
         Order GetOrder();
+        void GetAllOrders();
     }
 }

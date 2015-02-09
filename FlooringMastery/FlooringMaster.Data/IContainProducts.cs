@@ -8,5 +8,6 @@ namespace FlooringMaster.Data
 {
     interface IContainProducts
     {
+        void GetProducts();
     }
 }

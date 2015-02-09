@@ -14,19 +14,28 @@ namespace FlooringMastery.UI
     {
         static void Main(string[] args)
         {
-            TestStates myTester = new TestStates();
-            myTester.GetStates();
+            //TestStates myTester = new TestStates();
+            //myTester.GetStates();
 
-            foreach (var s in WorkingMemory.StateList)
+            //foreach (var s in WorkingMemory.StateList)
+            //{
+            //    Console.WriteLine(s.StateAbbreviation);
+            //    Console.WriteLine(s.StateName);
+            //    Console.WriteLine(s.TaxRate);
+            //    Console.WriteLine();
+            //}
+            //Console.ReadLine();
+
+            TestProducts myProductTester = new TestProducts();
+            myProductTester.GetProducts();
+
+            foreach (var s in WorkingMemory.ProductList)
             {
-                Console.WriteLine(s.StateAbbreviation);
-                Console.WriteLine(s.StateName);
-                Console.WriteLine(s.TaxRate);
-                Console.WriteLine();
+                Console.WriteLine(s.ProductType);
+                Console.WriteLine(s.CostPerSquareFoot);
+                Console.WriteLine(s.LaborCostPerSquareFoot);
             }
             Console.ReadLine();
-
-
         }
     }
 }

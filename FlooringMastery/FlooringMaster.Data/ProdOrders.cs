@@ -14,5 +14,10 @@ namespace FlooringMaster.Data
             return new Order();
             //code goes here to pull from data file
         }
+
+        public void GetAllOrders()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
