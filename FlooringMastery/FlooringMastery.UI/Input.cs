@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using FlooringMastery.BLL;
+using FlooringMastery.Models;
 
 namespace FlooringMastery.UI
 {
@@ -49,6 +53,115 @@ namespace FlooringMastery.UI
             } while (true);
 
             return null;
+        }
+
+        public static decimal GetDecimal(string prompt)
+        {
+            string input = null;
+            decimal myDecimal = 0;
+
+            do
+            {
+                Console.WriteLine(prompt);
+                input = Console.ReadLine();
+
+                if (decimal.TryParse(input, out myDecimal))
+                {
+                    //If decimal is positive loop will break
+                }
+
+            } while (myDecimal < 0);
+
+            return myDecimal;
+        }
+
+        public static Order QueryUserForOrder()
+        {
+            Order myOrder = new Order();
+
+            StateDictionaryClass aDictionary = new StateDictionaryClass();
+
+            myOrder.CustomerName = GetString("Please enter the customer name");
+
+            myOrder.OrderState = GetState();
+
+            myOrder.OrderProduct = GetProduct();
+
+            myOrder.Area = GetDecimal("Please enter the area of the floor");
+
+            myOrder.TotalLaborCost = myOrder.Area * myOrder.OrderProduct.LaborCostPerSquareFoot;
+
+            myOrder.TotalMaterialCost = myOrder.Area * myOrder.OrderProduct.CostPerSquareFoot;
+
+            decimal subTotal = myOrder.TotalLaborCost + myOrder.TotalMaterialCost;
+
+            myOrder.TotalTax = subTotal*myOrder.OrderState.TaxRate;
+
+            myOrder.TotalCost = subTotal + myOrder.TotalTax;
+
+            return myOrder;
+        }
+
+        private static State GetState()
+        {
+            bool gotState = false;
+            Enums.StateAbbreviations stateAbbrevs;
+
+            do
+            {
+                string tempState = GetString("Please enter the state abbreviation");
+                
+                if (Enums.StateAbbreviations.TryParse(tempState, out stateAbbrevs))
+                {
+                    gotState = true;
+                }
+            } while (!gotState);
+            
+            var temp = from s in WorkingMemory.StateList
+                       where s.StateAbbreviation == stateAbbrevs
+                       select s;
+
+            State myState = new State();
+            
+            foreach (var s in temp)
+            {
+                myState = s;
+            }
+            return myState;
+        }
+
+        private static Product GetProduct()
+        {
+            bool gotProduct = false;
+            List<string> myProducts = new List<string>();
+
+            foreach (var s in WorkingMemory.ProductList)
+            {
+                myProducts.Add(s.ProductType);
+            }
+            string tempProduct;        
+
+            do
+            {
+                tempProduct = GetString("Please enter the product name");
+                
+                if (myProducts.Any(s => s.Equals(tempProduct, StringComparison.OrdinalIgnoreCase)))
+                {
+                    gotProduct = true;
+                }
+            } while (!gotProduct);
+
+            Product newProduct = new Product();
+
+            var temp = from p in WorkingMemory.ProductList
+                where p.ProductType == tempProduct
+                select p;
+
+            foreach (var p in temp)
+            {
+                newProduct = p;
+            }
+            return newProduct;
         }
 
         //public static string GetDate(string prompt)
