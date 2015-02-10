@@ -25,5 +25,11 @@ namespace FlooringMaster.Data
         {
             throw new NotImplementedException();
         }
+
+
+        public string AddOrderToFile()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

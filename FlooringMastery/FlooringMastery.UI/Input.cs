@@ -105,20 +105,21 @@ namespace FlooringMastery.UI
         private static State GetState()
         {
             bool gotState = false;
-            Enums.StateAbbreviations stateAbbrevs;
+            //Enums.StateAbbreviations stateAbbrevs;
+            string tempState;
 
             do
             {
-                string tempState = GetString("Please enter the state abbreviation");
-                
-                if (Enums.StateAbbreviations.TryParse(tempState, out stateAbbrevs))
+                tempState = GetString("Please enter the state abbreviation");
+
+                if (WorkingMemory.StateList.Any(s => s.StateAbbreviation.ToString().Equals(tempState, StringComparison.OrdinalIgnoreCase)))
                 {
                     gotState = true;
                 }
             } while (!gotState);
             
             var temp = from s in WorkingMemory.StateList
-                       where s.StateAbbreviation == stateAbbrevs
+                       where s.StateAbbreviation.ToString().Equals(tempState, StringComparison.OrdinalIgnoreCase) 
                        select s;
 
             State myState = new State();
@@ -154,7 +155,7 @@ namespace FlooringMastery.UI
             Product newProduct = new Product();
 
             var temp = from p in WorkingMemory.ProductList
-                where p.ProductType == tempProduct
+                       where p.ProductType.Equals(tempProduct, StringComparison.OrdinalIgnoreCase) 
                 select p;
 
             foreach (var p in temp)

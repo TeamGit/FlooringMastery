@@ -16,31 +16,33 @@ namespace FlooringMastery.UI
     {
         static void Main(string[] args)
         {
+            TestStates myState = new TestStates();
+
+            //var date = Input.GetDate("Please enter a date.");
+            TestProducts myThingy = new TestProducts();
+
+            //Console.WriteLine(myThingy.OpenOrderFile(date));
             
+            myState.GetStates();
+            myThingy.GetProducts();
 
-
-            var date = Input.GetDate("Please enter a date.");
-            TestOrders myThingy = new TestOrders();
-
-            Console.WriteLine(myThingy.OpenOrderFile(date));
+            Order s = Input.QueryUserForOrder();
             
-            myThingy.GetAllOrders();
-
-            foreach (var s in WorkingMemory.OrderList)
             {
-                Console.WriteLine(s.OrderNumber);
-                Console.WriteLine(s.CustomerName);
-                Console.WriteLine(s.OrderState.StateAbbreviation);
-                Console.WriteLine(s.OrderState.TaxRate);
-                Console.WriteLine(s.OrderProduct.ProductType);
-                Console.WriteLine(s.Area);
-                Console.WriteLine(s.OrderProduct.CostPerSquareFoot);
-                Console.WriteLine(s.OrderProduct.LaborCostPerSquareFoot);
-                Console.WriteLine(s.TotalMaterialCost);
-                Console.WriteLine(s.TotalLaborCost);
-                Console.WriteLine(s.TotalTax);
-                Console.WriteLine(s.TotalCost);
+                Console.WriteLine("Order Number {0}", s.OrderNumber);
+                Console.WriteLine("Customer name {0}", s.CustomerName);
+                Console.WriteLine("State Abbreviation {0}", s.OrderState.StateAbbreviation);
+                Console.WriteLine("Order State {0}", s.OrderState.TaxRate);
+                Console.WriteLine("Product type {0}", s.OrderProduct.ProductType);
+                Console.WriteLine("Area {0}", s.Area);
+                Console.WriteLine("Cost per square foot {0:C}", s.OrderProduct.CostPerSquareFoot);
+                Console.WriteLine("Labor per square foot {0:C}", s.OrderProduct.LaborCostPerSquareFoot);
+                Console.WriteLine("Total material cost {0:C}", s.TotalMaterialCost);
+                Console.WriteLine("Total labor cost {0:C}", s.TotalLaborCost);
+                Console.WriteLine("Total tax {0:C}", s.TotalTax);
+                Console.WriteLine("Total cost {0:C}", s.TotalCost);
             }
+
             Console.ReadLine();
 
 

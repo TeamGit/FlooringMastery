@@ -155,11 +155,7 @@ namespace FlooringMaster.Data
             return "Sorry, there is no file for that date.";
         }
 
-        public string AddOrderToFile()
-        {
-            
-        }
-
+       
         /// <summary>
         /// given a string, build a valid path and prefix the filename with Orders_ and append .txt
         /// </summary>
@@ -185,6 +181,12 @@ namespace FlooringMaster.Data
 
 
 
-   
+
+
+
+        public string AddOrderToFile()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
