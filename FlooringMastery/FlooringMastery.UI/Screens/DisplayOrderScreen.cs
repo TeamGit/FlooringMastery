@@ -10,8 +10,8 @@ namespace FlooringMastery.UI.Screens
     {
         public override void Display()
         {
-             Console.Clear();
-             
+            Console.Clear();
+            string date = Input.GetDate("Please enter a date.");
         }
     }
 }

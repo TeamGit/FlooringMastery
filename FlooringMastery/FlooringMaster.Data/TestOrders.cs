@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.Remoting;
@@ -43,7 +44,7 @@ namespace FlooringMaster.Data
         /// </summary>
         public void GetAllOrders()
         {
-            using (StreamReader sr = new StreamReader("TestOrders.txt"))
+            using (StreamReader sr = new StreamReader(WorkingMemory.CurrentOrderFile))
                 while (!sr.EndOfStream)
                 {
                     string WholeOrder = sr.ReadLine();
@@ -137,5 +138,53 @@ namespace FlooringMaster.Data
                   
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        public string OpenOrderFile(string date)
+        {
+            string output;
+            string properFileName = FileNameBuilder(date);
+            if (System.IO.File.Exists(properFileName))
+            {
+                WorkingMemory.CurrentOrderFile = properFileName;
+                return "File was loaded successfully.";
+            }
+            return "Sorry, there is no file for that date.";
+        }
+
+        public string AddOrderToFile()
+        {
+            
+        }
+
+        /// <summary>
+        /// given a string, build a valid path and prefix the filename with Orders_ and append .txt
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static string FileNameBuilder(string input)
+        {
+            string filename = input;
+            if (!filename.EndsWith(".txt", true, CultureInfo.CurrentCulture))
+            {
+                filename = input + ".txt";
+            }
+            if (!filename.StartsWith(@".\Orders\Orders_"))
+            {
+                filename = @".\Orders\Orders_" + filename;
+            }
+            else
+            {
+                filename = input;
+            }
+            return filename;
+        }
+
+
+
+   
     }
 }

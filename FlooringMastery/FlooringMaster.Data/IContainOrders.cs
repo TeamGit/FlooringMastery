@@ -10,6 +10,11 @@ namespace FlooringMaster.Data
     interface IContainOrders
     {
         Order GetOrder();
+
         void GetAllOrders();
+
+        string OpenOrderFile(string date);
+
+        string AddOrderToFile();
     }
 }

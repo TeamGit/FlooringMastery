@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,5 +18,7 @@ namespace FlooringMastery.BLL
         public static List<Product> ProductList = new List<Product>(); 
 
         public static List<Order> OrderList = new List<Order>();
+
+        public static string CurrentOrderFile;
     }
 }
