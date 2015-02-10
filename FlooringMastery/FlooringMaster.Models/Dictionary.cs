@@ -8,7 +8,7 @@ namespace FlooringMastery.Models
 {
     public class StateDictionary
     {
-        private Dictionary<Enums.StateAbbreviations, Enums.StateNames> AllStates = new Dictionary
+        public Dictionary<Enums.StateAbbreviations, Enums.StateNames> AllStates = new Dictionary
             <Enums.StateAbbreviations, Enums.StateNames>()
         {
             {Enums.StateAbbreviations.AL, Enums.StateNames.Alabama},
