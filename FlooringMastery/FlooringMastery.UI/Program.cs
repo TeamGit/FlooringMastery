@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,10 +38,7 @@ namespace FlooringMastery.UI
             //    Console.WriteLine(s.LaborCostPerSquareFoot);
             //}
             //Console.ReadLine();
-
-            TestOrders myOrderTester = new TestOrders();
-            myOrderTester.GetAllOrders();
-
+            
             foreach (var s in WorkingMemory.OrderList)
             {
                 Console.WriteLine(s.OrderNumber);
@@ -54,8 +53,8 @@ namespace FlooringMastery.UI
                 Console.WriteLine(s.TotalLaborCost);
                 Console.WriteLine(s.TotalTax);
                 Console.WriteLine(s.TotalCost);
-
             }
+
             Console.ReadLine();
 
 

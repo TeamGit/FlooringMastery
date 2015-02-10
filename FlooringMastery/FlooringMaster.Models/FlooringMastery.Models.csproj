@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dictionary.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Product.cs" />
