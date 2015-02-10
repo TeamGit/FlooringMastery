@@ -15,19 +15,25 @@ namespace FlooringMaster.Data
             //code goes here to pull from data file
         }
 
-        public void GetAllOrders()
+        public void LoadOrders()
         {
             throw new NotImplementedException();
         }
 
 
-        public string OpenOrderFile(string date)
+        public string LoadOrdersFromFile(string date)
         {
             throw new NotImplementedException();
         }
 
 
-        public string AddOrderToFile()
+        public void AddOrderToFile(string myOrder)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void SaveOrdersToFile(Order myOrder)
         {
             throw new NotImplementedException();
         }

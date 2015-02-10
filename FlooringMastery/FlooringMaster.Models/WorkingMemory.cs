@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FlooringMastery.Models;
 
-namespace FlooringMastery.BLL
+
+namespace FlooringMastery.Models
 {
     /// <summary>
     /// This class contains lists which hold values read in from repositories

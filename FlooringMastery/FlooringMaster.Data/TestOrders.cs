@@ -3,46 +3,22 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Runtime.Remoting;
 using System.Text;
 using System.Threading.Tasks;
-using FlooringMastery.BLL;
 using FlooringMastery.Models;
 
 namespace FlooringMaster.Data
 {
     public class TestOrders : IContainOrders
     {
-        /// <summary>
-        /// Returns a order object
-        /// </summary>
-        /// <returns></returns>
-        public Order GetOrder()
-        {
-            Order myOrder = new Order();
-            
-            myOrder.OrderNumber = 1;
-            myOrder.CustomerName = "Wise";
-            myOrder.OrderState.TaxRate = 6.25M;
-            myOrder.OrderState.StateAbbreviation = Enums.StateAbbreviations.AK;
-            myOrder.OrderState.StateName = Enums.StateNames.Alaska;
-            myOrder.Area = 100.00M;
-            myOrder.OrderProduct.ProductType = "Wood";
-            myOrder.OrderProduct.CostPerSquareFoot = 5.15M;
-            myOrder.OrderProduct.LaborCostPerSquareFoot = 4.75M;
-            myOrder.TotalMaterialCost = 515.00M;
-            myOrder.TotalLaborCost = 475.00M;
-            myOrder.TotalTax = 61.88M;
-            myOrder.TotalCost = 1051.88M;
 
-            return myOrder;
-
-        }
 
         /// <summary>
         /// Read in multiple orders from a text file
         /// </summary>
-        public void GetAllOrders()
+        private void LoadOrders()
         {
             using (StreamReader sr = new StreamReader(WorkingMemory.CurrentOrderFile))
                 while (!sr.EndOfStream)
@@ -53,6 +29,12 @@ namespace FlooringMaster.Data
 
                         string[] WholeOrderArray = WholeOrder.Split(',');
 
+                        if (WholeOrderArray[0] == "OrderNumber")
+                        {
+                            WholeOrder = sr.ReadLine();
+                            WholeOrderArray = WholeOrder.Split(',');
+                        }
+                       
                         Order newOrder = new Order();
 
 
@@ -135,7 +117,7 @@ namespace FlooringMaster.Data
                     }
 
                 }
-                  
+
         }
 
         /// <summary>
@@ -143,19 +125,19 @@ namespace FlooringMaster.Data
         /// </summary>
         /// <param name="date"></param>
         /// <returns></returns>
-        public string OpenOrderFile(string date)
+        public string LoadOrdersFromFile(string date)
         {
-            string output;
             string properFileName = FileNameBuilder(date);
             if (System.IO.File.Exists(properFileName))
             {
                 WorkingMemory.CurrentOrderFile = properFileName;
+                LoadOrders();
                 return "File was loaded successfully.";
             }
             return "Sorry, there is no file for that date.";
         }
 
-       
+
         /// <summary>
         /// given a string, build a valid path and prefix the filename with Orders_ and append .txt
         /// </summary>
@@ -181,12 +163,33 @@ namespace FlooringMaster.Data
 
 
 
-
-
-
-        public string AddOrderToFile()
+        public void SaveOrdersToFile()
         {
-            throw new NotImplementedException();
+            string lastOrder;
+
+            int orderNumber = 1;
+            Console.WriteLine("OrderNumber,CustomerName,State,TaxRate,ProductType,Area,CostPerSquareFoot,LaborCostPerSquareFoot,MaterialCost,LaborCost,Tax,Total");
+
+            foreach (var myOrder in WorkingMemory.OrderList)
+            {
+                using (StreamWriter sw = new StreamWriter(WorkingMemory.CurrentOrderFile, true))
+                {
+                    sw.WriteLine("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11}",
+                        orderNumber,
+                        myOrder.CustomerName,
+                        myOrder.OrderState.StateAbbreviation,
+                        myOrder.OrderState.TaxRate,
+                        myOrder.OrderProduct.ProductType,
+                        myOrder.Area,
+                        myOrder.OrderProduct.CostPerSquareFoot,
+                        myOrder.OrderProduct.LaborCostPerSquareFoot,
+                        myOrder.TotalMaterialCost,
+                        myOrder.TotalLaborCost,
+                        myOrder.TotalTax,
+                        myOrder.TotalCost);
+                }
+                orderNumber++;
+            }
         }
     }
 }
