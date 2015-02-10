@@ -37,8 +37,8 @@ namespace FlooringMastery.UI.Screens
 
                 switch (myKeyPress.KeyChar)
                 {
-                    //case '1':
-                    //    return new DisplayOrderScreen();
+                    case '1':
+                        return new DisplayOrderScreen();
                     //case '2':
                     //    return new AddOrderScreen();
                     //case '3':
