@@ -13,12 +13,7 @@ namespace FlooringMastery.UI.Screens
         {
             Startup.Start();
             Console.Clear();
-            string companyName = "Welcome to SWC Corp!";
-            Console.WriteLine(String.Format("{0," + (Console.WindowWidth + companyName.Length) / 2 + "}", companyName));
-            string slogan = "Where the floor is the limit";
-            Console.WriteLine(String.Format("{0," + (Console.WindowWidth + slogan.Length) / 2 + "}", slogan));
-            Console.WriteLine();
-            Console.WriteLine();
+            DisplayHeader();
             Console.WriteLine("Please select an option 1-5:");
             Console.WriteLine("\t1. Display Orders");
             Console.WriteLine("\t2. Add an Order");
@@ -30,6 +25,8 @@ namespace FlooringMastery.UI.Screens
             if (next != null)
                 next.JumpScreen(next);
         }
+            
+
 
         private Screen GetKeyPress()
         {
@@ -45,8 +42,8 @@ namespace FlooringMastery.UI.Screens
                         return new AddOrderScreen();
                     //case '3':
                     //    return new EditOrderScreen();
-                    //case '4':
-                    //    return new RemoveOrderScreen();
+                    case '4':
+                        return new RemoveOrderScreen();
                     case '5':
                         Environment.Exit(0);
                         break;

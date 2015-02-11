@@ -38,12 +38,12 @@ namespace FlooringMastery.UI
         public static string GetDate(string prompt)
         {
             DateTime dateValue;
-            int linecounter = 1;
             do
             {
                 Console.Write(prompt);
                 Console.Write(DateTime.Now.ToString("MM/dd/yyyy"));
-                Console.SetCursorPosition(prompt.Length,linecounter);
+                Console.SetCursorPosition(prompt.Length,Console.CursorTop
+                    );
                 
                 string dateInput = Console.ReadLine();
                 if (String.IsNullOrEmpty(dateInput))
@@ -54,7 +54,6 @@ namespace FlooringMastery.UI
                     string newString = dateValue.ToString("MMddyyyy");
                     return newString;
                 }
-                linecounter++;
             } while (true);
 
         }
@@ -77,6 +76,26 @@ namespace FlooringMastery.UI
             } while (myDecimal < 0);
 
             return myDecimal;
+        }
+
+        public static int GetInt(string prompt)
+        {
+            string input = null;
+            int myInt = 0;
+
+            do
+            {
+                Console.WriteLine(prompt);
+                input = Console.ReadLine();
+
+                if (int.TryParse(input, out myInt))
+                {
+                    //If integer is positive loop will break
+                }
+
+            } while (myInt < 0);
+
+            return myInt;
         }
 
         /// <summary>

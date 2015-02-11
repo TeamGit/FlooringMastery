@@ -53,6 +53,7 @@
     <Compile Include="Screens\AddOrderScreen.cs" />
     <Compile Include="Screens\DisplayOrderScreen.cs" />
     <Compile Include="Screens\HomeScreen.cs" />
+    <Compile Include="Screens\RemoveOrderScreen.cs" />
     <Compile Include="Screens\Screen.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,7 +63,11 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Products.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FlooringMaster.Data\FlooringMastery.Data.csproj">
       <Project>{4cca3d09-2570-4edf-b0bc-f0b681145ef2}</Project>

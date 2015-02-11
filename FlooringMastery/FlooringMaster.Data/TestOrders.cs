@@ -20,6 +20,7 @@ namespace FlooringMaster.Data
         /// </summary>
         private void LoadOrders()
         {
+            WorkingMemory.OrderList.Clear();
             using (StreamReader sr = new StreamReader(WorkingMemory.CurrentOrderFile))
                 while (!sr.EndOfStream)
                 {

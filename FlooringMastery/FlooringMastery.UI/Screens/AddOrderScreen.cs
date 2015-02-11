@@ -14,6 +14,7 @@ namespace FlooringMastery.UI.Screens
         public override void Display()
         {
             Console.Clear();
+            DisplayHeader();
             if (String.IsNullOrEmpty(WorkingMemory.CurrentOrderFile))
             {
                 Console.WriteLine();
@@ -27,7 +28,7 @@ namespace FlooringMastery.UI.Screens
 
             var doCommit = Input.QueryForCommit();
 
-            AddOrder.CommitChangesToFile(doCommit, newOrder);
+            ChangeOrder.CommitAdditionsToFile(doCommit, newOrder);
             Output.DisplayCommitResults(doCommit);
 
             Screen next = new HomeScreen();

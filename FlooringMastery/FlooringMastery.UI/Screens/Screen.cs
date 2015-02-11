@@ -10,6 +10,16 @@ namespace FlooringMastery.UI.Screens
     {
         public abstract void Display();
 
+        public void DisplayHeader()
+        {
+            string companyName = "Welcome to SWC Corp!";
+            Console.WriteLine(String.Format("{0," + (Console.WindowWidth + companyName.Length) / 2 + "}", companyName));
+            string slogan = "Where the floor is the limit";
+            Console.WriteLine(String.Format("{0," + (Console.WindowWidth + slogan.Length) / 2 + "}", slogan));
+            Console.WriteLine();
+            Console.WriteLine();
+        }
+
         public void JumpScreen(Screen nextScreen)
         {
             nextScreen.Display();
