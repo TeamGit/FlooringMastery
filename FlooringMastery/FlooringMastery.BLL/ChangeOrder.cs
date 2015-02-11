@@ -31,7 +31,98 @@ namespace FlooringMastery.BLL
             }
         }
 
+        public static void EditEntireOrder(Order myOrder)
+        {
+            myOrder.CustomerName = ChangeOrder.EditStringField("Current Customer Name: ", myOrder.CustomerName);
+            myOrder.OrderState = ChangeOrder.EditStateField("Current State: ", myOrder.OrderState);            
+            myOrder.OrderProduct = ChangeOrder.EditProductField("Current Product: ", myOrder.OrderProduct);            
+            myOrder.Area = ChangeOrder.EditDecimalField("Current Area: ", myOrder.Area);
+        }
+
+        public static string EditStringField(string prompt, string currentValue)
+        { 
+            Console.Write(prompt);
+            Console.Write(currentValue);
+            Console.SetCursorPosition(prompt.Length, Console.CursorTop);
+            string input = Console.ReadLine();
+            if (String.IsNullOrEmpty(input))
+            {
+                input = currentValue;
+            }
+            return input;
+        }
+
+        public static State EditStateField(string prompt, State currentValue)
+        {
+            Console.Write(prompt);
+            Console.Write(currentValue.StateAbbreviation);
+            Console.SetCursorPosition(prompt.Length, Console.CursorTop);
+            string input = Console.ReadLine();
+            State myState = new State();
+            if (String.IsNullOrEmpty(input))
+            {
+                myState = currentValue;
+            }
+
+            if (WorkingMemory.StateList.Any(s => s.StateAbbreviation.ToString().Equals(input, StringComparison.OrdinalIgnoreCase)))
+            {
+                var temp = from s in WorkingMemory.StateList
+                       where s.StateAbbreviation.ToString().Equals(input, StringComparison.OrdinalIgnoreCase)
+                       select s;
+
+                foreach (var s in temp)
+                {
+                    myState = s;
+                }
+
+            }
+            return myState;
+        }
 
 
+        public static Product EditProductField(string prompt, Product currentValue)
+        {
+            Console.Write(prompt);
+            Console.Write(currentValue.ProductType);
+            Console.SetCursorPosition(prompt.Length, Console.CursorTop);
+            string input = Console.ReadLine();
+            Product myProduct = new Product();
+            if (String.IsNullOrEmpty(input))
+            {
+                myProduct = currentValue;
+            }
+
+            if (WorkingMemory.ProductList.Any(s => s.ProductType.ToString().Equals(input, StringComparison.OrdinalIgnoreCase)))
+            {
+                var temp = from s in WorkingMemory.ProductList
+                           where s.ProductType.Equals(input, StringComparison.OrdinalIgnoreCase)
+                           select s;
+
+                foreach (var s in temp)
+                {
+                    myProduct = s;
+                }
+
+            }
+            return myProduct;
+        }
+
+
+        public static decimal EditDecimalField(string prompt, decimal currentValue)
+        {
+            Console.Write(prompt);
+            Console.Write(currentValue.ToString());
+            Console.SetCursorPosition(prompt.Length, Console.CursorTop);
+            decimal myDecimal; 
+
+            string input = Console.ReadLine();
+            if (decimal.TryParse(input, out myDecimal))
+            {
+                return myDecimal;
+            }
+                myDecimal = currentValue;
+
+            return myDecimal;
+        }
     }
 }

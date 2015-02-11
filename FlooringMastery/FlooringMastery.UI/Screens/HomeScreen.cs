@@ -40,8 +40,8 @@ namespace FlooringMastery.UI.Screens
                         return new DisplayOrderScreen();
                     case '2':
                         return new AddOrderScreen();
-                    //case '3':
-                    //    return new EditOrderScreen();
+                    case '3':
+                        return new EditOrderScreen();
                     case '4':
                         return new RemoveOrderScreen();
                     case '5':

@@ -52,6 +52,7 @@
     </Compile>
     <Compile Include="Screens\AddOrderScreen.cs" />
     <Compile Include="Screens\DisplayOrderScreen.cs" />
+    <Compile Include="Screens\EditOrderScreen.cs" />
     <Compile Include="Screens\HomeScreen.cs" />
     <Compile Include="Screens\RemoveOrderScreen.cs" />
     <Compile Include="Screens\Screen.cs" />
