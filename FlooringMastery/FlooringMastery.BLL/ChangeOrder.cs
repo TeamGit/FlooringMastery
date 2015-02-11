@@ -9,6 +9,21 @@ namespace FlooringMastery.BLL
 {
     public static class ChangeOrder
     {
+        public static Order CalculateRemainingProperties(Order myOrder)
+        {
+            myOrder.TotalLaborCost = Math.Round(myOrder.Area * myOrder.OrderProduct.LaborCostPerSquareFoot, 2);
+
+            myOrder.TotalMaterialCost = Math.Round(myOrder.Area * myOrder.OrderProduct.CostPerSquareFoot, 2);
+
+            decimal subTotal = Math.Round(myOrder.TotalLaborCost + myOrder.TotalMaterialCost, 2);
+
+            myOrder.TotalTax = Math.Round(subTotal * myOrder.OrderState.TaxRate, 2);
+
+            myOrder.TotalCost = Math.Round(subTotal + myOrder.TotalTax, 2);
+
+            return myOrder;
+        }
+
         public static void AddOrderToList(Order myOrder)
         {
             WorkingMemory.OrderList.Add(myOrder);
@@ -116,7 +131,7 @@ namespace FlooringMastery.BLL
             decimal myDecimal; 
 
             string input = Console.ReadLine();
-            if (decimal.TryParse(input, out myDecimal))
+            if (Decimal.TryParse(input, out myDecimal))
             {
                 return myDecimal;
             }

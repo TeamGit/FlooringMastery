@@ -43,7 +43,7 @@ namespace FlooringMastery.UI
         {
             foreach (var o in WorkingMemory.OrderList)
             {
-                Console.WriteLine("Order Number: {0}\tCustomer Name: {1}", o.OrderNumber, o.CustomerName);
+                Console.WriteLine("Order Number: {0} Customer Name: {1}", o.OrderNumber, o.CustomerName);
                 Console.WriteLine("*************");
             }
         }

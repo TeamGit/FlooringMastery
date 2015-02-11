@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using FlooringMastery.BLL;
 using FlooringMastery.Models;
 
 namespace FlooringMastery.UI
@@ -108,26 +109,19 @@ namespace FlooringMastery.UI
 
             StateDictionaryClass aDictionary = new StateDictionaryClass();
 
-            myOrder.CustomerName = GetString("Please enter the customer name");
+            myOrder.CustomerName = (GetString("Please enter the customer name")).ToUpper();
 
             myOrder.OrderState = GetState();
 
             myOrder.OrderProduct = GetProduct();
 
             myOrder.Area = GetDecimal("Please enter the area of the floor");
-
-            myOrder.TotalLaborCost = myOrder.Area * myOrder.OrderProduct.LaborCostPerSquareFoot;
-
-            myOrder.TotalMaterialCost = myOrder.Area * myOrder.OrderProduct.CostPerSquareFoot;
-
-            decimal subTotal = myOrder.TotalLaborCost + myOrder.TotalMaterialCost;
-
-            myOrder.TotalTax = subTotal*myOrder.OrderState.TaxRate;
-
-            myOrder.TotalCost = subTotal + myOrder.TotalTax;
+            
+            myOrder = ChangeOrder.CalculateRemainingProperties(myOrder);
 
             return myOrder;
         }
+        
 
         /// <summary>
         /// Query user for a state that exists on the state list, return that state
@@ -225,7 +219,5 @@ namespace FlooringMastery.UI
             } while (badAnswer);
             return false;
         }
-
- 
     }
 }
