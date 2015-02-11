@@ -13,5 +13,15 @@ namespace FlooringMastery.BLL
         {
             WorkingMemory.OrderList.Add(myOrder);
         }
+
+        public static void CommitChangesToFile(bool doCommmit, Order newOrder)
+        {
+            if (doCommmit)
+            {
+                WorkingMemory.OrderList.Add(newOrder);
+                SetTestOrProd.MyOrderObject.SaveOrdersToFile();
+            }
+                
+        }
     }
 }

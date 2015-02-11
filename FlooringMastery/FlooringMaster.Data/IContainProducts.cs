@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FlooringMaster.Data
 {
-    interface IContainProducts
+    public interface IContainProducts
     {
         void GetProducts();
     }

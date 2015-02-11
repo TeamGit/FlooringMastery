@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FlooringMastery.BLL;
 
 namespace FlooringMastery.UI.Screens
 {
@@ -10,6 +11,7 @@ namespace FlooringMastery.UI.Screens
     {
         public override void Display()
         {
+            Startup.Start();
             Console.Clear();
             string companyName = "Welcome to SWC Corp!";
             Console.WriteLine(String.Format("{0," + (Console.WindowWidth + companyName.Length) / 2 + "}", companyName));
@@ -39,8 +41,8 @@ namespace FlooringMastery.UI.Screens
                 {
                     case '1':
                         return new DisplayOrderScreen();
-                    //case '2':
-                    //    return new AddOrderScreen();
+                    case '2':
+                        return new AddOrderScreen();
                     //case '3':
                     //    return new EditOrderScreen();
                     //case '4':

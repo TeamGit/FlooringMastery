@@ -41,12 +41,30 @@
   <ItemGroup>
     <Compile Include="AddOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="SetTestOrProd.cs" />
+    <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FlooringMaster.Data\FlooringMastery.Data.csproj">
+      <Project>{4cca3d09-2570-4edf-b0bc-f0b681145ef2}</Project>
+      <Name>FlooringMastery.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FlooringMaster.Models\FlooringMastery.Models.csproj">
       <Project>{c6f80c87-b6cb-4041-b1ba-b22fc8e516b5}</Project>
       <Name>FlooringMastery.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

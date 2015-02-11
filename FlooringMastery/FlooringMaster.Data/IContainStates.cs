@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FlooringMaster.Data
 {
-    interface IContainStates
+    public interface IContainStates
     {
         void GetStates();
     }

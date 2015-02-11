@@ -7,7 +7,7 @@ using FlooringMastery.Models;
 
 namespace FlooringMaster.Data
 {
-    interface IContainOrders
+    public interface IContainOrders
     {
         string LoadOrdersFromFile(string date);
 

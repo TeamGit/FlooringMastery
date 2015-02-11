@@ -55,10 +55,6 @@
       <Project>{c6f80c87-b6cb-4041-b1ba-b22fc8e516b5}</Project>
       <Name>FlooringMastery.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FlooringMastery.BLL\FlooringMastery.BLL.csproj">
-      <Project>{def5ce79-4226-403f-b2d7-972fa20a29c9}</Project>
-      <Name>FlooringMastery.BLL</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

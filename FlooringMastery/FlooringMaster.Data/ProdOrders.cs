@@ -7,7 +7,7 @@ using FlooringMastery.Models;
 
 namespace FlooringMaster.Data
 {
-    class ProdOrders : IContainOrders
+    public class ProdOrders : IContainOrders
     {
         public Order GetOrder()
         {

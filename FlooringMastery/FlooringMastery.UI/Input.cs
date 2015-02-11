@@ -38,17 +38,23 @@ namespace FlooringMastery.UI
         public static string GetDate(string prompt)
         {
             DateTime dateValue;
-           
+            int linecounter = 1;
             do
             {
-                Console.WriteLine(prompt);
+                Console.Write(prompt);
+                Console.Write(DateTime.Now.ToString("MM/dd/yyyy"));
+                Console.SetCursorPosition(prompt.Length,linecounter);
+                
                 string dateInput = Console.ReadLine();
+                if (String.IsNullOrEmpty(dateInput))
+                    dateInput = DateTime.Now.ToString("MM/dd/yyyy");
 
                 if (DateTime.TryParse(dateInput, out dateValue))
                 {
                     string newString = dateValue.ToString("MMddyyyy");
                     return newString;
                 }
+                linecounter++;
             } while (true);
 
         }
@@ -73,6 +79,10 @@ namespace FlooringMastery.UI
             return myDecimal;
         }
 
+        /// <summary>
+        /// Query user for a new order, return that order.
+        /// </summary>
+        /// <returns></returns>
         public static Order QueryUserForOrder()
         {
             Order myOrder = new Order();
@@ -100,6 +110,10 @@ namespace FlooringMastery.UI
             return myOrder;
         }
 
+        /// <summary>
+        /// Query user for a state that exists on the state list, return that state
+        /// </summary>
+        /// <returns></returns>
         private static State GetState()
         {
             bool gotState = false;
@@ -129,6 +143,10 @@ namespace FlooringMastery.UI
             return myState;
         }
 
+        /// <summary>
+        /// Query user for a product that exists on the product list, return that product
+        /// </summary>
+        /// <returns></returns>
         private static Product GetProduct()
         {
             bool gotProduct = false;
@@ -163,86 +181,32 @@ namespace FlooringMastery.UI
             return newProduct;
         }
 
-        //public static string GetDate(string prompt)
-        //{
-        //    string input;
+        /// <summary>
+        /// Ask the user if they want to commit changes, return a bool indicating their choice.
+        /// </summary>
+        /// <returns></returns>
+        public static bool QueryForCommit()
+        {
+            bool badAnswer = true;
 
-        //    do
-        //    {
-        //        Console.WriteLine(prompt);
-        //        input = Console.ReadLine();
+            do
+            {
+                Console.WriteLine("Would you like to commit changes to file? Y/N");
+                string commitAnswer = Console.ReadLine();
+                if (commitAnswer.Equals("y", StringComparison.CurrentCultureIgnoreCase) ||
+                    commitAnswer.Equals("yes", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    return true;
+                }
+                else if (commitAnswer.Equals("n", StringComparison.CurrentCultureIgnoreCase) ||
+                    commitAnswer.Equals("no", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    return false;
+                }
+            } while (badAnswer);
+            return false;
+        }
 
-        //        if (!String.IsNullOrEmpty(input))
-        //        {
-        //            String[] DateInputArray = input.Split('/');
-
-        //            if (DateInputArray.Length == 3)
-        //            {
-        //                if (CheckMonth(DateInputArray[0]))
-        //                {
-        //                    if (CheckDay(DateInputArray[1]))
-        //                    {
-        //                        if (CheckYear(DateInputArray[2]))
-        //                        {
-        //                            return input;
-        //                        }
-        //                    }
-        //                }
-
-        //            }
-        //        }
-        //        break;
-        //    } while (true);
-        //    return null;
-        //}
-
-
-        //private static bool CheckMonth(string monthString)
-        //{
-        //    if (monthString.Length == 2)
-        //    {
-        //        int month;
-        //        if (int.TryParse(monthString, out month))
-        //        {
-        //            if ((month >= 01) && (month <= 12))
-        //            {
-        //                return true;
-        //            }
-        //        }
-        //    }
-        //    return false;
-        //}
-
-        //private static bool CheckDay(string dayString)
-        //{
-        //   if (dayString.Length == 2)
-        //    {
-        //        int day;
-        //        if (int.TryParse(dayString, out day))
-        //        {
-        //            if ((day >= 1) && (day <= 31))
-        //            {
-        //                return true;
-        //            }
-        //        }
-        //    }
-        //    return false;
-        //}
-
-        //private static bool CheckYear(string yearString)
-        //{
-        //    if (yearString.Length == 4)
-        //    {
-        //        int year;
-        //        if (int.TryParse(yearString, out year))
-        //        {
-        //            if (year > 0)
-        //            {
-        //                return true;
-        //            }
-        //        }
-        //    }
-        //    return false;
-        //}
+ 
     }
 }

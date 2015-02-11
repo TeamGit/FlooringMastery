@@ -13,7 +13,7 @@ namespace FlooringMaster.Data
 {
     public class TestOrders : IContainOrders
     {
-
+        
 
         /// <summary>
         /// Read in multiple orders from a text file
@@ -32,7 +32,11 @@ namespace FlooringMaster.Data
                         if (WholeOrderArray[0] == "OrderNumber")
                         {
                             WholeOrder = sr.ReadLine();
-                            WholeOrderArray = WholeOrder.Split(',');
+                            if (!string.IsNullOrEmpty(WholeOrder))
+                            {
+                                WholeOrderArray = WholeOrder.Split(',');
+                            }
+                            
                         }
 
                         Order newOrder = new Order();
@@ -128,13 +132,14 @@ namespace FlooringMaster.Data
         public string LoadOrdersFromFile(string date)
         {
             string properFileName = FileNameBuilder(date);
+            WorkingMemory.CurrentOrderFile = properFileName;
             if (System.IO.File.Exists(properFileName))
             {
-                WorkingMemory.CurrentOrderFile = properFileName;
                 LoadOrders();
                 return "File was loaded successfully.";
             }
-            return "Sorry, there is no file for that date.";
+            System.IO.File.Create(properFileName).Close();
+            return "A new order file was created for that date.";
         }
 
 
