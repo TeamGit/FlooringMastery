@@ -47,9 +47,7 @@ namespace FlooringMastery.UI
                 Console.WriteLine("*************");
             }
         }
-
-
-
+        
         public static void DisplayCommitResults(bool commit)
         {
             if (commit)

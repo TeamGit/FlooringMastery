@@ -13,13 +13,23 @@ namespace FlooringMaster.Data
 
         public void GetProducts()
         {
-            using (StreamReader sr = new StreamReader("TestProducts.txt"))
+            using (StreamReader sr = new StreamReader("Products.txt"))
                 while (!sr.EndOfStream)
                 {
                     string WholeProduct = sr.ReadLine();
                     if (!string.IsNullOrEmpty(WholeProduct))
                     {
                         string[] WholeProductArray = WholeProduct.Split(',');
+
+                        if (WholeProductArray[0] == "ProductType")
+                        {
+                            WholeProduct = sr.ReadLine();
+                            if (!string.IsNullOrEmpty(WholeProduct))
+                            {
+                                WholeProductArray = WholeProduct.Split(',');
+                            }
+
+                        }
 
                         Product newProduct = new Product();
 

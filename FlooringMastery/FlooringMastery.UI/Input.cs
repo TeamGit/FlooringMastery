@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -25,7 +26,7 @@ namespace FlooringMastery.UI
             {
                 Console.WriteLine(prompt);
                 input = Console.ReadLine();
-
+                
             } while (string.IsNullOrEmpty(input));
             
             return input;
@@ -55,10 +56,20 @@ namespace FlooringMastery.UI
                     string newString = dateValue.ToString("MMddyyyy");
                     return newString;
                 }
+
+                using (System.IO.StreamWriter sw = new StreamWriter("log.txt", true))
+                {
+                    sw.WriteLine("Expected date, but got {0}", dateInput);
+                }
             } while (true);
 
         }
 
+        /// <summary>
+        /// Given a prompt, continually prompt the user until the enter a non negative decimal then return it
+        /// </summary>
+        /// <param name="prompt"></param>
+        /// <returns></returns>
         public static decimal GetDecimal(string prompt)
         {
             string input = null;
@@ -74,11 +85,21 @@ namespace FlooringMastery.UI
                     //If decimal is positive loop will break
                 }
 
+                using (System.IO.StreamWriter sw = new StreamWriter("log.txt", true))
+                {
+                    sw.WriteLine("Expected decimal, but got {0}", input);
+                }
+
             } while (myDecimal < 0);
 
             return myDecimal;
         }
 
+        /// <summary>
+        /// given a prompt, continually prompt the user until the enter a non negative integer then return it
+        /// </summary>
+        /// <param name="prompt"></param>
+        /// <returns></returns>
         public static int GetInt(string prompt)
         {
             string input = null;
@@ -92,6 +113,11 @@ namespace FlooringMastery.UI
                 if (int.TryParse(input, out myInt))
                 {
                     //If integer is positive loop will break
+                }
+
+                using (System.IO.StreamWriter sw = new StreamWriter("log.txt", true))
+                {
+                    sw.WriteLine("Expected integer, but got {0}", input);
                 }
 
             } while (myInt < 0);
@@ -141,6 +167,12 @@ namespace FlooringMastery.UI
                 {
                     gotState = true;
                 }
+
+                using (System.IO.StreamWriter sw = new StreamWriter("log.txt", true))
+                {
+                    sw.WriteLine("Expected State name, but got {0}", tempState);
+                }
+
             } while (!gotState);
             
             var temp = from s in WorkingMemory.StateList
@@ -179,6 +211,12 @@ namespace FlooringMastery.UI
                 {
                     gotProduct = true;
                 }
+
+                using (System.IO.StreamWriter sw = new StreamWriter("log.txt", true))
+                {
+                    sw.WriteLine("Expected product name, but got {0}", tempProduct);
+                }
+
             } while (!gotProduct);
 
             Product newProduct = new Product();
@@ -216,6 +254,12 @@ namespace FlooringMastery.UI
                 {
                     return false;
                 }
+
+                using (System.IO.StreamWriter sw = new StreamWriter("log.txt", true))
+                {
+                    sw.WriteLine("Expected yes or no, but got {0}", commitAnswer);
+                }
+
             } while (badAnswer);
             return false;
         }
