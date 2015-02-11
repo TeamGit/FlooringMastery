@@ -1,0 +1,7 @@
+OrderNumber,CustomerName,State,TaxRate,ProductType,Area,CostPerSquareFoot,LaborCostPerSquareFoot,MaterialCost,LaborCost,Tax,Total
+1,Wise,OH,6.25,Wood,100.00,4.15,4.75,515.00,475.00,61.88,1051.88
+2,Lise,MN,6.25,Wood,100.00,4.15,4.75,515.00,475.00,61.88,1051.88
+3,Mise,TX,6.25,Wood,100.00,4.15,4.75,515.00,475.00,61.88,1051.88
+4,Hise,TN,6.25,Wood,100.00,4.15,4.75,515.00,475.00,61.88,1051.88
+5,Nise,HI,6.25,Wood,100.00,4.15,4.75,515.00,475.00,61.88,1051.88
+6,Fise,AZ,6.25,Wood,100.00,4.15,4.75,515.00,475.00,61.88,1051.88
