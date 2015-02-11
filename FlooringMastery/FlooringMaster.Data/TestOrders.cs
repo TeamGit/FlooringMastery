@@ -34,7 +34,7 @@ namespace FlooringMaster.Data
                             WholeOrder = sr.ReadLine();
                             WholeOrderArray = WholeOrder.Split(',');
                         }
-                       
+
                         Order newOrder = new Order();
 
 
@@ -165,10 +165,14 @@ namespace FlooringMaster.Data
 
         public void SaveOrdersToFile()
         {
-            string lastOrder;
 
             int orderNumber = 1;
-            Console.WriteLine("OrderNumber,CustomerName,State,TaxRate,ProductType,Area,CostPerSquareFoot,LaborCostPerSquareFoot,MaterialCost,LaborCost,Tax,Total");
+            File.Create(WorkingMemory.CurrentOrderFile).Close();
+
+            using (StreamWriter sw = new StreamWriter(WorkingMemory.CurrentOrderFile, true))
+            {
+                sw.WriteLine("OrderNumber,CustomerName,State,TaxRate,ProductType,Area,CostPerSquareFoot,LaborCostPerSquareFoot,MaterialCost,LaborCost,Tax,Total");
+            }
 
             foreach (var myOrder in WorkingMemory.OrderList)
             {

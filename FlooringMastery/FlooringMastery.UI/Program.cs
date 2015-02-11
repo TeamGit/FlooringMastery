@@ -6,10 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FlooringMaster.Data;
+using FlooringMastery.BLL;
 using FlooringMastery.Models;
 using FlooringMastery.UI.Screens;
-using FlooringMastery.BLL;
-
 namespace FlooringMastery.UI
 {
     class Program
@@ -30,10 +29,10 @@ namespace FlooringMastery.UI
 
             var date = Input.GetDate("Please enter a date: ");
             Console.WriteLine(myTestOrders.LoadOrdersFromFile(date));
+            Order myOrder = Input.QueryUserForOrder();
+            AddOrder.AddOrderToList(myOrder);
 
-            Order s = Input.QueryUserForOrder();
-
-            myTestOrders.SaveOrdersToFile(s);
+            myTestOrders.SaveOrdersToFile();
 
 
 

@@ -5,7 +5,6 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using FlooringMastery.BLL;
 using FlooringMastery.Models;
 
 namespace FlooringMastery.UI
@@ -52,7 +51,6 @@ namespace FlooringMastery.UI
                 }
             } while (true);
 
-            return null;
         }
 
         public static decimal GetDecimal(string prompt)
