@@ -49,6 +49,8 @@ namespace FlooringMaster.Data
                         }
 
                         WorkingMemory.StateList.Add(newState);
+
+                        var test = WorkingMemory.StateList;
                     }
                 }
         }

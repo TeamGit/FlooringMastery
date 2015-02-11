@@ -18,6 +18,8 @@ namespace FlooringMastery.BLL
             SetTestOrProd.MyProductObject.GetProducts();
 
             FileStream fs = new FileStream("log.txt", FileMode.OpenOrCreate);
+            fs.Close();
+
 
         }
     }
