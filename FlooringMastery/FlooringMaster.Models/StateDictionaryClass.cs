@@ -55,8 +55,14 @@ namespace FlooringMastery.Models
             {Enums.StateAbbreviations.SC, Enums.StateNames.SouthCarolina},
             {Enums.StateAbbreviations.SD, Enums.StateNames.SouthDakota},
             {Enums.StateAbbreviations.TN, Enums.StateNames.Tennessee},
-            {Enums.StateAbbreviations.TX, Enums.StateNames.Texas}
-
+            {Enums.StateAbbreviations.TX, Enums.StateNames.Texas},
+            {Enums.StateAbbreviations.UT, Enums.StateNames.Utah},
+            {Enums.StateAbbreviations.VT, Enums.StateNames.Vermont},
+            {Enums.StateAbbreviations.VA, Enums.StateNames.Virginia},
+            {Enums.StateAbbreviations.WA, Enums.StateNames.Washington},
+            {Enums.StateAbbreviations.WV, Enums.StateNames.WestVirginia},
+            {Enums.StateAbbreviations.WI, Enums.StateNames.Wisconsin},
+            {Enums.StateAbbreviations.WY, Enums.StateNames.Wyoming}
         };
     }
 }
