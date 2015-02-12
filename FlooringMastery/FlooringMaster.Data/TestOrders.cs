@@ -18,7 +18,7 @@ namespace FlooringMaster.Data
         /// <summary>
         /// Read in multiple orders from a text file
         /// </summary>
-        private void LoadOrders()
+        private static void LoadOrders()
         {
             WorkingMemory.OrderList.Clear();
             using (StreamReader sr = new StreamReader(WorkingMemory.CurrentOrderFile))
@@ -56,7 +56,14 @@ namespace FlooringMaster.Data
                         Enums.StateAbbreviations stateAbbrevs;
                         if (Enums.StateAbbreviations.TryParse(WholeOrderArray[2], out stateAbbrevs))
                         {
-                            newOrder.OrderState.StateAbbreviation = stateAbbrevs;
+                            var temp = from s in WorkingMemory.StateList
+                                       where s.StateAbbreviation.ToString().Equals(stateAbbrevs.ToString(), StringComparison.OrdinalIgnoreCase)
+                                       select s;
+                            
+                            foreach (var s in temp)
+                            {
+                                newOrder.OrderState = s;
+                            }
                         }
 
 
@@ -67,7 +74,14 @@ namespace FlooringMaster.Data
                         }
 
 
-                        newOrder.OrderProduct.ProductType = WholeOrderArray[4];
+                       var temp2 = from p in WorkingMemory.ProductList
+                                   where p.ProductType.Equals(WholeOrderArray[4], StringComparison.OrdinalIgnoreCase)
+                                   select p;
+
+                        foreach (var p in temp2)
+                        {
+                            newOrder.OrderProduct = p;
+                        }
 
 
                         decimal orderArea;
@@ -118,6 +132,7 @@ namespace FlooringMaster.Data
                             newOrder.TotalCost = totalCost;
                         }
 
+                        
                         WorkingMemory.OrderList.Add(newOrder);
                     }
 
