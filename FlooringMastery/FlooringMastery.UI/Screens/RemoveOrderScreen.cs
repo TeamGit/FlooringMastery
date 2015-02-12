@@ -19,9 +19,7 @@ namespace FlooringMastery.UI.Screens
             SetTestOrProd.MyOrderObject.LoadOrdersFromFile(date);
 
                 RejectEmptyDate();
-                
-            
-
+              
             Output.DisplayAllOrders();
 
             int orderNumber = Input.GetInteger("Enter the order number to delete: ");
