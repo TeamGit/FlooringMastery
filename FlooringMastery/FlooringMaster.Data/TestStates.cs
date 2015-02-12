@@ -31,7 +31,7 @@ namespace FlooringMaster.Data
 
                         stringStateName = StripSpaces(WholeStateArray[0]);
 
-                        if (Enums.StateNames.TryParse(WholeStateArray[0], out stateName))
+                        if (Enums.StateNames.TryParse(stringStateName, out stateName))
                         {
                             newState.StateName = stateName;
                         }
