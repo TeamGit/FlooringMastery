@@ -25,7 +25,7 @@ namespace FlooringMastery.UI.Screens
 
             Screen next = GetKeyPress();
             if (next != null)
-                next.JumpScreen(next);
+                Screen.JumpScreen(next);
         }
             
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FlooringMastery.BLL;
 
 namespace FlooringMastery.UI.Screens
 {
@@ -20,9 +21,36 @@ namespace FlooringMastery.UI.Screens
             Console.WriteLine();
         }
 
-        public void JumpScreen(Screen nextScreen)
+        public static void JumpScreen(Screen nextScreen)
         {
             nextScreen.Display();
         }
+
+        protected static void RejectEmptyDate()
+        {
+            var myBool = Calculations.CheckForEmptyList();
+            Screen next = new HomeScreen();
+
+
+            if (myBool)
+            {
+                Console.WriteLine("There are no orders for that date.");
+                do
+                {
+                    Console.WriteLine("Press 1 to try another date, or enter to return to the main menu.");
+                    string input = Console.ReadLine();
+                    if (input == "")
+                    {
+                        Screen.JumpScreen(next);
+                    }
+                    else if (input == "1")
+                    {
+                        Screen RemoveScreen = new RemoveOrderScreen();
+                        Screen.JumpScreen(RemoveScreen);
+                    }
+                } while (myBool);
+            }
+        }
+
     }
 }

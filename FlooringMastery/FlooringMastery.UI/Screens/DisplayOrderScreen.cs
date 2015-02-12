@@ -16,7 +16,7 @@ namespace FlooringMastery.UI.Screens
             string date = Input.GetDate("Enter the date of a file to display orders from that date: ");
             SetTestOrProd.MyOrderObject.LoadOrdersFromFile(date);
 
-            //THIS SCREEN NEEDS A WHOLE "THAT WAS NOT A VALID DATE
+            RejectEmptyDate();
 
 
             Output.DisplayViewChooser();
@@ -24,10 +24,9 @@ namespace FlooringMastery.UI.Screens
             Console.ReadLine();
 
             Screen next = new HomeScreen();
-            next.JumpScreen(next);
+            Screen.JumpScreen(next);
 
         }
-
 
     }
 }

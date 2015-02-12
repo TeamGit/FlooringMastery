@@ -18,7 +18,7 @@ namespace FlooringMastery.UI.Screens
             if (String.IsNullOrEmpty(WorkingMemory.CurrentOrderFile))
             {
                 Console.WriteLine();
-                SetTestOrProd.MyOrderObject.LoadOrdersFromFile(Input.GetDate("here is where a prompt will go when we pick one"));
+                SetTestOrProd.MyOrderObject.LoadOrdersFromFile(Input.GetDate("Enter the date of the order: "));
                 Console.WriteLine();
             }
             Order newOrder = Input.QueryUserForOrder();
@@ -32,7 +32,7 @@ namespace FlooringMastery.UI.Screens
             Output.DisplayCommitResults(doCommit);
 
             Screen next = new HomeScreen();
-            next.JumpScreen(next);
+            Screen.JumpScreen(next);
 
         }
     }

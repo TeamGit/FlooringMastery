@@ -26,7 +26,7 @@ namespace FlooringMastery.UI
             {
                 Console.WriteLine(prompt);
                 input = Console.ReadLine();
-                
+                Log("non-empty string", "empty string");
             } while (string.IsNullOrEmpty(input));
             
             return input;
@@ -56,11 +56,8 @@ namespace FlooringMastery.UI
                     string newString = dateValue.ToString("MMddyyyy");
                     return newString;
                 }
-
-                using (System.IO.StreamWriter sw = new StreamWriter("log.txt", true))
-                {
-                    sw.WriteLine("Expected date, but got {0}", dateInput);
-                }
+                Console.WriteLine("Please enter the date in the format MM/DD/YYYY.");
+                Log("date", dateInput);
             } while (true);
 
         }
@@ -80,50 +77,66 @@ namespace FlooringMastery.UI
                 Console.WriteLine(prompt);
                 input = Console.ReadLine();
 
+                foreach (var c in input)
+                {
+                    var temp = (int)c;
+                    //if ((temp < 48) || (temp > 57))
+                    if (!char.IsDigit(c))
+                    {
+                        Console.WriteLine("Enter the area using digits");
+                        Log("integer", input);
+                        input = "-100";
+                        break;
+                    }
+                }
+
                 if (decimal.TryParse(input, out myDecimal))
                 {
                     //If decimal is positive loop will break
                 }
 
-                using (System.IO.StreamWriter sw = new StreamWriter("log.txt", true))
-                {
-                    sw.WriteLine("Expected decimal, but got {0}", input);
-                }
+                Log("decimal", input);
 
             } while (myDecimal < 0);
 
             return myDecimal;
         }
 
-        /// <summary>
-        /// given a prompt, continually prompt the user until the enter a non negative integer then return it
-        /// </summary>
-        /// <param name="prompt"></param>
-        /// <returns></returns>
-        public static int GetInt(string prompt)
+        public static int GetInteger(string prompt)
         {
             string input = null;
-            int myInt = 0;
+            int myInteger = 0;
 
             do
             {
                 Console.WriteLine(prompt);
                 input = Console.ReadLine();
 
-                if (int.TryParse(input, out myInt))
+                foreach (var c in input)
                 {
-                    //If integer is positive loop will break
+                    var temp = (int) c;
+                    //if ((temp < 48) || (temp > 57))
+                    if (!char.IsDigit(c))
+                    {
+                        Console.WriteLine("Enter the area using digits.");
+                        Log("integer", input);
+                        input = "-100";
+                        break;
+                    }
                 }
 
-                using (System.IO.StreamWriter sw = new StreamWriter("log.txt", true))
+                if (int.TryParse(input, out myInteger))
                 {
-                    sw.WriteLine("Expected integer, but got {0}", input);
+                    //If decimal is positive loop will break
                 }
 
-            } while (myInt < 0);
+            } while (myInteger < 0);
 
-            return myInt;
+            return myInteger;
         }
+
+
+
 
         /// <summary>
         /// Query user for a new order, return that order.
@@ -135,13 +148,13 @@ namespace FlooringMastery.UI
 
             StateDictionaryClass aDictionary = new StateDictionaryClass();
 
-            myOrder.CustomerName = (GetString("Please enter the customer name")).ToUpper();
+            myOrder.CustomerName = (GetString("Enter the customer name: ")).ToUpper();
 
             myOrder.OrderState = GetState();
 
             myOrder.OrderProduct = GetProduct();
 
-            myOrder.Area = GetDecimal("Please enter the area of the floor");
+            myOrder.Area = GetDecimal("Enter the area of the floor: ");
             
             myOrder = ChangeOrder.CalculateRemainingProperties(myOrder);
 
@@ -161,17 +174,14 @@ namespace FlooringMastery.UI
 
             do
             {
-                tempState = GetString("Please enter the state abbreviation");
+                tempState = GetString("Enter the state abbreviation: ");
 
                 if (WorkingMemory.StateList.Any(s => s.StateAbbreviation.ToString().Equals(tempState, StringComparison.OrdinalIgnoreCase)))
                 {
                     gotState = true;
                 }
 
-                using (System.IO.StreamWriter sw = new StreamWriter("log.txt", true))
-                {
-                    sw.WriteLine("Expected State name, but got {0}", tempState);
-                }
+                Log("state abbreviation", tempState);
 
             } while (!gotState);
             
@@ -187,6 +197,8 @@ namespace FlooringMastery.UI
             }
             return myState;
         }
+
+        
 
         /// <summary>
         /// Query user for a product that exists on the product list, return that product
@@ -205,17 +217,14 @@ namespace FlooringMastery.UI
 
             do
             {
-                tempProduct = GetString("Please enter the product name");
+                tempProduct = GetString("Enter the product name: ");
                 
                 if (myProducts.Any(s => s.Equals(tempProduct, StringComparison.OrdinalIgnoreCase)))
                 {
                     gotProduct = true;
                 }
 
-                using (System.IO.StreamWriter sw = new StreamWriter("log.txt", true))
-                {
-                    sw.WriteLine("Expected product name, but got {0}", tempProduct);
-                }
+                Log("product name", tempProduct);
 
             } while (!gotProduct);
 
@@ -255,13 +264,23 @@ namespace FlooringMastery.UI
                     return false;
                 }
 
-                using (System.IO.StreamWriter sw = new StreamWriter("log.txt", true))
-                {
-                    sw.WriteLine("Expected yes or no, but got {0}", commitAnswer);
-                }
+                Log("yes or no", commitAnswer);
 
             } while (badAnswer);
             return false;
+        }
+        
+        /// <summary>
+        /// Given the expected value and the received value, log invalid input to file
+        /// </summary>
+        /// <param name="expected"></param>
+        /// <param name="received"></param>
+        private static void Log(string expected, string received)
+        {
+            using (System.IO.StreamWriter sw = new StreamWriter("log.txt", true))
+            {
+                sw.WriteLine("{0} Expected {1}, but got {2}", DateTime.Now, expected, received);
+            }
         }
     }
 }
