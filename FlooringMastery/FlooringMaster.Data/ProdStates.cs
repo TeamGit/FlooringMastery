@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FlooringMaster.Data
 {
-    class ProdStates : IContainStates
+    public class ProdStates : IContainStates
     {
         public void GetStates()
         {

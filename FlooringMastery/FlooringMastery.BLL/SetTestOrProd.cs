@@ -24,8 +24,8 @@ namespace FlooringMastery.BLL
             else
             {
                 MyOrderObject = new ProdOrders();
-                MyStatesObject = new TestStates();
-                MyProductObject = new TestProducts();
+                MyStatesObject = new ProdStates();
+                MyProductObject = new ProdProducts();
             }
         }
     }
