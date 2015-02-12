@@ -27,19 +27,20 @@ namespace FlooringMastery.UI.Screens
 
             Console.Clear();
             DisplayHeader();
-            string date = Input.GetDate("Please enter a date.");
+            string date = Input.GetDate("Enter the date of a file to edit orders from that date:");
             SetTestOrProd.MyOrderObject.LoadOrdersFromFile(date);
             Screen next = new HomeScreen();
 
             if (!WorkingMemory.OrderList.Any())
             {
-                Console.WriteLine("There are no orders for that day. Press enter to return to Home screen.");
+                Console.Write("There are no orders for that date. Press 1 to try another date or enter to return to main menu. ");
+               //would need to add an option to try another date
                 Console.ReadLine();
                 next.JumpScreen(next);
             }
             Output.DisplayAllOrders();
 
-            int orderNumber = Input.GetInt("Please enter the order number you would like to edit: ");
+            int orderNumber = Input.GetInt("Enter an order number to edit: ");
             var myTestVariable = WorkingMemory.OrderList;
             if (orderNumber <= WorkingMemory.OrderList.Count)
             {

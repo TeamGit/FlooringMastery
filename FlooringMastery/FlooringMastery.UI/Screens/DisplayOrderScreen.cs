@@ -13,11 +13,14 @@ namespace FlooringMastery.UI.Screens
         {
             Console.Clear();
             DisplayHeader();
-            string date = Input.GetDate("Please enter a date.");
+            string date = Input.GetDate("Enter the date of a file to display orders from that date: ");
             SetTestOrProd.MyOrderObject.LoadOrdersFromFile(date);
 
+            //THIS SCREEN NEEDS A WHOLE "THAT WAS NOT A VALID DATE
+
+
             Output.DisplayViewChooser();
-            Console.WriteLine("Press enter to return to Home screen: ");
+            Console.Write("Press enter to return to the main menu.");
             Console.ReadLine();
 
             Screen next = new HomeScreen();
