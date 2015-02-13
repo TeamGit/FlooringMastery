@@ -28,7 +28,8 @@ namespace FlooringMastery.UI
         public static void DisplaySingleOrder(Order myOrder)
         {
             Console.Clear();
-            Console.WriteLine("Order Number: {0}", myOrder.OrderNumber);
+            if (myOrder.OrderNumber != 0)
+                Console.WriteLine("Order Number: {0}", myOrder.OrderNumber);
             Console.WriteLine("Customer name: {0}",myOrder.CustomerName);
             Console.WriteLine("State name: {0}", myOrder.OrderState.StateName);
             Console.WriteLine("Area: {0} square feet",myOrder.Area);

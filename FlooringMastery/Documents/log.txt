@@ -106,3 +106,64 @@
 2/13/2015 11:28:16 AM Expected non-empty string, but got empty string
 2/13/2015 11:29:42 AM Expected product name, but got carpet
 2/13/2015 11:30:30 AM Expected yes or no, but got 
+2/13/2015 12:01:50 PM Expected non-empty string, but got empty string
+2/13/2015 12:01:51 PM Expected non-empty string, but got empty string
+2/13/2015 12:01:51 PM Expected state abbreviation, but got TN
+2/13/2015 12:01:54 PM Expected non-empty string, but got empty string
+2/13/2015 12:01:54 PM Expected state abbreviation, but got IA
+2/13/2015 12:01:57 PM Expected non-empty string, but got empty string
+2/13/2015 12:02:02 PM Expected integer, but got osdkfa
+2/13/2015 12:02:02 PM Expected decimal, but got -100
+2/13/2015 12:02:13 PM Expected decimal, but got 420
+2/13/2015 12:02:41 PM Expected non-empty string, but got empty string
+2/13/2015 12:02:43 PM Expected non-empty string, but got empty string
+2/13/2015 12:02:43 PM Expected state abbreviation, but got IA
+2/13/2015 12:02:46 PM Expected non-empty string, but got empty string
+2/13/2015 12:02:47 PM Expected decimal, but got 420
+2/13/2015 12:03:31 PM Expected non-empty string, but got empty string
+2/13/2015 12:03:32 PM Expected non-empty string, but got empty string
+2/13/2015 12:03:32 PM Expected state abbreviation, but got ia
+2/13/2015 12:03:35 PM Expected non-empty string, but got empty string
+2/13/2015 12:06:37 PM Expected non-empty string, but got empty string
+2/13/2015 12:06:38 PM Expected non-empty string, but got empty string
+2/13/2015 12:06:38 PM Expected state abbreviation, but got ia
+2/13/2015 12:06:42 PM Expected non-empty string, but got empty string
+2/13/2015 12:15:18 PM Expected date, but got 2
+2/13/2015 12:16:19 PM Expected non-empty string, but got empty string
+2/13/2015 12:16:20 PM Expected non-empty string, but got empty string
+2/13/2015 12:16:20 PM Expected state abbreviation, but got ia
+2/13/2015 12:16:23 PM Expected non-empty string, but got empty string
+2/13/2015 12:16:25 PM Expected decimal, but got 100
+2/13/2015 12:20:06 PM Expected non-empty string, but got empty string
+2/13/2015 12:20:08 PM Expected non-empty string, but got empty string
+2/13/2015 12:20:08 PM Expected state abbreviation, but got ia
+2/13/2015 12:54:19 PM Expected non-empty string, but got empty string
+2/13/2015 12:54:38 PM Expected non-empty string, but got empty string
+2/13/2015 12:54:52 PM Expected state abbreviation, but got ia
+2/13/2015 12:55:38 PM Expected non-empty string, but got empty string
+2/13/2015 12:56:34 PM Expected decimal, but got 120
+2/13/2015 12:58:10 PM Expected non-empty string, but got empty string
+2/13/2015 12:58:12 PM Expected non-empty string, but got empty string
+2/13/2015 12:58:12 PM Expected state abbreviation, but got ia
+2/13/2015 12:58:15 PM Expected non-empty string, but got empty string
+2/13/2015 12:58:17 PM Expected decimal, but got 420
+2/13/2015 1:02:24 PM Expected non-empty string, but got empty string
+2/13/2015 1:02:25 PM Expected non-empty string, but got empty string
+2/13/2015 1:02:25 PM Expected state abbreviation, but got ia
+2/13/2015 1:02:27 PM Expected non-empty string, but got empty string
+2/13/2015 1:02:29 PM Expected decimal, but got 1000
+2/13/2015 1:08:51 PM Expected non-empty string, but got empty string
+2/13/2015 1:08:52 PM Expected non-empty string, but got empty string
+2/13/2015 1:08:52 PM Expected state abbreviation, but got ia
+2/13/2015 1:08:54 PM Expected non-empty string, but got empty string
+2/13/2015 1:08:56 PM Expected decimal, but got 1000
+2/13/2015 1:12:04 PM Expected non-empty string, but got empty string
+2/13/2015 1:12:05 PM Expected non-empty string, but got empty string
+2/13/2015 1:12:05 PM Expected state abbreviation, but got ia
+2/13/2015 1:12:07 PM Expected non-empty string, but got empty string
+2/13/2015 1:12:09 PM Expected decimal, but got 120
+2/13/2015 1:22:49 PM Expected non-empty string, but got empty string
+2/13/2015 1:22:51 PM Expected non-empty string, but got empty string
+2/13/2015 1:22:51 PM Expected state abbreviation, but got ia
+2/13/2015 1:23:54 PM Expected non-empty string, but got empty string
+2/13/2015 1:23:56 PM Expected decimal, but got 120

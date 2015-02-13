@@ -15,6 +15,7 @@ namespace FlooringMaster.Data
         /// </summary>
         public void GetProducts()
         {
+            WorkingMemory.ProductList.Clear();
             using (StreamReader sr = new StreamReader(@"..\..\..\Documents\Products.txt"))
                 while (!sr.EndOfStream)
                 {

@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Runtime.Remoting;
 using System.Text;
 using System.Threading.Tasks;
 using FlooringMastery.Models;
@@ -14,7 +12,6 @@ namespace FlooringMaster.Data
     public class TestOrders : IContainOrders
     {
         
-
         /// <summary>
         /// Read in multiple orders from a text file
         /// </summary>
@@ -92,6 +89,7 @@ namespace FlooringMaster.Data
 
 
                         decimal costPerSquareFoot;
+
                         if (decimal.TryParse(WholeOrderArray[6], out costPerSquareFoot))
                         {
                             newOrder.OrderProduct.CostPerSquareFoot = costPerSquareFoot;
@@ -99,6 +97,7 @@ namespace FlooringMaster.Data
 
 
                         decimal laborCostPerSquareFoot;
+
                         if (decimal.TryParse(WholeOrderArray[7], out laborCostPerSquareFoot))
                         {
                             newOrder.OrderProduct.LaborCostPerSquareFoot = laborCostPerSquareFoot;

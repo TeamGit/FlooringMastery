@@ -71,14 +71,15 @@ namespace FlooringMaster.Data
                         }
 
 
-                        var temp2 = from p in WorkingMemory.ProductList
+                        var prod = (from p in WorkingMemory.ProductList
                                     where p.ProductType.Equals(WholeOrderArray[4], StringComparison.OrdinalIgnoreCase)
-                                    select p;
+                                    select p).FirstOrDefault();
 
-                        foreach (var p in temp2)
-                        {
-                            newOrder.OrderProduct = p;
-                        }
+                        var prod2 = WorkingMemory.ProductList
+                            .FirstOrDefault(p => p.ProductType.Equals(WholeOrderArray[4], StringComparison.OrdinalIgnoreCase));
+
+
+                        newOrder.OrderProduct.CostPerSquareFoot = prod.CostPerSquareFoot;
 
 
                         decimal orderArea;
@@ -89,6 +90,7 @@ namespace FlooringMaster.Data
 
 
                         decimal costPerSquareFoot;
+
                         if (decimal.TryParse(WholeOrderArray[6], out costPerSquareFoot))
                         {
                             newOrder.OrderProduct.CostPerSquareFoot = costPerSquareFoot;
@@ -96,6 +98,7 @@ namespace FlooringMaster.Data
 
 
                         decimal laborCostPerSquareFoot;
+
                         if (decimal.TryParse(WholeOrderArray[7], out laborCostPerSquareFoot))
                         {
                             newOrder.OrderProduct.LaborCostPerSquareFoot = laborCostPerSquareFoot;
@@ -155,7 +158,9 @@ namespace FlooringMaster.Data
             return "A new order file was created for that date.";
         }
 
-
+        /// <summary>
+        /// Write the current working memory list of orders to file.
+        /// </summary>
         public void SaveOrdersToFile()
         {
 
@@ -203,7 +208,7 @@ namespace FlooringMaster.Data
             }
             if (!filename.StartsWith(@"..\..\..\Documents\Orders_"))
             {
-                filename = @".\Orders\Orders_" + filename;
+                filename = @"..\..\..\Documents\Orders_" + filename;
             }
             else
             {

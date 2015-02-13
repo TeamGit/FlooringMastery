@@ -8,11 +8,12 @@ using FlooringMastery.Models;
 
 namespace FlooringMaster.Data
 {
+   
     public class TestProducts : IContainProducts
     {
-        /// <summary>
-        /// Read in the test product list we are using until we receive product specifications
-        /// </summary>
+         ///<summary>
+         ///Read in the test product list we are using until we receive product specifications
+         ///</summary>
         public void GetProducts()
         {
             using (StreamReader sr = new StreamReader("Products.txt"))
