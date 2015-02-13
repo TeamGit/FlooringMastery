@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FlooringMaster.Data;
 using FlooringMastery.BLL;
 using FlooringMastery.Models;
 
@@ -16,7 +17,7 @@ namespace FlooringMastery.UI.Screens
             Console.Clear();
             DisplayHeader();
             string date = Input.GetDate("Enter the date of the file to remove orders from that date: ");
-            SetTestOrProd.MyOrderObject.LoadOrdersFromFile(date);
+            SetTestOrProd.MyOrderObject.LoadOrderFile(date);
 
                 RejectEmptyDate();
               

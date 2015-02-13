@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FlooringMaster.Data;
 using FlooringMastery.BLL;
 using FlooringMastery.Models;
 
@@ -16,7 +17,7 @@ namespace FlooringMastery.UI.Screens
             Console.Clear();
             DisplayHeader();
             string date = Input.GetDate("Enter the date of a file to edit orders from that date: ");
-            SetTestOrProd.MyOrderObject.LoadOrdersFromFile(date);
+            SetTestOrProd.MyOrderObject.LoadOrderFile(date);
             Screen next = new HomeScreen();
 
             if (!WorkingMemory.OrderList.Any())

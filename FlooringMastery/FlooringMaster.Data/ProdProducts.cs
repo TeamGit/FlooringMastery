@@ -10,6 +10,9 @@ namespace FlooringMaster.Data
 {
     public class ProdProducts : IContainProducts
     {
+        /// <summary>
+        /// Read the product specification file, store the list in working memory.
+        /// </summary>
         public void GetProducts()
         {
             using (StreamReader sr = new StreamReader("Products.txt"))

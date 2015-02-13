@@ -6,6 +6,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using FlooringMaster.Data;
 using FlooringMastery.BLL;
 using FlooringMastery.Models;
 

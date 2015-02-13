@@ -7,12 +7,17 @@ using FlooringMaster.Data;
 
 namespace FlooringMastery.BLL
 {
+
     public static class SetTestOrProd
     {
         public static IContainOrders MyOrderObject;
         public static IContainStates MyStatesObject;
         public static IContainProducts MyProductObject;
 
+        /// <summary>
+        /// Given a bool indicating test mode, create either test or prod objects to access the repos
+        /// </summary>
+        /// <param name="TestMode"></param>
         public static void SetTestOrProdMode(bool TestMode)
         {
             if (TestMode == true)

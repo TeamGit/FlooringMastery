@@ -13,7 +13,7 @@ namespace FlooringMaster.Data
     public class ProdStates : IContainStates
     {
         /// <summary>
-        /// Read a file, read each line into a state object and store it in a list
+        /// Read a file containing state tax specifications, read each line into a state object and store it in a list
         /// </summary>
         public void GetStates()
         {

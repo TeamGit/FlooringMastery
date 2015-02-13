@@ -9,18 +9,15 @@ using FlooringMaster.Data;
 using FlooringMastery.BLL;
 using FlooringMastery.Models;
 using FlooringMastery.UI.Screens;
+
+
 namespace FlooringMastery.UI
 {
     class Program
     {
         static void Main(string[] args)
         {
-
-
-            Screen myScreen = new HomeScreen();
-            myScreen.Display();
-
-
+            Output.Go();
         }
     }
 }

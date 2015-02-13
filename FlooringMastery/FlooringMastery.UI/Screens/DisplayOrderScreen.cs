@@ -14,7 +14,7 @@ namespace FlooringMastery.UI.Screens
             Console.Clear();
             DisplayHeader();
             string date = Input.GetDate("Enter the date of a file to display orders from that date: ");
-            SetTestOrProd.MyOrderObject.LoadOrdersFromFile(date);
+            SetTestOrProd.MyOrderObject.LoadOrderFile(date);
 
             RejectEmptyDate();
 

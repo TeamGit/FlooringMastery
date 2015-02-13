@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using FlooringMastery.Models;
 
-
-namespace FlooringMastery.Models
+namespace FlooringMaster.Data
 {
     /// <summary>
-    /// This class contains lists which hold values read in from repositories
+    /// This class contains lists which hold the values of either the test or prod repos
     /// </summary>
     public static class WorkingMemory
     {

@@ -17,7 +17,7 @@ namespace FlooringMastery.Tests
         public void TestLoadOrdersFromFile(string date, string expected)
         {
             TestOrders myTest = new TestOrders();
-            string result = myTest.LoadOrdersFromFile(date);
+            string result = myTest.LoadOrderFile(date);
 
             Assert.AreEqual(expected, result);
         }

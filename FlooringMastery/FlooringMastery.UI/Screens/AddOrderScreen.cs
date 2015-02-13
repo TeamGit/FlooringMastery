@@ -4,6 +4,7 @@ using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FlooringMaster.Data;
 using FlooringMastery.BLL;
 using FlooringMastery.Models;
 
@@ -18,7 +19,7 @@ namespace FlooringMastery.UI.Screens
             if (String.IsNullOrEmpty(WorkingMemory.CurrentOrderFile))
             {
                 Console.WriteLine();
-                SetTestOrProd.MyOrderObject.LoadOrdersFromFile(Input.GetDate("Enter the date of the order: "));
+                SetTestOrProd.MyOrderObject.LoadOrderFile(Input.GetDate("Enter the date of the order: "));
                 Console.WriteLine();
             }
             Order newOrder = Input.QueryUserForOrder();

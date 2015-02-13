@@ -142,7 +142,7 @@ namespace FlooringMaster.Data
         /// </summary>
         /// <param name="date"></param>
         /// <returns></returns>
-        public string LoadOrdersFromFile(string date)
+        public string LoadOrderFile(string date)
         {
             string properFileName = FileNameBuilder(date);
             WorkingMemory.CurrentOrderFile = properFileName;

@@ -9,7 +9,7 @@ namespace FlooringMaster.Data
 {
     public interface IContainOrders
     {
-        string LoadOrdersFromFile(string date);
+        string LoadOrderFile(string date);
 
         void SaveOrdersToFile();
     }

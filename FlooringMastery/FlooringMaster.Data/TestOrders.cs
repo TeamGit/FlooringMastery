@@ -141,11 +141,11 @@ namespace FlooringMaster.Data
         }
 
         /// <summary>
-        /// 
+        /// Given a date in a specific format, open an order file for that date.  If the file does not exist, create it.
         /// </summary>
         /// <param name="date"></param>
         /// <returns></returns>
-        public string LoadOrdersFromFile(string date)
+        public string LoadOrderFile(string date)
         {
             string properFileName = FileNameBuilder(date);
             WorkingMemory.CurrentOrderFile = properFileName;
@@ -158,7 +158,9 @@ namespace FlooringMaster.Data
             return "A new order file was created for that date.";
         }
 
-
+        /// <summary>
+        /// Write the current working memory list of orders to file.
+        /// </summary>
         public void SaveOrdersToFile()
         {
 

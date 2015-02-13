@@ -3,12 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FlooringMaster.Data;
 using FlooringMastery.Models;
+using FlooringMastery.UI.Screens;
 
 namespace FlooringMastery.UI
 {
     public static class Output
     {
+
+        /// <summary>
+        /// Initilaize the console with the homescreen
+        /// </summary>
+        public static void Go()
+        {
+            Screen myScreen = new HomeScreen();
+            myScreen.Display();
+        }
+
         /// <summary>
         /// Given an order object, display various values to the console
         /// </summary>
@@ -28,6 +40,9 @@ namespace FlooringMastery.UI
             Console.WriteLine(lineOutputFormat,"\tTotal Tax cost: ",myOrder.TotalTax);
         }
 
+        /// <summary>
+        /// Call DisplaySingleOrder on every order in the current order list, pausing in between each order
+        /// </summary>
         public static void DisplayAllOrdersIndividually()
         {
             foreach (var o in WorkingMemory.OrderList)
@@ -36,9 +51,12 @@ namespace FlooringMastery.UI
                 Console.WriteLine("Press enter for next order");
                 Console.ReadLine();
             }
-   
         }
 
+
+        /// <summary>
+        /// Display a stub of each order all at the same time
+        /// </summary>
         public static void DisplayAllOrders()
         {
             foreach (var o in WorkingMemory.OrderList)
@@ -48,6 +66,11 @@ namespace FlooringMastery.UI
             }
         }
         
+
+        /// <summary>
+        /// Given a bool indicating if changes have been committed, output a message informing the user
+        /// </summary>
+        /// <param name="commit"></param>
         public static void DisplayCommitResults(bool commit)
         {
             if (commit)
@@ -60,7 +83,9 @@ namespace FlooringMastery.UI
             Console.ReadLine();
         }
 
-
+        /// <summary>
+        /// Allow the user to choose between viewing orders individually or in a list, then call the appropriate method
+        /// </summary>
         public static void DisplayViewChooser()
         {
             bool looper = true;
