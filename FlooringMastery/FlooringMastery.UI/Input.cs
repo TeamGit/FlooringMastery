@@ -12,6 +12,9 @@ using FlooringMastery.Models;
 
 namespace FlooringMastery.UI
 {
+    /// <summary>
+    /// Input class for taking input from easier
+    /// </summary>
     public static class Input
     {
         /// <summary>
@@ -154,9 +157,15 @@ namespace FlooringMastery.UI
                       
             myOrder.CustomerName = (GetString("Enter the customer name: ")).ToUpper();
 
-            myOrder.OrderState = GetState();
+            State tempState = GetState();
 
-            myOrder.OrderProduct = GetProduct();
+            myOrder.StateAbbreviation = tempState.StateAbbreviation.ToString();
+            myOrder.TaxRate = tempState.TaxRate;
+
+            Product tempProduct = GetProduct();
+            myOrder.ProductType = tempProduct.ProductType.ToString();
+            myOrder.CostPerSquareFoot = tempProduct.CostPerSquareFoot;
+            myOrder.LaborCostPerSquareFoot = tempProduct.LaborCostPerSquareFoot;
 
             myOrder.Area = GetDecimal("Enter the area of the floor in feet squared: ");
             

@@ -9,6 +9,9 @@ using FlooringMastery.UI.Screens;
 
 namespace FlooringMastery.UI
 {
+    /// <summary>
+    /// Output class for displaying to console
+    /// </summary>
     public static class Output
     {
 
@@ -31,9 +34,17 @@ namespace FlooringMastery.UI
             if (myOrder.OrderNumber != 0)
                 Console.WriteLine("Order Number: {0}", myOrder.OrderNumber);
             Console.WriteLine("Customer name: {0}",myOrder.CustomerName);
-            Console.WriteLine("State name: {0}", myOrder.OrderState.StateName);
+
+            var tempState =
+                WorkingMemory.StateList.FirstOrDefault(
+                    p =>
+                        p.StateAbbreviation.ToString()
+                            .Equals(myOrder.StateAbbreviation, StringComparison.CurrentCultureIgnoreCase));
+            Console.WriteLine("State name: {0}", StateDictionaryClass.AllStates[tempState.StateAbbreviation]);
+
             Console.WriteLine("Area: {0} square feet",myOrder.Area);
-            Console.WriteLine("Product Type: {0}",myOrder.OrderProduct.ProductType);
+
+            Console.WriteLine("Product Type: {0}",myOrder.ProductType);
             Console.WriteLine("Total cost: {0:C}",myOrder.TotalCost);
             string lineOutputFormat = "{0,-30} {1,10:C}";
             Console.WriteLine(lineOutputFormat,"\tTotal Labor cost: ",myOrder.TotalLaborCost);

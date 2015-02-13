@@ -20,13 +20,13 @@ namespace FlooringMastery.BLL
         /// <returns></returns>
         public static Order CalculateRemainingProperties(Order myOrder)
         {
-            myOrder.TotalLaborCost = Math.Round(myOrder.Area * myOrder.OrderProduct.LaborCostPerSquareFoot, 2);
+            myOrder.TotalLaborCost = Math.Round(myOrder.Area * myOrder.LaborCostPerSquareFoot, 2);
 
-            myOrder.TotalMaterialCost = Math.Round(myOrder.Area * myOrder.OrderProduct.CostPerSquareFoot, 2);
+            myOrder.TotalMaterialCost = Math.Round(myOrder.Area * myOrder.CostPerSquareFoot, 2);
 
             decimal subTotal = Math.Round(myOrder.TotalLaborCost + myOrder.TotalMaterialCost, 2);
 
-            myOrder.TotalTax = Math.Round(subTotal * myOrder.OrderState.TaxRate, 2);
+            myOrder.TotalTax = Math.Round(subTotal * myOrder.TaxRate, 2);
 
             myOrder.TotalCost = Math.Round(subTotal + myOrder.TotalTax, 2);
 
@@ -75,8 +75,8 @@ namespace FlooringMastery.BLL
         public static void EditEntireOrder(Order myOrder)
         {
             myOrder.CustomerName = ChangeOrder.EditStringField("Current Customer Name: ", myOrder.CustomerName);
-            myOrder.OrderState = ChangeOrder.EditStateField("Current State: ", myOrder.OrderState);            
-            myOrder.OrderProduct = ChangeOrder.EditProductField("Current Product: ", myOrder.OrderProduct);            
+            myOrder.StateAbbreviation = ChangeOrder.EditStringField("Current State: ", myOrder.StateAbbreviation);            
+            myOrder.ProductType = ChangeOrder.EditStringField("Current Product: ", myOrder.ProductType);            
             myOrder.Area = ChangeOrder.EditDecimalField("Current Area: ", myOrder.Area);
         }
 

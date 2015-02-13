@@ -59,7 +59,7 @@ namespace FlooringMaster.Data
 
                             foreach (var s in temp)
                             {
-                                newOrder.OrderState = s;
+                                newOrder.StateAbbreviation = s.StateAbbreviation.ToString();
                             }
                         }
 
@@ -67,7 +67,7 @@ namespace FlooringMaster.Data
                         decimal taxRate;
                         if (decimal.TryParse(WholeOrderArray[3], out taxRate))
                         {
-                            newOrder.OrderState.TaxRate = taxRate;
+                            newOrder.TaxRate = taxRate;
                         }
 
 
@@ -79,7 +79,7 @@ namespace FlooringMaster.Data
                             .FirstOrDefault(p => p.ProductType.Equals(WholeOrderArray[4], StringComparison.OrdinalIgnoreCase));
 
 
-                        newOrder.OrderProduct.CostPerSquareFoot = prod.CostPerSquareFoot;
+                        newOrder.CostPerSquareFoot = prod.CostPerSquareFoot;
 
 
                         decimal orderArea;
@@ -93,7 +93,7 @@ namespace FlooringMaster.Data
 
                         if (decimal.TryParse(WholeOrderArray[6], out costPerSquareFoot))
                         {
-                            newOrder.OrderProduct.CostPerSquareFoot = costPerSquareFoot;
+                            newOrder.CostPerSquareFoot = costPerSquareFoot;
                         }
 
 
@@ -101,7 +101,7 @@ namespace FlooringMaster.Data
 
                         if (decimal.TryParse(WholeOrderArray[7], out laborCostPerSquareFoot))
                         {
-                            newOrder.OrderProduct.LaborCostPerSquareFoot = laborCostPerSquareFoot;
+                            newOrder.LaborCostPerSquareFoot = laborCostPerSquareFoot;
                         }
 
 
@@ -179,12 +179,12 @@ namespace FlooringMaster.Data
                     sw.WriteLine("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11}",
                         orderNumber,
                         myOrder.CustomerName,
-                        myOrder.OrderState.StateAbbreviation,
-                        myOrder.OrderState.TaxRate,
-                        myOrder.OrderProduct.ProductType,
+                        myOrder.StateAbbreviation,
+                        myOrder.TaxRate,
+                        myOrder.ProductType,
                         myOrder.Area,
-                        myOrder.OrderProduct.CostPerSquareFoot,
-                        myOrder.OrderProduct.LaborCostPerSquareFoot,
+                        myOrder.CostPerSquareFoot,
+                        myOrder.LaborCostPerSquareFoot,
                         myOrder.TotalMaterialCost,
                         myOrder.TotalLaborCost,
                         myOrder.TotalTax,
