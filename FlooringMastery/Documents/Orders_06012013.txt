@@ -1,2 +1,2 @@
 OrderNumber,CustomerName,State,TaxRate,ProductType,Area,CostPerSquareFoot,LaborCostPerSquareFoot,MaterialCost,LaborCost,Tax,Total
-2,TEXARKANA,ND,0.04,Wood,100000,5.15,4.75,515000.00,475000.00,39600.00,1029600.00
+1,TEXARKANA,ND,0.04,Carpet,100000,5.15,4.75,515000.00,475000.00,39600.00,1029600.00

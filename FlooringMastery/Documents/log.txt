@@ -177,3 +177,10 @@
 2/13/2015 2:12:59 PM Expected state abbreviation, but got nd
 2/13/2015 2:13:16 PM Expected non-empty string, but got empty string
 2/13/2015 2:13:19 PM Expected decimal, but got 100000
+2/13/2015 2:34:36 PM Expected non-empty string, but got empty string
+2/13/2015 2:34:38 PM Expected non-empty string, but got empty string
+2/13/2015 2:34:38 PM Expected state abbreviation, but got ia
+2/13/2015 2:34:40 PM Expected non-empty string, but got empty string
+2/13/2015 2:34:42 PM Expected decimal, but got 120
+2/13/2015 2:34:55 PM Expected yes or no, but got 
+2/13/2015 2:45:55 PM Expected yes or no, but got 

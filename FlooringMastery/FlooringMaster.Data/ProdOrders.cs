@@ -72,7 +72,7 @@ namespace FlooringMaster.Data
 
 
                         var prod = (from p in WorkingMemory.ProductList
-                                    where p.ProductType.Equals(WholeOrderArray[4], StringComparison.OrdinalIgnoreCase)
+                                    where p.ProductType.ToString().Equals(WholeOrderArray[4], StringComparison.OrdinalIgnoreCase)
                                     select p).FirstOrDefault();
 
                         var prod2 = WorkingMemory.ProductList
@@ -81,6 +81,7 @@ namespace FlooringMaster.Data
 
                         newOrder.CostPerSquareFoot = prod.CostPerSquareFoot;
 
+                        newOrder.ProductType = prod.ProductType;
 
                         decimal orderArea;
                         if (decimal.TryParse(WholeOrderArray[5], out orderArea))
