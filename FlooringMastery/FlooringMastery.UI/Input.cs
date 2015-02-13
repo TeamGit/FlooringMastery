@@ -281,7 +281,7 @@ namespace FlooringMastery.UI
         /// <param name="received"></param>
         private static void Log(string expected, string received)
         {
-            using (System.IO.StreamWriter sw = new StreamWriter("log.txt", true))
+            using (System.IO.StreamWriter sw = new StreamWriter(@"..\..\..\Documents\log.txt", true))
             {
                 sw.WriteLine("{0} Expected {1}, but got {2}", DateTime.Now, expected, received);
             }

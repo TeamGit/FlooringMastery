@@ -13,6 +13,11 @@ namespace FlooringMastery.BLL
 {
     public static class ChangeOrder
     {
+        /// <summary>
+        /// Given a partially populated Order object, fill in the rest of the properties
+        /// </summary>
+        /// <param name="myOrder"></param>
+        /// <returns></returns>
         public static Order CalculateRemainingProperties(Order myOrder)
         {
             myOrder.TotalLaborCost = Math.Round(myOrder.Area * myOrder.OrderProduct.LaborCostPerSquareFoot, 2);
@@ -28,11 +33,20 @@ namespace FlooringMastery.BLL
             return myOrder;
         }
 
+        /// <summary>
+        /// Given an Order object, add it to the working memory list
+        /// </summary>
+        /// <param name="myOrder"></param>
         public static void AddOrderToList(Order myOrder)
         {
             WorkingMemory.OrderList.Add(myOrder);
         }
 
+        /// <summary>
+        /// Given an order and a bool indicating if a new order should be committed to file either add the order to working memory and save to file, or do nothing
+        /// </summary>
+        /// <param name="doCommmit"></param>
+        /// <param name="newOrder"></param>
         public static void CommitAdditionsToFile(bool doCommmit, Order newOrder)
         {
             if (doCommmit)
@@ -42,6 +56,10 @@ namespace FlooringMastery.BLL
             }   
         }
 
+        /// <summary>
+        /// Given a bool indicating if changes should be written to file either do so or do nothing
+        /// </summary>
+        /// <param name="doCommmit"></param>
         public static void CommitChangesToFile(bool doCommmit)
         {
             if (doCommmit)
@@ -50,6 +68,10 @@ namespace FlooringMastery.BLL
             }
         }
 
+        /// <summary>
+        /// Given an order object run the various edit methods on it's various properties
+        /// </summary>
+        /// <param name="myOrder"></param>
         public static void EditEntireOrder(Order myOrder)
         {
             myOrder.CustomerName = ChangeOrder.EditStringField("Current Customer Name: ", myOrder.CustomerName);
@@ -58,6 +80,12 @@ namespace FlooringMastery.BLL
             myOrder.Area = ChangeOrder.EditDecimalField("Current Area: ", myOrder.Area);
         }
 
+        /// <summary>
+        /// Given a prompt and the current value of a string property, prompt the user to enter a new value or keep the old one by pressing enter
+        /// </summary>
+        /// <param name="prompt"></param>
+        /// <param name="currentValue"></param>
+        /// <returns></returns>
         public static string EditStringField(string prompt, string currentValue)
         { 
             Console.Write(prompt);
@@ -71,6 +99,12 @@ namespace FlooringMastery.BLL
             return input;
         }
 
+        /// <summary>
+        /// Given a prompt and the current value of a State property, prompt the user to enter a new value or keep the old one by pressing enter
+        /// </summary>
+        /// <param name="prompt"></param>
+        /// <param name="currentValue"></param>
+        /// <returns></returns>
         public static State EditStateField(string prompt, State currentValue)
         {
             Console.Write(prompt);
@@ -98,7 +132,12 @@ namespace FlooringMastery.BLL
             return myState;
         }
 
-
+        /// <summary>
+        /// Given a prompt and the current value of a Product property, prompt the user to enter a new value or keep the old one by pressing enter
+        /// </summary>
+        /// <param name="prompt"></param>
+        /// <param name="currentValue"></param>
+        /// <returns></returns>
         public static Product EditProductField(string prompt, Product currentValue)
         {
             Console.Write(prompt);
@@ -126,7 +165,12 @@ namespace FlooringMastery.BLL
             return myProduct;
         }
 
-
+        /// <summary>
+        /// Given a prompt and the current value of a Decimal property, prompt the user to enter a new value or keep the old one by pressing enter
+        /// </summary>
+        /// <param name="prompt"></param>
+        /// <param name="currentValue"></param>
+        /// <returns></returns>
         public static decimal EditDecimalField(string prompt, decimal currentValue)
         {
             Console.Write(prompt);

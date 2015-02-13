@@ -10,6 +10,10 @@ namespace FlooringMastery.BLL
 {
     public static class Calculations
     {
+        /// <summary>
+        /// Returns a bool indidcating if the order listin working memory is empty
+        /// </summary>
+        /// <returns></returns>
         public static bool CheckForEmptyList()
         {
           
