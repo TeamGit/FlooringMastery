@@ -15,3 +15,11 @@
 2/13/2015 10:13:36 AM Expected yes or no, but got 
 2/13/2015 10:13:37 AM Expected yes or no, but got 
 2/13/2015 10:14:25 AM Expected yes or no, but got 
+2/13/2015 10:37:41 AM Expected non-empty string, but got empty string
+2/13/2015 10:37:45 AM Expected non-empty string, but got empty string
+2/13/2015 10:37:45 AM Expected state abbreviation, but got RI
+2/13/2015 10:37:49 AM Expected non-empty string, but got empty string
+2/13/2015 10:37:49 AM Expected state abbreviation, but got mn
+2/13/2015 10:37:52 AM Expected non-empty string, but got empty string
+2/13/2015 10:37:52 AM Expected product name, but got wood
+2/13/2015 10:37:53 AM Expected decimal, but got 420

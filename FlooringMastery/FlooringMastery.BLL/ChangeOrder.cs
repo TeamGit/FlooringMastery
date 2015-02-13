@@ -113,9 +113,21 @@ namespace FlooringMastery.BLL
             string input = Console.ReadLine();
             State myState = new State();
             myState = currentValue;
-            
-            if (WorkingMemory.StateList.Any(s => s.StateAbbreviation.ToString().Equals(input, StringComparison.OrdinalIgnoreCase)))
+            string StateAbbrevString;
+
+            if (
+                WorkingMemory.StateList.Any(
+                    s => s.StateAbbreviation.ToString().Equals(input, StringComparison.OrdinalIgnoreCase)))
             {
+                StateAbbrevString = input;
+            }
+            else
+            {
+                StateAbbrevString = currentValue.StateAbbreviation.ToString();
+                Console.WriteLine("That wasn't recognized as state in which SWC operates.\nThe previous value of {0} will be used.",currentValue.StateName);
+            }
+                
+
                 var temp = from s in WorkingMemory.StateList
                        where s.StateAbbreviation.ToString().Equals(input, StringComparison.OrdinalIgnoreCase)
                        select s;
@@ -124,8 +136,7 @@ namespace FlooringMastery.BLL
                 {
                     myState = s;
                 }
-
-            }
+            
             return myState;
         }
 
@@ -159,7 +170,7 @@ namespace FlooringMastery.BLL
                 }
                 myProduct = currentValue;
             }
-            Console.WriteLine("Product type is invalid, current type of {0} will be used.",currentValue.ProductType);
+            Console.WriteLine("Current type of {0} will be used.",currentValue.ProductType);
             return myProduct;
         }
 
@@ -181,7 +192,8 @@ namespace FlooringMastery.BLL
             {
                 return myDecimal;
             }
-                myDecimal = currentValue;
+            myDecimal = currentValue;
+            Console.WriteLine("Value of {0} will be used for the product area.",myDecimal);
 
             return myDecimal;
         }
