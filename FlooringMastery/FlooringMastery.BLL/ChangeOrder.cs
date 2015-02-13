@@ -112,11 +112,8 @@ namespace FlooringMastery.BLL
             Console.SetCursorPosition(prompt.Length, Console.CursorTop);
             string input = Console.ReadLine();
             State myState = new State();
-            if (String.IsNullOrEmpty(input))
-            {
-                myState = currentValue;
-            }
-
+            myState = currentValue;
+            
             if (WorkingMemory.StateList.Any(s => s.StateAbbreviation.ToString().Equals(input, StringComparison.OrdinalIgnoreCase)))
             {
                 var temp = from s in WorkingMemory.StateList
