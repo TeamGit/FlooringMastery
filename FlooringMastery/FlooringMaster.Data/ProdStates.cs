@@ -17,6 +17,8 @@ namespace FlooringMaster.Data
         /// </summary>
         public void GetStates()
         {
+            WorkingMemory.StateList.Clear();
+
             using (StreamReader sr = new StreamReader(@"..\..\..\Documents\Taxes.txt"))
                 while (!sr.EndOfStream)
                 {

@@ -64,7 +64,7 @@ namespace FlooringMastery.UI
         }
 
         /// <summary>
-        /// Given a prompt, continually prompt the user until the enter a non negative decimal then return it
+        /// Given a prompt, continually prompt the user until they enter a non negative decimal then return it
         /// </summary>
         /// <param name="prompt"></param>
         /// <returns></returns>
@@ -97,8 +97,8 @@ namespace FlooringMastery.UI
                 }
 
                 Log("decimal", input);
-
-            } while (myDecimal < 0);
+                Console.WriteLine("The largest job we can accommodate is {0:N} feet squared.",Decimal.MaxValue);
+            } while (myDecimal <= 0);
 
             return myDecimal;
         }
@@ -158,7 +158,7 @@ namespace FlooringMastery.UI
 
             myOrder.OrderProduct = GetProduct();
 
-            myOrder.Area = GetDecimal("Enter the area of the floor: ");
+            myOrder.Area = GetDecimal("Enter the area of the floor in feet squared: ");
             
             myOrder = ChangeOrder.CalculateRemainingProperties(myOrder);
 
@@ -190,8 +190,9 @@ namespace FlooringMastery.UI
                     Console.WriteLine("SWC currently operates in the following states: ");
                     foreach (var state in WorkingMemory.StateList)
                     {
-                        Console.WriteLine(state.StateAbbreviation);
+                        Console.Write("{0}    ",state.StateAbbreviation);
                     }
+                    Console.WriteLine();
                 }
 
                 
@@ -237,8 +238,17 @@ namespace FlooringMastery.UI
                 {
                     gotProduct = true;
                 }
-
-                Log("product name", tempProduct);
+                else
+                {
+                    Console.WriteLine("That is not a product currently carried by SWC.\nCurrent products in stock are: ");
+                    foreach (var product in WorkingMemory.ProductList)
+                    {
+                        Console.Write("{0}    ", product.ProductType);
+                    }
+                    Console.WriteLine("");
+                    Log("product name", tempProduct);
+                }
+                
 
             } while (!gotProduct);
 

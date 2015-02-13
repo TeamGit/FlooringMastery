@@ -19,13 +19,13 @@ namespace FlooringMastery.UI.Screens
             string date = Input.GetDate("Enter the date of the file to remove orders from that date: ");
             SetTestOrProd.MyOrderObject.LoadOrderFile(date);
 
-                RejectEmptyDate();
+            RejectEmptyDate();
               
             Output.DisplayAllOrders();
 
             int orderNumber = Input.GetInteger("Enter the order number to delete: ");
             var myTestVariable = WorkingMemory.OrderList;
-            if (orderNumber < WorkingMemory.OrderList.Count)
+            if (orderNumber <= WorkingMemory.OrderList.Count)
             {
                 var order = from o in WorkingMemory.OrderList.ToList()
                     where o.OrderNumber == orderNumber

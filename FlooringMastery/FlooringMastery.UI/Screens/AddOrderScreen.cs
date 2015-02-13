@@ -16,10 +16,10 @@ namespace FlooringMastery.UI.Screens
         {
             Console.Clear();
             DisplayHeader();
-
-                Console.WriteLine();
-                SetTestOrProd.MyOrderObject.LoadOrderFile(Input.GetDate("Enter the date of the order: "));
-                Console.WriteLine();
+            WorkingMemory.OrderList.Clear();
+            Console.WriteLine();
+            SetTestOrProd.MyOrderObject.LoadOrderFile(Input.GetDate("Enter the date of the order: "));
+            Console.WriteLine();
 
             Order newOrder = Input.QueryUserForOrder();
 

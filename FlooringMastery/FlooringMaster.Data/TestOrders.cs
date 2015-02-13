@@ -147,6 +147,7 @@ namespace FlooringMaster.Data
         /// <returns></returns>
         public string LoadOrderFile(string date)
         {
+
             string properFileName = FileNameBuilder(date);
             WorkingMemory.CurrentOrderFile = properFileName;
             if (System.IO.File.Exists(properFileName))
@@ -154,7 +155,7 @@ namespace FlooringMaster.Data
                 LoadOrders();
                 return "File was loaded successfully.";
             }
-            //System.IO.File.Create(properFileName).Close();
+            System.IO.File.Create(properFileName).Close();
             return "A new order file was created for that date.";
         }
 
