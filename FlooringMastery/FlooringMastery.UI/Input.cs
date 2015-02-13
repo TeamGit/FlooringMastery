@@ -188,12 +188,13 @@ namespace FlooringMastery.UI
                 {
                     Console.WriteLine("That isn't recognized as a state in which SWC currently operates.  \nPlease try again.");
                     Console.WriteLine("SWC currently operates in the following states: ");
+                    foreach (var state in WorkingMemory.StateList)
+                    {
+                        Console.WriteLine(state.StateAbbreviation);
+                    }
                 }
 
-                foreach (var state in WorkingMemory.StateList)
-                {
-                    Console.WriteLine(state.StateAbbreviation);
-                }
+                
                 Log("state abbreviation", tempState);
 
             } while (!gotState);

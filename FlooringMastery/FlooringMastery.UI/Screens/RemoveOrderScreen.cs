@@ -42,6 +42,7 @@ namespace FlooringMastery.UI.Screens
             var result = Input.QueryForCommit();
             ChangeOrder.CommitChangesToFile(result);
             Output.DisplayCommitResults(result);
+            WorkingMemory.OrderList.Clear();
             
             Screen next = new HomeScreen();
             Screen.JumpScreen(next);
