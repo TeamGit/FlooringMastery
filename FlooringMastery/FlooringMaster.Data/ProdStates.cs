@@ -51,24 +51,6 @@ namespace FlooringMaster.Data
                     }
                 }
         }
-
-        /// <summary>
-        /// Given a string return the string with spaces removed
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        public static string StripSpaces(string input)
-        {
-            string output = "";
-            foreach (var c in input)
-            {
-                if (c != ' ')
-                {
-                    output += c;
-                }
-            }
-            return output;
-        }
     }
 }
     
