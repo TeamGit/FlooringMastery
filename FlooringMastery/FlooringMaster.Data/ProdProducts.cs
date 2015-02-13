@@ -15,7 +15,7 @@ namespace FlooringMaster.Data
         /// </summary>
         public void GetProducts()
         {
-            using (StreamReader sr = new StreamReader("Products.txt"))
+            using (StreamReader sr = new StreamReader(@"..\..\..\Documents\Products.txt"))
                 while (!sr.EndOfStream)
                 {
                     string WholeProduct = sr.ReadLine();
