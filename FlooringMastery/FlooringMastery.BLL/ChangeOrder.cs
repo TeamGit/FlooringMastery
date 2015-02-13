@@ -145,10 +145,8 @@ namespace FlooringMastery.BLL
             Console.SetCursorPosition(prompt.Length, Console.CursorTop);
             string input = Console.ReadLine();
             Product myProduct = new Product();
-            if (String.IsNullOrEmpty(input))
-            {
-                myProduct = currentValue;
-            }
+            myProduct = currentValue;
+            
 
             if (WorkingMemory.ProductList.Any(s => s.ProductType.ToString().Equals(input, StringComparison.OrdinalIgnoreCase)))
             {
@@ -156,12 +154,15 @@ namespace FlooringMastery.BLL
                            where s.ProductType.Equals(input, StringComparison.OrdinalIgnoreCase)
                            select s;
 
+                
                 foreach (var s in temp)
                 {
                     myProduct = s;
+                    return myProduct;
                 }
-
+                myProduct = currentValue;
             }
+            Console.WriteLine("Product type is invalid, current type of {0} will be used.",currentValue.ProductType);
             return myProduct;
         }
 
