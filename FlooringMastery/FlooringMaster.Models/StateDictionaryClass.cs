@@ -9,9 +9,9 @@ namespace FlooringMastery.Models
     /// <summary>
     /// Dictionary containing the abbreviation and name enums and tying them together
     /// </summary>
-    public class StateDictionaryClass
+    public static class StateDictionaryClass
     {
-        public Dictionary<Enums.StateAbbreviations, Enums.StateNames> AllStates = new Dictionary
+        public static Dictionary<Enums.StateAbbreviations, Enums.StateNames> AllStates = new Dictionary
             <Enums.StateAbbreviations, Enums.StateNames>()
         {
             {Enums.StateAbbreviations.AL, Enums.StateNames.Alabama},

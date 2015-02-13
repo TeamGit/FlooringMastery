@@ -154,34 +154,9 @@ namespace FlooringMaster.Data
                 LoadOrders();
                 return "File was loaded successfully.";
             }
-            System.IO.File.Create(properFileName).Close();
+            //System.IO.File.Create(properFileName).Close();
             return "A new order file was created for that date.";
         }
-
-
-        /// <summary>
-        /// given a string, build a valid path and prefix the filename with Orders_ and append .txt
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        public static string FileNameBuilder(string input)
-        {
-            string filename = input;
-            if (!filename.EndsWith(".txt", true, CultureInfo.CurrentCulture))
-            {
-                filename = input + ".txt";
-            }
-            if (!filename.StartsWith(@".\Orders\Orders_"))
-            {
-                filename = @".\Orders\Orders_" + filename;
-            }
-            else
-            {
-                filename = input;
-            }
-            return filename;
-        }
-
 
 
         public void SaveOrdersToFile()
@@ -216,5 +191,30 @@ namespace FlooringMaster.Data
                 orderNumber++;
             }
         }
+
+
+        /// <summary>
+        /// given a string, build a valid path and prefix the filename with Orders_ and append .txt
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static string FileNameBuilder(string input)
+        {
+            string filename = input;
+            if (!filename.EndsWith(".txt", true, CultureInfo.CurrentCulture))
+            {
+                filename = input + ".txt";
+            }
+            if (!filename.StartsWith(@"..\..\..\Documents\Orders_"))
+            {
+                filename = @"..\..\..\Documents\Orders_" + filename;
+            }
+            else
+            {
+                filename = input;
+            }
+            return filename;
+        }
+
     }
 }

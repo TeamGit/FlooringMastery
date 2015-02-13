@@ -12,64 +12,45 @@ namespace FlooringMaster.Data
 {
     public class ProdStates : IContainStates
     {
+        /// <summary>
+        /// Read a file, read each line into a state object and store it in a list
+        /// </summary>
         public void GetStates()
         {
-            using (StreamReader sr = new StreamReader("Taxes.txt"))
+            using (StreamReader sr = new StreamReader(@"..\..\..\Documents\Taxes.txt"))
                 while (!sr.EndOfStream)
                 {
                     string WholeState = sr.ReadLine();
                     if (!string.IsNullOrEmpty(WholeState))
                     {
+                        
                         string[] WholeStateArray = WholeState.Split('|');
 
                         State newState = new State();
-
+                        
+                                              
                         Enums.StateAbbreviations stateAbbrevs;
-                        string stringStateAbbrevs;
-
-                        stringStateAbbrevs = WholeStateArray[0];
-
-                        if (Enums.StateAbbreviations.TryParse(stringStateAbbrevs, out stateAbbrevs))
+                        if (Enums.StateAbbreviations.TryParse(WholeStateArray[0], out stateAbbrevs))
                         {
-                            //newState.StateAbbreviation = stateAbbrevs;
-                            //if ((stateAbbrevs == "IA") || (stateAbbrevs == "MN") || (stateAbbrevs == "ND") ||(stateAbbrevs == "SD") ||(stateAbbrevs == "WI"))
-                            //{
-                            //then really output this to be used in the program
-                            //}
-                            //else
-                            //{
-                            //Console.WriteLine("We do not do business in that state; please contact a local dealer.");
-                            //}
+                            newState.StateAbbreviation = stateAbbrevs;
+                            if (StateDictionaryClass.AllStates.ContainsKey(stateAbbrevs))
+                            {
+                                newState.StateName = StateDictionaryClass.AllStates[stateAbbrevs];
+                            }
+                        }
+                        else
+                            continue;
 
+                        Decimal taxRate;
+                        if (Decimal.TryParse(WholeStateArray[2], out taxRate))
+                        {
+                            newState.TaxRate = taxRate/100;
                         }
 
-
-
-                        //Enums.StateNames stateName;
-                        //    string stringStateName;
-
-                        //    stringStateName = StripSpaces(WholeStateArray[1]);
-
-                        //    if (Enums.StateNames.TryParse(stringStateName, out stateName))
-                        //    {
-                        //        newState.StateName = stateName;
-                        //    }
-
-
-                        //    Decimal taxRate;
-                        //    if (Decimal.TryParse(WholeStateArray[2], out taxRate))
-                        //    {
-                        //        newState.TaxRate = Math.Round(taxRate * .01M, 2);
-                        //    }
-
-                        //    WorkingMemory.StateList.Add(newState);
-
-                        //    var test = WorkingMemory.StateList;
+                        WorkingMemory.StateList.Add(newState);
                     }
                 }
         }
-
-
 
         /// <summary>
         /// Given a string return the string with spaces removed

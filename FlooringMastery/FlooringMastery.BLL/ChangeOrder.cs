@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FlooringMastery.Models;
+using System.Globalization;
+
 
 namespace FlooringMastery.BLL
 {
@@ -138,6 +140,29 @@ namespace FlooringMastery.BLL
                 myDecimal = currentValue;
 
             return myDecimal;
+        }
+
+        /// <summary>
+        /// given a string, build a valid path and prefix the filename with Orders_ and append .txt
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static string FileNameBuilder(string input)
+        {
+            string filename = input;
+            if (!filename.EndsWith(".txt", true, CultureInfo.CurrentCulture))
+            {
+                filename = input + ".txt";
+            }
+            if (!filename.StartsWith(@".\Orders\Orders_"))
+            {
+                filename = @".\Orders\Orders_" + filename;
+            }
+            else
+            {
+                filename = input;
+            }
+            return filename;
         }
     }
 }

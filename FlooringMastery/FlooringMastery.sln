@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlooringMastery.UI", "FlooringMastery.UI\FlooringMastery.UI.csproj", "{82EA703B-DFCB-4E89-9C05-F0478EC275C0}"
 EndProject
@@ -15,12 +15,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlooringMastery.Tests", "Fl
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AD345555-6C4F-44BA-B10D-44B86A69063E}"
 	ProjectSection(SolutionItems) = preProject
-		FlooringMastery.UI\bin\Debug\Orders\Orders_06012013.txt = FlooringMastery.UI\bin\Debug\Orders\Orders_06012013.txt
-		Prototype.txt = Prototype.txt
-		Taxes.txt = Taxes.txt
-		FlooringMastery.UI\bin\Debug\TestOrders.txt = FlooringMastery.UI\bin\Debug\TestOrders.txt
-		FlooringMastery.UI\bin\Debug\TestProducts.txt = FlooringMastery.UI\bin\Debug\TestProducts.txt
-		FlooringMastery.UI\bin\Debug\TestStates.txt = FlooringMastery.UI\bin\Debug\TestStates.txt
+		Documents\Orders_06012013.txt = Documents\Orders_06012013.txt
+		Documents\Products.txt = Documents\Products.txt
+		Documents\Taxes.txt = Documents\Taxes.txt
 	EndProjectSection
 EndProject
 Global

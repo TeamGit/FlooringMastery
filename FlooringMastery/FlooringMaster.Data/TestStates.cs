@@ -16,7 +16,7 @@ namespace FlooringMaster.Data
         /// </summary>
         public void GetStates()
         {
-            using (StreamReader sr = new StreamReader("TestStates.txt"))
+            using (StreamReader sr = new StreamReader(@"..\..\..\Documents\Taxes.txt"))
                 while (!sr.EndOfStream)
                 {
                     string WholeState = sr.ReadLine();

@@ -102,6 +102,11 @@ namespace FlooringMastery.UI
             return myDecimal;
         }
 
+        /// <summary>
+        /// Given a prompt, continually prompt the user until they enter a non negative int, then return it
+        /// </summary>
+        /// <param name="prompt"></param>
+        /// <returns></returns>
         public static int GetInteger(string prompt)
         {
             string input = null;
@@ -145,9 +150,7 @@ namespace FlooringMastery.UI
         public static Order QueryUserForOrder()
         {
             Order myOrder = new Order();
-
-            StateDictionaryClass aDictionary = new StateDictionaryClass();
-
+                      
             myOrder.CustomerName = (GetString("Enter the customer name: ")).ToUpper();
 
             myOrder.OrderState = GetState();
@@ -281,6 +284,29 @@ namespace FlooringMastery.UI
             {
                 sw.WriteLine("{0} Expected {1}, but got {2}", DateTime.Now, expected, received);
             }
+        }
+
+        /// <summary>
+        /// given a string, build a valid path and prefix the filename with Orders_ and append .txt
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static string FileNameBuilder(string input)
+        {
+            string filename = input;
+            if (!filename.EndsWith(".txt", true, CultureInfo.CurrentCulture))
+            {
+                filename = input + ".txt";
+            }
+            if (!filename.StartsWith(@".\Orders\Orders_"))
+            {
+                filename = @".\Orders\Orders_" + filename;
+            }
+            else
+            {
+                filename = input;
+            }
+            return filename;
         }
     }
 }
