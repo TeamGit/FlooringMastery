@@ -20,6 +20,18 @@ namespace FlooringMastery.BLL
         /// <returns></returns>
         public static Order CalculateRemainingProperties(Order myOrder)
         {
+            Product myProduct =
+                WorkingMemory.ProductList.FirstOrDefault(p => p.ProductType.Equals(myOrder.ProductType));
+
+            myOrder.LaborCostPerSquareFoot = myProduct.LaborCostPerSquareFoot;
+
+            myOrder.CostPerSquareFoot = myProduct.CostPerSquareFoot;
+
+            var myState = 
+                WorkingMemory.StateList.FirstOrDefault(s => s.StateAbbreviation.ToString().Equals(myOrder.StateAbbreviation));
+
+            myOrder.TaxRate = myState.TaxRate;
+
             myOrder.TotalLaborCost = Math.Round(myOrder.Area * myOrder.LaborCostPerSquareFoot, 2);
 
             myOrder.TotalMaterialCost = Math.Round(myOrder.Area * myOrder.CostPerSquareFoot, 2);
@@ -69,15 +81,18 @@ namespace FlooringMastery.BLL
         }
 
         /// <summary>
-        /// Given an order object run the various edit methods on it's various properties
+        /// Given an order object run the various edit methods on it's various properties then return it as an Order object
         /// </summary>
         /// <param name="myOrder"></param>
-        public static void EditEntireOrder(Order myOrder)
+        public static Order EditEntireOrder(Order myOrder)
         {
             myOrder.CustomerName = ChangeOrder.EditStringField("Current Customer Name: ", myOrder.CustomerName);
-            myOrder.StateAbbreviation = ChangeOrder.EditStringField("Current State: ", myOrder.StateAbbreviation);            
-            myOrder.ProductType = ChangeOrder.EditStringField("Current Product: ", myOrder.ProductType);            
+            myOrder.StateAbbreviation = ChangeOrder.EditStateStringAbbrevField("Current State: ", myOrder.StateAbbreviation);            
+            myOrder.ProductType = ChangeOrder.EditProductStringField("Current Product: ", myOrder.ProductType);            
             myOrder.Area = ChangeOrder.EditDecimalField("Current Area: ", myOrder.Area);
+            ChangeOrder.CalculateRemainingProperties(myOrder);
+
+            return myOrder;
         }
 
         /// <summary>
@@ -100,19 +115,21 @@ namespace FlooringMastery.BLL
         }
 
         /// <summary>
-        /// Given a prompt and the current value of a State property, prompt the user to enter a new value or keep the old one by pressing enter
+        /// Given a prompt and the current value of an Order object string property holding a state abbreviation, prompt the user to enter a new value or keep the old one by pressing enter
         /// </summary>
         /// <param name="prompt"></param>
         /// <param name="currentValue"></param>
         /// <returns></returns>
-        public static State EditStateField(string prompt, State currentValue)
+        public static string EditStateStringAbbrevField(string prompt, string currentValue)
         {
             Console.Write(prompt);
-            Console.Write(currentValue.StateAbbreviation);
+            Console.Write(currentValue);
             Console.SetCursorPosition(prompt.Length, Console.CursorTop);
             string input = Console.ReadLine();
-            State myState = new State();
-            myState = currentValue;
+            if (String.IsNullOrEmpty(input))
+            {
+                return currentValue;
+            }
             string StateAbbrevString;
 
             if (
@@ -123,55 +140,47 @@ namespace FlooringMastery.BLL
             }
             else
             {
-                StateAbbrevString = currentValue.StateAbbreviation.ToString();
-                Console.WriteLine("That wasn't recognized as state in which SWC operates.\nThe previous value of {0} will be used.",currentValue.StateName);
+                Console.WriteLine("That wasn't recognized as state in which SWC operates.\nThe previous value of {0} will be used.",currentValue);
+                return currentValue;
             }
-                
 
-                var temp = from s in WorkingMemory.StateList
-                       where s.StateAbbreviation.ToString().Equals(input, StringComparison.OrdinalIgnoreCase)
-                       select s;
 
-                foreach (var s in temp)
-                {
-                    myState = s;
-                }
-            
-            return myState;
+            var temp =
+                WorkingMemory.StateList.FirstOrDefault(
+                    s => s.StateAbbreviation.ToString().Equals(input, StringComparison.CurrentCultureIgnoreCase));
+
+            return temp.StateAbbreviation.ToString();
         }
 
         /// <summary>
-        /// Given a prompt and the current value of a Product property, prompt the user to enter a new value or keep the old one by pressing enter
+        /// Given a prompt and the current value of an Order object ProductType string property, prompt the user to enter a new value or keep the old one by pressing enter
         /// </summary>
         /// <param name="prompt"></param>
         /// <param name="currentValue"></param>
         /// <returns></returns>
-        public static Product EditProductField(string prompt, Product currentValue)
+        public static string EditProductStringField(string prompt, string currentValue)
         {
             Console.Write(prompt);
-            Console.Write(currentValue.ProductType);
+            Console.Write(currentValue);
             Console.SetCursorPosition(prompt.Length, Console.CursorTop);
             string input = Console.ReadLine();
-            Product myProduct = new Product();
-            myProduct = currentValue;
             
+            string myProduct = currentValue;
 
-            if (WorkingMemory.ProductList.Any(s => s.ProductType.ToString().Equals(input, StringComparison.OrdinalIgnoreCase)))
+            var temp =
+                WorkingMemory.ProductList.FirstOrDefault(
+                    p => p.ProductType.Equals(input, StringComparison.CurrentCultureIgnoreCase));
+
+            if (temp != null)
             {
-                var temp = from s in WorkingMemory.ProductList
-                           where s.ProductType.Equals(input, StringComparison.OrdinalIgnoreCase)
-                           select s;
-
-                
-                foreach (var s in temp)
-                {
-                    myProduct = s;
-                    return myProduct;
-                }
-                myProduct = currentValue;
+                return temp.ProductType;
             }
-            Console.WriteLine("Current type of {0} will be used.",currentValue.ProductType);
-            return myProduct;
+            else
+            {
+                Console.WriteLine("Current type of {0} will be used.", currentValue);
+                return myProduct;
+            }
+            
         }
 
         /// <summary>

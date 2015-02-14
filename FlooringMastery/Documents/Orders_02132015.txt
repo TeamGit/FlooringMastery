@@ -1,0 +1,2 @@
+OrderNumber,CustomerName,State,TaxRate,ProductType,Area,CostPerSquareFoot,LaborCostPerSquareFoot,MaterialCost,LaborCost,Tax,Total
+1,MAX,IA,0.0675,Carpet,120,2.25,2.10,270.00,252.00,35.24,557.24

@@ -23,23 +23,24 @@ namespace FlooringMastery.UI.Screens
             if (!WorkingMemory.OrderList.Any())
             {
                 Console.Write("There are no orders for that date. Press 1 to try another date or enter to return to main menu. ");
-               //would need to add an option to try another date
-                Console.ReadLine();
+                string input = Console.ReadLine();
+                if (input == "1")
+                {
+                    next = new EditOrderScreen();
+                }
                 Screen.JumpScreen(next);
             }
             Output.DisplayAllOrders();
 
             int orderNumber = Input.GetInteger("Enter an order number to edit: ");
             var myTestVariable = WorkingMemory.OrderList;
+            Order order;
             if (orderNumber <= WorkingMemory.OrderList.Count)
             {
-                var order = from o in WorkingMemory.OrderList.ToList()
-                            where o.OrderNumber == orderNumber
-                            select o;
-                foreach (var k in order)
-                {
-                    ChangeOrder.EditEntireOrder(k);
-                }
+                var oldOrder = WorkingMemory.OrderList.FirstOrDefault(o => o.OrderNumber == orderNumber);
+                order = ChangeOrder.EditEntireOrder(oldOrder);
+                var index = WorkingMemory.OrderList.IndexOf(oldOrder);
+                WorkingMemory.OrderList[index] = order;
             }
 
             var doCommit = Input.QueryForCommit();
