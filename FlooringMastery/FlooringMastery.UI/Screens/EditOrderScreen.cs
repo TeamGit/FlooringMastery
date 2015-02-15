@@ -22,7 +22,7 @@ namespace FlooringMastery.UI.Screens
 
             if (!WorkingMemory.OrderList.Any())
             {
-                Console.Write("There are no orders for that date. Press 1 to try another date or enter to return to main menu. ");
+                Console.Write("There are no orders for that date. Press 1 to try\nanother date or enter to return to main menu. ");
                 string input = Console.ReadLine();
                 if (input == "1")
                 {
@@ -32,7 +32,7 @@ namespace FlooringMastery.UI.Screens
             }
             Output.DisplayAllOrders();
 
-            int orderNumber = Input.GetInteger("Enter an order number to edit: ");
+            int orderNumber = Input.GetOrderNumber("Enter an order number to edit: ");
             var myTestVariable = WorkingMemory.OrderList;
             Order order;
             if (orderNumber <= WorkingMemory.OrderList.Count)
@@ -41,6 +41,8 @@ namespace FlooringMastery.UI.Screens
                 order = ChangeOrder.EditEntireOrder(oldOrder);
                 var index = WorkingMemory.OrderList.IndexOf(oldOrder);
                 WorkingMemory.OrderList[index] = order;
+                Console.Clear();
+                Output.DisplaySingleOrder(order);
             }
 
             var doCommit = Input.QueryForCommit();
