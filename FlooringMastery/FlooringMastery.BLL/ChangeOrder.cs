@@ -163,7 +163,7 @@ namespace FlooringMastery.BLL
             Console.Write(prompt);
             Console.Write(currentValue);
             Console.SetCursorPosition(prompt.Length, Console.CursorTop);
-            string input = Console.ReadLine();
+            string input = StripSpaces(Console.ReadLine());
             
             string myProduct = currentValue;
 
@@ -205,6 +205,24 @@ namespace FlooringMastery.BLL
             Console.WriteLine("Value of {0} will be used for the product area.",myDecimal);
 
             return myDecimal;
+        }
+
+        /// <summary>
+        /// Given a string return the string with spaces removed
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static string StripSpaces(string input)
+        {
+            string output = "";
+            foreach (var c in input)
+            {
+                if (c != ' ')
+                {
+                    output += c;
+                }
+            }
+            return output;
         }
 
     }
