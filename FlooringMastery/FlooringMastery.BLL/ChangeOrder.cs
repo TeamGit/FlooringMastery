@@ -111,7 +111,7 @@ namespace FlooringMastery.BLL
             {
                 input = currentValue;
             }
-            return input;
+            return input.Trim();
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace FlooringMastery.BLL
             Console.Write(prompt);
             Console.Write(currentValue);
             Console.SetCursorPosition(prompt.Length, Console.CursorTop);
-            string input = Console.ReadLine();
+            string input = StripSpaces(Console.ReadLine());
             if (String.IsNullOrEmpty(input))
             {
                 return currentValue;
