@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -145,6 +146,51 @@ namespace FlooringMastery.UI
         }
 
 
+        /// <summary>
+        /// Given a prompt, continually prompt the user until they enter a non-null,
+        /// non negative int, then return it
+        /// </summary>
+        /// <param name="prompt"></param>
+        /// <returns></returns>
+        public static int GetOrderNumber(string prompt)
+        {
+            string input;
+            int myOrderNumber = 0;
+
+            do
+            {
+                Console.WriteLine(prompt);
+                input = Console.ReadLine();
+
+                foreach (var c in input)
+                {
+                    var temp = (int) c;
+                    //if ((temp < 48) || (temp > 57))
+                    if (!char.IsDigit(c))
+                    {
+                        Console.WriteLine("Enter an available order number only.");
+                        if (string.IsNullOrEmpty(input))
+                        {
+                            Log("integer", "null or empty");
+                        }
+                        else
+                        {
+                            Log("integer", input);
+                        }
+                        input = "-100";
+                        break;
+                }
+                }
+
+                if (int.TryParse(input, out myOrderNumber))
+                {
+                    //If decimal is positive loop will break
+                }
+
+            } while ((myOrderNumber < 1) || (myOrderNumber > WorkingMemory.OrderList.Count) || (string.IsNullOrEmpty(input)));
+
+            return myOrderNumber;
+        }
 
 
         /// <summary>

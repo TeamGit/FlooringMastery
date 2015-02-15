@@ -20,7 +20,8 @@ namespace FlooringMastery.UI.Screens
             SetTestOrProd.MyOrderObject.LoadOrderFile(date);
 
             RejectEmptyDate();
-              
+            Console.WriteLine("\nALL ORDERS FOR {0}:", date);
+            Console.WriteLine();              
             Output.DisplayAllOrders();
 
             int orderNumber = Input.GetInteger("Enter the order number to delete: ");
@@ -37,6 +38,8 @@ namespace FlooringMastery.UI.Screens
             }
 
             Console.Clear();
+            Console.WriteLine("\nALL ORDERS FOR {0}:", date);
+            Console.WriteLine();
             Output.DisplayAllOrders();
 
             var result = Input.QueryForCommit();
