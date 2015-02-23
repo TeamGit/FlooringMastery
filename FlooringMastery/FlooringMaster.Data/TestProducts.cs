@@ -15,7 +15,7 @@ namespace FlooringMaster.Data
         /// Return a static list of products to use for testing the application
         /// </summary>
         /// <returns></returns>
-        List<Product> IContainProducts.GetProducts()
+        public List<Product> GetProducts()
         {
             List<Product> products = new List<Product>();
 

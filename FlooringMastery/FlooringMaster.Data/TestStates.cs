@@ -11,50 +11,12 @@ namespace FlooringMaster.Data
 {
     public class TestStates : IContainStates
     {
+        
         /// <summary>
-        /// Read a file, read each line into a state object and store it in a list
+        /// return a list of State objects to use for testing
         /// </summary>
-        public void GetStates()
-        {
-            using (StreamReader sr = new StreamReader(@"..\..\..\Documents\Taxes.txt"))
-                while (!sr.EndOfStream)
-                {
-                    string WholeState = sr.ReadLine();
-                    if (!string.IsNullOrEmpty(WholeState))
-                    {
-                        string[] WholeStateArray = WholeState.Split(',');
-                        
-                        State newState = new State();
-
-                        Enums.StateNames stateName;
-                        string stringStateName;
-
-                        stringStateName = StripSpaces(WholeStateArray[0]);
-
-                        if (Enums.StateNames.TryParse(stringStateName, out stateName))
-                        {
-                            newState.StateName = stateName;
-                        }
-
-                        Enums.StateAbbreviations stateAbbrevs;
-                        if (Enums.StateAbbreviations.TryParse(WholeStateArray[1], out stateAbbrevs))
-                        {
-                            newState.StateAbbreviation = stateAbbrevs;
-                        }
-
-                        Decimal taxRate;
-                        if (Decimal.TryParse(WholeStateArray[2], out taxRate))
-                        {
-                            newState.TaxRate = taxRate;
-                        }
-
-                        WorkingMemory.StateList.Add(newState);
-                    }
-                }
-        }
-
-
-        List<State> IContainStates.GetStates()
+        /// <returns></returns>
+        public List<State> GetStates()
         {
             List<State> states = new List<State>();
 
