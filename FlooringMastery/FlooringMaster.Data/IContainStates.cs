@@ -4,11 +4,12 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using FlooringMastery.Models;
 
 namespace FlooringMaster.Data
 {
     public interface IContainStates
     {
-        void GetStates();
+        List<State> GetStates();
     }
 }

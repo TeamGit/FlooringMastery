@@ -9,9 +9,9 @@ namespace FlooringMaster.Data
 {
     public interface IContainOrders
     {
-        string LoadOrderFile(string date);
+        List<Order> LoadOrders(DateTime fileDate);
 
-        void SaveOrdersToFile();
+        void SaveOrdersToFile(DateTime fileDate, List<Order> orders);
     }
 
 

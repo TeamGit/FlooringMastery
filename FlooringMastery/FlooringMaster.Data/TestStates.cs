@@ -53,23 +53,44 @@ namespace FlooringMaster.Data
                 }
         }
 
-        /// <summary>
-        /// Given a string return the string with spaces removed
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        public static string StripSpaces(string input)
-        {
-            string output = "";
-            foreach (var c in input)
-            {
-                if (c != ' ')
-                {
-                    output += c;
-                }
-            }
-            return output;
-        }
 
+        List<State> IContainStates.GetStates()
+        {
+            List<State> states = new List<State>();
+
+            State myState = new State();
+
+            myState.StateAbbreviation = "MN";
+            myState.StateName = "Minnesota";
+            myState.TaxRate = 6.25m;
+
+            states.Add(myState);
+
+            myState.StateAbbreviation = "IA";
+            myState.StateName = "Iowa";
+            myState.TaxRate = 6.75m;
+
+            states.Add(myState);
+
+            myState.StateAbbreviation = "WI";
+            myState.StateName = "Wisconsin";
+            myState.TaxRate = 5.75m;
+
+            states.Add(myState);
+
+            myState.StateAbbreviation = "ND";
+            myState.StateName = "North Dakota";
+            myState.TaxRate = 4.00m;
+
+            states.Add(myState);
+
+            myState.StateAbbreviation = "SD";
+            myState.StateName = "South Dakota";
+            myState.TaxRate = 5.05m;
+
+            states.Add(myState);
+
+            return states;
+        }
     }
 }

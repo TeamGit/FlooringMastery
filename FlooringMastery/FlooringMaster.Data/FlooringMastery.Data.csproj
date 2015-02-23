@@ -49,7 +49,6 @@
     <Compile Include="TestOrders.cs" />
     <Compile Include="TestProducts.cs" />
     <Compile Include="TestStates.cs" />
-    <Compile Include="WorkingMemory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FlooringMaster.Models\FlooringMastery.Models.csproj">

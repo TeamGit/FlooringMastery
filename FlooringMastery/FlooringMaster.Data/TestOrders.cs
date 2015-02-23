@@ -1,222 +1,99 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Globalization;
-//using System.IO;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
-//using FlooringMastery.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using FlooringMastery.Models;
 
-//namespace FlooringMaster.Data
-//{
-//    public class TestOrders : IContainOrders
-//    {
-        
-//        /// <summary>
-//        /// Read in multiple orders from a text file
-//        /// </summary>
-//        private static void LoadOrders()
-//        {
-//            WorkingMemory.OrderList.Clear();
-//            using (StreamReader sr = new StreamReader(WorkingMemory.CurrentOrderFile))
-//                while (!sr.EndOfStream)
-//                {
-//                    string WholeOrder = sr.ReadLine();
-//                    if (!string.IsNullOrEmpty(WholeOrder))
-//                    {
+namespace FlooringMaster.Data
+{
+    public class TestOrders : IContainOrders
+    {
+        private List<Order> FakeDB { get; set; }
 
-//                        string[] WholeOrderArray = WholeOrder.Split(',');
+        /// <summary>
+        /// Load three static mock orders, as well as the contents of FakeDB, and return the combined list.
+        /// </summary>
+        /// <param name="fileDate"></param>
+        /// <returns></returns>
+        public List<Order> LoadOrders(DateTime fileDate)
+        {
+            List<Order> orders = new List<Order>();
 
-//                        if (WholeOrderArray[0] == "OrderNumber")
-//                        {
-//                            WholeOrder = sr.ReadLine();
-//                            if (!string.IsNullOrEmpty(WholeOrder))
-//                            {
-//                                WholeOrderArray = WholeOrder.Split(',');
-//                            }
-                            
-//                        }
+            Order myOrder = new Order();
 
-//                        Order newOrder = new Order();
+            myOrder.OrderNumber = 1;
+            myOrder.CustomerName = "Walter White";
+            myOrder.StateAbbreviation = "IA";
+            myOrder.TaxRate = 0.0675m;
+            myOrder.ProductType = "Wood";
+            myOrder.Area = 100;
+            myOrder.CostPerSquareFoot = 5.15m;
+            myOrder.LaborCostPerSquareFoot = 4.75m;
+            myOrder.TotalMaterialCost = 515m;
+            myOrder.TotalLaborCost = 475m;
+            myOrder.TotalTax = 66.82m;
+            myOrder.TotalCost = 1056.82m;
 
+            orders.Add(myOrder);
 
-//                        int orderNumber;
-//                        if (int.TryParse(WholeOrderArray[0], out orderNumber))
-//                        {
-//                            newOrder.OrderNumber = orderNumber;
-//                        }
+            myOrder.OrderNumber = 2;
+            myOrder.CustomerName = "Saul Goodman";
+            myOrder.StateAbbreviation = "MN";
+            myOrder.TaxRate = 0.0625m;
+            myOrder.ProductType = "Laminate";
+            myOrder.Area = 200;
+            myOrder.CostPerSquareFoot = 1.75m;
+            myOrder.LaborCostPerSquareFoot = 2.10m;
+            myOrder.TotalMaterialCost = 350m;
+            myOrder.TotalLaborCost = 420m;
+            myOrder.TotalTax = 48.13m;
+            myOrder.TotalCost = 818.13m;
 
+            orders.Add(myOrder);
 
-//                        newOrder.CustomerName = WholeOrderArray[1];
+            myOrder.OrderNumber = 3;
+            myOrder.CustomerName = "Jessie Pinkman";
+            myOrder.StateAbbreviation = "WI";
+            myOrder.TaxRate = 0.0630m;
+            myOrder.ProductType = "Carpet";
+            myOrder.Area = 300;
+            myOrder.CostPerSquareFoot = 4.00m;
+            myOrder.LaborCostPerSquareFoot = 3.10m;
+            myOrder.TotalMaterialCost = 250m;
+            myOrder.TotalLaborCost = 320m;
+            myOrder.TotalTax = 50m;
+            myOrder.TotalCost = 1000.13m;
 
+            orders.Add(myOrder);
 
-//                        Enums.StateAbbreviations stateAbbrevs;
-//                        if (Enums.StateAbbreviations.TryParse(WholeOrderArray[2], out stateAbbrevs))
-//                        {
-//                            var temp = from s in WorkingMemory.StateList
-//                                       where s.StateAbbreviation.ToString().Equals(stateAbbrevs.ToString(), StringComparison.OrdinalIgnoreCase)
-//                                       select s;
-                            
-//                            foreach (var s in temp)
-//                            {
-//                                newOrder.OrderState = s;
-//                            }
-//                        }
+            if (FakeDB.Any())
+            {
+                foreach (var order in FakeDB)
+                {
+                    orders.Add(order);
+                }
+            }
 
+            return orders;
 
-//                        decimal taxRate;
-//                        if (decimal.TryParse(WholeOrderArray[3], out taxRate))
-//                        {
-//                            newOrder.OrderState.TaxRate = taxRate;
-//                        }
+        }
 
+        /// <summary>
+        /// Given a list of orders, store them in FakeDB.  Do nothing with the date parameter in this test method.
+        /// </summary>
+        /// <param name="fileDate"></param>
+        /// <param name="orders"></param>
+        public void SaveOrdersToFile(DateTime fileDate, List<Order> orders)
+        {
+            FakeDB.Clear();
 
-//                       var temp2 = from p in WorkingMemory.ProductList
-//                                   where p.ProductType.Equals(WholeOrderArray[4], StringComparison.OrdinalIgnoreCase)
-//                                   select p;
-
-//                        foreach (var p in temp2)
-//                        {
-//                            newOrder.OrderProduct = p;
-//                        }
-
-
-//                        decimal orderArea;
-//                        if (decimal.TryParse(WholeOrderArray[5], out orderArea))
-//                        {
-//                            newOrder.Area = orderArea;
-//                        }
-
-
-//                        decimal costPerSquareFoot;
-
-//                        if (decimal.TryParse(WholeOrderArray[6], out costPerSquareFoot))
-//                        {
-//                            newOrder.OrderProduct.CostPerSquareFoot = costPerSquareFoot;
-//                        }
-
-
-//                        decimal laborCostPerSquareFoot;
-
-//                        if (decimal.TryParse(WholeOrderArray[7], out laborCostPerSquareFoot))
-//                        {
-//                            newOrder.OrderProduct.LaborCostPerSquareFoot = laborCostPerSquareFoot;
-//                        }
-
-
-//                        decimal materialCost;
-//                        if (decimal.TryParse(WholeOrderArray[8], out materialCost))
-//                        {
-//                            newOrder.TotalMaterialCost = materialCost;
-//                        }
-
-
-//                        decimal laborCost;
-//                        if (decimal.TryParse(WholeOrderArray[9], out laborCost))
-//                        {
-//                            newOrder.TotalLaborCost = laborCost;
-//                        }
-
-
-//                        decimal totalTax;
-//                        if (decimal.TryParse(WholeOrderArray[10], out totalTax))
-//                        {
-//                            newOrder.TotalTax = totalTax;
-//                        }
-
-
-//                        decimal totalCost;
-//                        if (decimal.TryParse(WholeOrderArray[11], out totalCost))
-//                        {
-//                            newOrder.TotalCost = totalCost;
-//                        }
-
-                        
-//                        WorkingMemory.OrderList.Add(newOrder);
-//                    }
-
-//                }
-
-//        }
-
-//        /// <summary>
-//        /// Given a date in a specific format, open an order file for that date.  If the file does not exist, create it.
-//        /// </summary>
-//        /// <param name="date"></param>
-//        /// <returns></returns>
-//        public string LoadOrderFile(string date)
-//        {
-
-//            string properFileName = FileNameBuilder(date);
-//            WorkingMemory.CurrentOrderFile = properFileName;
-//            if (System.IO.File.Exists(properFileName))
-//            {
-//                LoadOrders();
-//                return "File was loaded successfully.";
-//            }
-//            System.IO.File.Create(properFileName).Close();
-//            return "A new order file was created for that date.";
-//        }
-
-//        /// <summary>
-//        /// Write the current working memory list of orders to file.
-//        /// </summary>
-//        public void SaveOrdersToFile()
-//        {
-
-//            int orderNumber = 1;
-//            File.Create(WorkingMemory.CurrentOrderFile).Close();
-
-//            using (StreamWriter sw = new StreamWriter(WorkingMemory.CurrentOrderFile, true))
-//            {
-//                sw.WriteLine("OrderNumber,CustomerName,State,TaxRate,ProductType,Area,CostPerSquareFoot,LaborCostPerSquareFoot,MaterialCost,LaborCost,Tax,Total");
-//            }
-
-//            foreach (var myOrder in WorkingMemory.OrderList)
-//            {
-//                using (StreamWriter sw = new StreamWriter(WorkingMemory.CurrentOrderFile, true))
-//                {
-//                    sw.WriteLine("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11}",
-//                        orderNumber,
-//                        myOrder.CustomerName,
-//                        myOrder.OrderState.StateAbbreviation,
-//                        myOrder.OrderState.TaxRate,
-//                        myOrder.OrderProduct.ProductType,
-//                        myOrder.Area,
-//                        myOrder.OrderProduct.CostPerSquareFoot,
-//                        myOrder.OrderProduct.LaborCostPerSquareFoot,
-//                        myOrder.TotalMaterialCost,
-//                        myOrder.TotalLaborCost,
-//                        myOrder.TotalTax,
-//                        myOrder.TotalCost);
-//                }
-//                orderNumber++;
-//            }
-//        }
-
-
-//        /// <summary>
-//        /// given a string, build a valid path and prefix the filename with Orders_ and append .txt
-//        /// </summary>
-//        /// <param name="input"></param>
-//        /// <returns></returns>
-//        public static string FileNameBuilder(string input)
-//        {
-//            string filename = input;
-//            if (!filename.EndsWith(".txt", true, CultureInfo.CurrentCulture))
-//            {
-//                filename = input + ".txt";
-//            }
-//            if (!filename.StartsWith(@"..\..\..\Documents\Orders_"))
-//            {
-//                filename = @"..\..\..\Documents\Orders_" + filename;
-//            }
-//            else
-//            {
-//                filename = input;
-//            }
-//            return filename;
-//        }
-
-//    }
-//}
+            foreach (var order in orders)
+            {
+              FakeDB.Add(order);  
+            }
+        }
+    }
+}

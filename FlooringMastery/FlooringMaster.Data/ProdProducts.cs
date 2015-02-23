@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using FlooringMastery.Models;
 
@@ -11,12 +12,12 @@ namespace FlooringMaster.Data
     public class ProdProducts : IContainProducts
     {
         /// <summary>
-        /// Read the product specification file, store the list in working memory.
+        /// Read the product specification file, return list of products
         /// </summary>
-        public void GetProducts()
+        List<Product> IContainProducts.GetProducts()
         {
-            WorkingMemory.ProductList.Clear();
-            using (StreamReader sr = new StreamReader(@"..\..\..\Documents\Products.txt"))
+            List<Product> theProducts = new List<Product>();
+           using (StreamReader sr = new StreamReader(//file containing products path))
                 while (!sr.EndOfStream)
                 {
                     string WholeProduct = sr.ReadLine();
@@ -50,11 +51,15 @@ namespace FlooringMaster.Data
                             newProduct.LaborCostPerSquareFoot = laborCostPerSquareFoot;
                         }
 
-                        WorkingMemory.ProductList.Add(newProduct);
+                        theProducts.Add(newProduct);
 
                     }
                 }
 
+        }
+
+       
+            
         }
     }
 }

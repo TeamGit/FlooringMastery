@@ -11,51 +11,41 @@ namespace FlooringMaster.Data
    
     public class TestProducts : IContainProducts
     {
-         ///<summary>
-         ///Read in the test product list we are using until we receive product specifications
-         ///</summary>
-        public void GetProducts()
+        /// <summary>
+        /// Return a static list of products to use for testing the application
+        /// </summary>
+        /// <returns></returns>
+        List<Product> IContainProducts.GetProducts()
         {
-            using (StreamReader sr = new StreamReader("Products.txt"))
-                while (!sr.EndOfStream)
-                {
-                    string WholeProduct = sr.ReadLine();
-                    if (!string.IsNullOrEmpty(WholeProduct))
-                    {
-                        string[] WholeProductArray = WholeProduct.Split(',');
+            List<Product> products = new List<Product>();
 
-                        if (WholeProductArray[0] == "ProductType")
-                        {
-                            WholeProduct = sr.ReadLine();
-                            if (!string.IsNullOrEmpty(WholeProduct))
-                            {
-                                WholeProductArray = WholeProduct.Split(',');
-                            }
+            Product myProduct = new Product();
 
-                        }
+            myProduct.ProductType = "Carpet";
+            myProduct.CostPerSquareFoot = 2.25m;
+            myProduct.LaborCostPerSquareFoot = 2.10m;
 
-                        Product newProduct = new Product();
+            products.Add(myProduct);
 
-                        newProduct.ProductType = WholeProductArray[0];
+            myProduct.ProductType = "Laminate";
+            myProduct.CostPerSquareFoot = 1.75m;
+            myProduct.LaborCostPerSquareFoot = 2.10m;
 
-                        Decimal costPerSquareFoot;
-                        if (Decimal.TryParse(WholeProductArray[1], out costPerSquareFoot))
-                        {
-                            newProduct.CostPerSquareFoot = costPerSquareFoot;
-                        }
+            products.Add(myProduct);
 
-                        Decimal laborCostPerSquareFoot;
-                        if (Decimal.TryParse(WholeProductArray[2], out laborCostPerSquareFoot))
-                        {
-                            newProduct.LaborCostPerSquareFoot = laborCostPerSquareFoot;
-                        }
+            myProduct.ProductType = "Tile";
+            myProduct.CostPerSquareFoot = 3.50m;
+            myProduct.LaborCostPerSquareFoot = 4.15m;
 
-                        WorkingMemory.ProductList.Add(newProduct);
+            products.Add(myProduct);
 
-                    }
-                }
+            myProduct.ProductType = "Wood";
+            myProduct.CostPerSquareFoot = 3.50m;
+            myProduct.LaborCostPerSquareFoot = 4.15m;
 
+            products.Add(myProduct);
+
+            return products;
         }
-
     }
 }

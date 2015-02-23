@@ -8,9 +8,9 @@ namespace FlooringMastery.Models
 {
     public class State
     {
-        public Enums.StateAbbreviations StateAbbreviation { get; set; }
+        public string StateAbbreviation { get; set; }
 
-        public Enums.StateNames StateName { get; set; }
+        public string StateName { get; set; }
         
         public decimal TaxRate { get; set; }
     }
