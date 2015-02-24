@@ -21,6 +21,11 @@ namespace FlooringMaster.Data
             List<State> states = new List<State>();
 
             State myState = new State();
+            State myState1 = new State();
+            State myState2 = new State();
+            State myState3 = new State();
+            State myState4 = new State();
+
 
             myState.StateAbbreviation = "MN";
             myState.StateName = "Minnesota";
@@ -28,29 +33,29 @@ namespace FlooringMaster.Data
 
             states.Add(myState);
 
-            myState.StateAbbreviation = "IA";
-            myState.StateName = "Iowa";
-            myState.TaxRate = 6.75m;
+            myState1.StateAbbreviation = "IA";
+            myState1.StateName = "Iowa";
+            myState1.TaxRate = 6.75m;
 
-            states.Add(myState);
+            states.Add(myState1);
 
-            myState.StateAbbreviation = "WI";
-            myState.StateName = "Wisconsin";
-            myState.TaxRate = 5.75m;
+            myState2.StateAbbreviation = "WI";
+            myState2.StateName = "Wisconsin";
+            myState2.TaxRate = 5.75m;
 
-            states.Add(myState);
+            states.Add(myState2);
 
-            myState.StateAbbreviation = "ND";
-            myState.StateName = "North Dakota";
-            myState.TaxRate = 4.00m;
+            myState3.StateAbbreviation = "ND";
+            myState3.StateName = "North Dakota";
+            myState3.TaxRate = 4.00m;
 
-            states.Add(myState);
+            states.Add(myState3);
 
-            myState.StateAbbreviation = "SD";
-            myState.StateName = "South Dakota";
-            myState.TaxRate = 5.05m;
+            myState4.StateAbbreviation = "SD";
+            myState4.StateName = "South Dakota";
+            myState4.TaxRate = 5.05m;
 
-            states.Add(myState);
+            states.Add(myState4);
 
             return states;
         }

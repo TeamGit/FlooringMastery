@@ -14,15 +14,6 @@ namespace FlooringMastery.BLL
         /// Returns a bool indidcating if the order listin working memory is empty
         /// </summary>
         /// <returns></returns>
-        public static bool CheckForEmptyList()
-        {
-          
-            if (!WorkingMemory.OrderList.Any())
-            {
-                return true;
-            }
-            return false;
-        }
 
     }
 }

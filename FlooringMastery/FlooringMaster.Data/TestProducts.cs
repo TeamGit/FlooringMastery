@@ -20,6 +20,9 @@ namespace FlooringMaster.Data
             List<Product> products = new List<Product>();
 
             Product myProduct = new Product();
+            Product myProduct1 = new Product();
+            Product myProduct2 = new Product();
+            Product myProduct3 = new Product();
 
             myProduct.ProductType = "Carpet";
             myProduct.CostPerSquareFoot = 2.25m;
@@ -27,23 +30,23 @@ namespace FlooringMaster.Data
 
             products.Add(myProduct);
 
-            myProduct.ProductType = "Laminate";
-            myProduct.CostPerSquareFoot = 1.75m;
-            myProduct.LaborCostPerSquareFoot = 2.10m;
+            myProduct1.ProductType = "Laminate";
+            myProduct1.CostPerSquareFoot = 1.75m;
+            myProduct1.LaborCostPerSquareFoot = 2.10m;
 
-            products.Add(myProduct);
+            products.Add(myProduct1);
 
-            myProduct.ProductType = "Tile";
-            myProduct.CostPerSquareFoot = 3.50m;
-            myProduct.LaborCostPerSquareFoot = 4.15m;
+            myProduct2.ProductType = "Tile";
+            myProduct2.CostPerSquareFoot = 3.50m;
+            myProduct2.LaborCostPerSquareFoot = 4.15m;
 
-            products.Add(myProduct);
+            products.Add(myProduct2);
 
-            myProduct.ProductType = "Wood";
-            myProduct.CostPerSquareFoot = 3.50m;
-            myProduct.LaborCostPerSquareFoot = 4.15m;
+            myProduct3.ProductType = "Wood";
+            myProduct3.CostPerSquareFoot = 3.50m;
+            myProduct3.LaborCostPerSquareFoot = 4.15m;
 
-            products.Add(myProduct);
+            products.Add(myProduct3);
 
             return products;
         }

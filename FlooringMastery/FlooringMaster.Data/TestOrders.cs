@@ -21,8 +21,12 @@ namespace FlooringMaster.Data
         public List<Order> LoadOrders(DateTime fileDate)
         {
             List<Order> orders = new List<Order>();
+            FakeDB = new List<Order>();
 
             Order myOrder = new Order();
+            Order myOrder1 = new Order();
+            Order myOrder2 = new Order();
+
 
             myOrder.OrderNumber = 1;
             myOrder.CustomerName = "Walter White";
@@ -39,35 +43,35 @@ namespace FlooringMaster.Data
 
             orders.Add(myOrder);
 
-            myOrder.OrderNumber = 2;
-            myOrder.CustomerName = "Saul Goodman";
-            myOrder.StateAbbreviation = "MN";
-            myOrder.TaxRate = 0.0625m;
-            myOrder.ProductType = "Laminate";
-            myOrder.Area = 200;
-            myOrder.CostPerSquareFoot = 1.75m;
-            myOrder.LaborCostPerSquareFoot = 2.10m;
-            myOrder.TotalMaterialCost = 350m;
-            myOrder.TotalLaborCost = 420m;
-            myOrder.TotalTax = 48.13m;
-            myOrder.TotalCost = 818.13m;
+            myOrder1.OrderNumber = 2;
+            myOrder1.CustomerName = "Saul Goodman";
+            myOrder1.StateAbbreviation = "MN";
+            myOrder1.TaxRate = 0.0625m;
+            myOrder1.ProductType = "Laminate";
+            myOrder1.Area = 200;
+            myOrder1.CostPerSquareFoot = 1.75m;
+            myOrder1.LaborCostPerSquareFoot = 2.10m;
+            myOrder1.TotalMaterialCost = 350m;
+            myOrder1.TotalLaborCost = 420m;
+            myOrder1.TotalTax = 48.13m;
+            myOrder1.TotalCost = 818.13m;
 
-            orders.Add(myOrder);
+            orders.Add(myOrder1);
 
-            myOrder.OrderNumber = 3;
-            myOrder.CustomerName = "Jessie Pinkman";
-            myOrder.StateAbbreviation = "WI";
-            myOrder.TaxRate = 0.0630m;
-            myOrder.ProductType = "Carpet";
-            myOrder.Area = 300;
-            myOrder.CostPerSquareFoot = 4.00m;
-            myOrder.LaborCostPerSquareFoot = 3.10m;
-            myOrder.TotalMaterialCost = 250m;
-            myOrder.TotalLaborCost = 320m;
-            myOrder.TotalTax = 50m;
-            myOrder.TotalCost = 1000.13m;
+            myOrder2.OrderNumber = 3;
+            myOrder2.CustomerName = "Jessie Pinkman";
+            myOrder2.StateAbbreviation = "WI";
+            myOrder2.TaxRate = 0.0630m;
+            myOrder2.ProductType = "Carpet";
+            myOrder2.Area = 300;
+            myOrder2.CostPerSquareFoot = 4.00m;
+            myOrder2.LaborCostPerSquareFoot = 3.10m;
+            myOrder2.TotalMaterialCost = 250m;
+            myOrder2.TotalLaborCost = 320m;
+            myOrder2.TotalTax = 50m;
+            myOrder2.TotalCost = 1000.13m;
 
-            orders.Add(myOrder);
+            orders.Add(myOrder2);
 
             if (FakeDB.Any())
             {

@@ -14,52 +14,19 @@ namespace FlooringMaster.Data
         /// <summary>
         /// Read the product specification file, return list of products
         /// </summary>
-        List<Product> IContainProducts.GetProducts()
+
+
+
+
+
+
+
+
+
+
+        public List<Product> GetProducts()
         {
-            List<Product> theProducts = new List<Product>();
-           using (StreamReader sr = new StreamReader(//file containing products path))
-                while (!sr.EndOfStream)
-                {
-                    string WholeProduct = sr.ReadLine();
-                    if (!string.IsNullOrEmpty(WholeProduct))
-                    {
-                        string[] WholeProductArray = WholeProduct.Split(',');
-
-                        if (WholeProductArray[0] == "ProductType")
-                        {
-                            WholeProduct = sr.ReadLine();
-                            if (!string.IsNullOrEmpty(WholeProduct))
-                            {
-                                WholeProductArray = WholeProduct.Split(',');
-                            }
-
-                        }
-
-                        Product newProduct = new Product();
-
-                        newProduct.ProductType = WholeProductArray[0];
-
-                        Decimal costPerSquareFoot;
-                        if (Decimal.TryParse(WholeProductArray[1], out costPerSquareFoot))
-                        {
-                            newProduct.CostPerSquareFoot = costPerSquareFoot;
-                        }
-
-                        Decimal laborCostPerSquareFoot;
-                        if (Decimal.TryParse(WholeProductArray[2], out laborCostPerSquareFoot))
-                        {
-                            newProduct.LaborCostPerSquareFoot = laborCostPerSquareFoot;
-                        }
-
-                        theProducts.Add(newProduct);
-
-                    }
-                }
-
-        }
-
-       
-            
+            throw new NotImplementedException();
         }
     }
 }

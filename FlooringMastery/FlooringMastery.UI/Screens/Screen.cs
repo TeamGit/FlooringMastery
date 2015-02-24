@@ -28,28 +28,11 @@ namespace FlooringMastery.UI.Screens
 
         protected static void RejectEmptyDate()
         {
-            var myBool = Calculations.CheckForEmptyList();
+            //var myBool = Calculations.CheckForEmptyList();
             Screen next = new HomeScreen();
 
 
-            if (myBool)
-            {
-                Console.WriteLine("There are no orders for that date.");
-                do
-                {
-                    Console.WriteLine("Press 1 to try another date, or enter to return to the main menu.");
-                    string input = Console.ReadLine();
-                    if (input == "")
-                    {
-                        Screen.JumpScreen(next);
-                    }
-                    else if (input == "1")
-                    {
-                        Screen RemoveScreen = new RemoveOrderScreen();
-                        Screen.JumpScreen(RemoveScreen);
-                    }
-                } while (myBool);
-            }
+           
         }
 
     }
