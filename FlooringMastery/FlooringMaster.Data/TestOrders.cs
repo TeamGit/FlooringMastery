@@ -11,7 +11,7 @@ namespace FlooringMaster.Data
 {
     public class TestOrders : IContainOrders
     {
-        private List<Order> FakeDB { get; set; }
+        public List<Order> FakeDB { get; set; }
 
         /// <summary>
         /// Load three static mock orders, as well as the contents of FakeDB, and return the combined list.

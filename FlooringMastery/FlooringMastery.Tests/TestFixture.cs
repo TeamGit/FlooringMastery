@@ -12,6 +12,7 @@ namespace FlooringMastery.Tests
     [TestFixture]
     internal class TestFixture
     {
+
         [TestCase(1, "IA")]
         [TestCase(3, "ND")]
         [TestCase(4, "SD")]
@@ -50,7 +51,17 @@ namespace FlooringMastery.Tests
             Assert.AreEqual(expected, customerName);
         }
 
+
+        [TestCase(0, "Walter White")]
+        [TestCase(1, "Saul Goodman")]
+        [TestCase(2, "Jessie Pinkman")]
+        public void TestSaveOrders(int i, string expected)
+        {
+            TestOrders myTestRepo = new TestOrders();
+            myTestRepo.SaveOrdersToFile(DateTime.Now, myTestRepo.LoadOrders(DateTime.Now));
+
+            Assert.AreEqual(myTestRepo.FakeDB[i].CustomerName, expected);
+        }
+
     }
-
-
 }
