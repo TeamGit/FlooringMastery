@@ -17,7 +17,9 @@ namespace FlooringMaster.Data
         /// </summary>
         public List<State> GetStates()
         {
-            throw new NotImplementedException();
+            List<State> states = new List<State>();
+
+            return (states);
         }
     }
 }

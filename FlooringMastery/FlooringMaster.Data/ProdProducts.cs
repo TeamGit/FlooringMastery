@@ -11,22 +11,11 @@ namespace FlooringMaster.Data
 {
     public class ProdProducts : IContainProducts
     {
-        /// <summary>
-        /// Read the product specification file, return list of products
-        /// </summary>
-
-
-
-
-
-
-
-
-
-
         public List<Product> GetProducts()
         {
-            throw new NotImplementedException();
+            List<Product> products = new List<Product>();
+
+            return (products);
         }
     }
 }
