@@ -26,14 +26,7 @@ namespace FlooringMastery.UI.Screens
             nextScreen.Display();
         }
 
-        protected static void RejectEmptyDate()
-        {
-            //var myBool = Calculations.CheckForEmptyList();
-            Screen next = new HomeScreen();
-
-
-           
-        }
+     
 
     }
 }

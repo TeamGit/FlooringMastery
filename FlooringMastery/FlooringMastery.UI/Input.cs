@@ -3,14 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FlooringMaster.Data;
-using FlooringMastery.Models;
 
-namespace FlooringMastery.BLL
+namespace FlooringMastery.UI
 {
-    public static class Calculations
+    class Input
     {
-        
-
     }
 }

@@ -5,34 +5,27 @@ using System.Text;
 using System.Threading.Tasks;
 using FlooringMaster.Data;
 using FlooringMastery.BLL;
+using FlooringMastery.Models;
 
 namespace FlooringMastery.UI.Screens
 {
     class DisplayOrderScreen : Screen
     {
-        //public override void Display()
-        //{
-        //    Console.Clear();
-        //    DisplayHeader();
-        //    //string date = Input.GetDate("Enter the date of a file to display orders from that date: ");
-        //    //WorkingMemory.OrderList.Clear();
-        //    //SetTestOrProd.MyOrderObject.LoadOrderFile(date);
+        private Order _currentOrder;
 
-        //    RejectEmptyDate();
-
-
-        //    Output.DisplayViewChooser();
-        //    Console.Write("Press enter to return to the main menu.");
-        //    Console.ReadLine();
-
-        //    Screen next = new HomeScreen();
-        //    Screen.JumpScreen(next);
-
-        //}
+        /// <summary>
+        /// Newing up the DisplayOrderScreen requires you to specify an order
+        /// </summary>
+        /// <param name="myOrder"></param>
+        public DisplayOrderScreen(Order myOrder)
+        {
+            _currentOrder = Manipulation.CloneOrder(myOrder);
+        }
 
         public override void Display()
         {
-            throw new NotImplementedException();
+            DisplayHeader();
+            Output.DisplayOrder(_currentOrder);
         }
     }
 }
