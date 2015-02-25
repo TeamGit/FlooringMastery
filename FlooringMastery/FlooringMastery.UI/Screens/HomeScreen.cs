@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FlooringMastery.BLL;
+using FlooringMastery.Models;
 
 namespace FlooringMastery.UI.Screens
 {
@@ -11,7 +12,9 @@ namespace FlooringMastery.UI.Screens
     {
         public override void Display()
         {
+           
             Startup.Start();
+
             Console.Clear();
             DisplayHeader();
             Console.WriteLine("ORDER MANAGEMENT: MAIN MENU\n");

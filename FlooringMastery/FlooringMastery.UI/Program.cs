@@ -17,7 +17,7 @@ namespace FlooringMastery.UI
     {
         static void Main(string[] args)
         {
-            //Output.Go();
+            Output.Go();
         }
     }
 }

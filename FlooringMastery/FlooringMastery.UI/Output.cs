@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using FlooringMaster.Data;
 using FlooringMastery.BLL;
 using FlooringMastery.Models;
+using FlooringMastery.UI.Screens;
 
 namespace FlooringMastery.UI
 {
@@ -24,6 +25,18 @@ namespace FlooringMastery.UI
             Console.WriteLine(lineOutputFormat, "\tTotal Material cost: ", myOrder.TotalMaterialCost);
             Console.WriteLine(lineOutputFormat, "\tTotal Tax cost: ", myOrder.TotalTax);
 
+        }
+
+        public static void PauseForReading()
+        {
+            Console.WriteLine("\n(press enter to continue)");
+            Console.ReadLine();
+        }
+
+        public static void Go()
+        {
+            var Screen = new HomeScreen();
+            Screen.Display();
         }
     }
 }

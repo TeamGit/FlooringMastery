@@ -24,6 +24,11 @@ namespace FlooringMastery.Models
         public decimal TotalTax { get; set; }
         public decimal TotalCost { get; set; }
 
+        public Order()
+        {
+            
+        }
+
         public Order(SerializationInfo info, StreamingContext ctxt)
         {
             CustomerName = (string)info.GetValue("CustomerName", typeof(string));

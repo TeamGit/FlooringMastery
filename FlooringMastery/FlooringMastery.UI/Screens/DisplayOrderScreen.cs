@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using FlooringMaster.Data;
@@ -11,21 +13,25 @@ namespace FlooringMastery.UI.Screens
 {
     class DisplayOrderScreen : Screen
     {
-        private Order _currentOrder;
-
-        /// <summary>
-        /// Newing up the DisplayOrderScreen requires you to specify an order
-        /// </summary>
-        /// <param name="myOrder"></param>
-        public DisplayOrderScreen(Order myOrder)
-        {
-            _currentOrder = Manipulation.CloneOrder(myOrder);
-        }
-
+        
         public override void Display()
         {
             DisplayHeader();
-            Output.DisplayOrder(_currentOrder);
+            var dateString = Input.GetDate("Please enter the date for which to display orders: ");
+            DateTime dateObject = new DateTime();
+            if (Startup.TestMode == false)
+            {
+                dateObject = DateTime.Parse(dateString);
+            }
+           
+            var allOrders = SetTestOrProd.MyOrderObject.LoadOrders(dateObject);
+
+            foreach (var order in allOrders)
+            {
+                Output.DisplayOrder(order);
+            }
+
+            Output.PauseForReading();
         }
     }
 }
