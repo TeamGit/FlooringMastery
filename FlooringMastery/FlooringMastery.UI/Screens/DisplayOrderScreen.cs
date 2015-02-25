@@ -17,21 +17,15 @@ namespace FlooringMastery.UI.Screens
         public override void Display()
         {
             DisplayHeader();
-            var dateString = Input.GetDate("Please enter the date for which to display orders: ");
-            DateTime dateObject = new DateTime();
-            if (Startup.TestMode == false)
-            {
-                dateObject = DateTime.Parse(dateString);
-            }
-           
-            var allOrders = SetTestOrProd.MyOrderObject.LoadOrders(dateObject);
 
-            foreach (var order in allOrders)
-            {
-                Output.DisplayOrder(order);
-            }
+            var date = Input.GetDate("Please enter the date for which to display orders.");
+            Output.DisplayAllOrders(date);
 
             Output.PauseForReading();
+
+            Screen HomeScreen = new HomeScreen();
+            Screen.JumpScreen(HomeScreen);
         }
+
     }
 }

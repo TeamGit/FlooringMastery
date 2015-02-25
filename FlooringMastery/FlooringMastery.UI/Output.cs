@@ -26,6 +26,18 @@ namespace FlooringMastery.UI
             Console.WriteLine(lineOutputFormat, "\tTotal Tax cost: ", myOrder.TotalTax);
 
         }
+        
+        public static void DisplayAllOrders(DateTime dateObject)
+        {
+           var allOrders = SetTestOrProd.MyOrderObject.LoadOrders(dateObject);
+
+            foreach (var order in allOrders)
+            {
+                Output.DisplayOrder(order);
+            }
+        }
+
+
 
         public static void PauseForReading()
         {
@@ -37,6 +49,18 @@ namespace FlooringMastery.UI
         {
             var Screen = new HomeScreen();
             Screen.Display();
+        }
+
+        public static void DatePrompt(string prompt)
+        {
+            Console.Write(prompt);
+            Console.Write(DateTime.Now.ToString("MM/dd/yyyy"));
+            Console.SetCursorPosition(prompt.Length, Console.CursorTop);
+        }
+
+        public static void Prompt(string prompt)
+        {
+            Console.WriteLine(prompt);
         }
     }
 }

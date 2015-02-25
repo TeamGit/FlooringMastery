@@ -15,8 +15,8 @@ namespace FlooringMastery.UI.Screens
            
             Startup.Start();
 
-            Console.Clear();
             DisplayHeader();
+
             Console.WriteLine("ORDER MANAGEMENT: MAIN MENU\n");
             Console.WriteLine("Select from options 1-5:");
             Console.WriteLine();
