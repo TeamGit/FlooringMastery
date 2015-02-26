@@ -38,6 +38,11 @@ namespace FlooringMastery.UI.Screens
                 confirm.Display(allOrdersMinusOne, date);
 
             }
+            else
+            {
+                var Home = new HomeScreen();
+                Screen.JumpScreen(Home);
+            }
 
         }
     }

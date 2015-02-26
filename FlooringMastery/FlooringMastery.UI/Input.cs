@@ -14,7 +14,7 @@ namespace FlooringMastery.UI
             do
             {
                 Output.DatePrompt(prompt);
-          
+
                 string dateInput = Console.ReadLine();
                 if (String.IsNullOrEmpty(dateInput))
                     dateInput = DateTime.Now.ToString("MM/dd/yyyy");
@@ -23,10 +23,10 @@ namespace FlooringMastery.UI
                     return dateValue;
                 }
                 Console.WriteLine("Please enter the date in the format MM/DD/YYYY.");
-             } while (true);
+            } while (true);
         }
 
-        
+
         public static int GetInt(string prompt)
         {
             int myInt;
@@ -38,12 +38,52 @@ namespace FlooringMastery.UI
                 {
                     continue;
                 }
-                    
+
                 if (int.TryParse(stringInput, out myInt))
                 {
                     return myInt;
                 }
             } while (true);
+        }
+
+        public static string GetStringEdit(string currentValue)
+        {
+            string input = Console.ReadLine();
+            if (String.IsNullOrEmpty(input))
+            {
+                input = currentValue;
+            }
+            return input.Trim();
+        }
+
+        public static int GetIntEdit(int currentValue)
+        {
+            string input = Console.ReadLine();
+            if (String.IsNullOrEmpty(input))
+            {
+                input = currentValue.ToString();
+            }
+            int outputInt;
+            if (int.TryParse(input, out outputInt))
+            {
+                return outputInt;
+            }
+            return currentValue;
+        }
+
+        public static decimal GetDecimalEdit(decimal currentValue)
+        {
+            string input = Console.ReadLine();
+            if (String.IsNullOrEmpty(input))
+            {
+                input = currentValue.ToString();
+            }
+            decimal outputDecimal;
+            if (decimal.TryParse(input, out outputDecimal))
+            {
+                return outputDecimal;
+            }
+            return currentValue;
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FlooringMastery.Models;
 
+
 namespace FlooringMastery.BLL
 {
     public class Manipulation
@@ -22,5 +23,18 @@ namespace FlooringMastery.BLL
                 return (Order)formatter.Deserialize(ms);
             }
         }
+
+     
+
+        public static string EditStringField(string currentValue)
+        {
+            string input = Console.ReadLine();
+            if (String.IsNullOrEmpty(input))
+            {
+                input = currentValue;
+            }
+            return input.Trim();
+        }
+
     }
 }

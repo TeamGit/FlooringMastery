@@ -12,10 +12,28 @@ namespace FlooringMastery.UI.Screens
     {
         private List<Order>  myOrders = new List<Order>(); 
         private DateTime myDateTime = new DateTime();
+        private bool EditMode;
+        private Order MyOrder = new Order();
 
         public override void Display()
         {
 
+        }
+
+        public void Display(Order order, DateTime dateTimeObject)
+        {
+            DisplayHeader();
+            EditMode = true;
+            MyOrder = Manipulation.CloneOrder(order);
+            myDateTime = dateTimeObject;
+
+            Output.DisplayOrder(order);
+
+            Output.Prompt("The edited order is shown, would you like to save changes to file?");
+
+            Screen next = GetKeyPress();
+            if (next != null)
+                Screen.JumpScreen(next);
         }
 
         public void Display(List<Order> orders, DateTime dateTimeObject)
@@ -50,6 +68,13 @@ namespace FlooringMastery.UI.Screens
                 {
                     case 'Y':
                     case 'y':
+                        if (EditMode)
+                        {
+                            var OldOrders = SetTestOrProd.MyOrderObject.LoadOrders(myDateTime);
+                            var OldOrder = OldOrders.Where(o => o.OrderNumber == MyOrder.OrderNumber).FirstOrDefault();
+                            myOrders.Remove(OldOrder);
+                            myOrders.Add(MyOrder);
+                        }
                         SetTestOrProd.MyOrderObject.SaveOrdersToFile(myDateTime, myOrders);
                         return new HomeScreen();
                     case 'N':

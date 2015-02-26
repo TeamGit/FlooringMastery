@@ -62,5 +62,28 @@ namespace FlooringMastery.UI
         {
             Console.WriteLine(prompt);
         }
+
+        public static void PromptPlusCurrentValueStr(string prompt, string currentValue)
+        {
+            Console.Write(prompt);
+            Console.Write(currentValue);
+            Console.SetCursorPosition(prompt.Length, Console.CursorTop);
+        }
+
+        public static void PromptPlusCurrentValueInt(string prompt, int currentValue)
+        {
+            Console.Write(prompt);
+            Console.Write(currentValue.ToString());
+            Console.SetCursorPosition(prompt.Length, Console.CursorTop);
+        }
+
+        public static void PromptPlusCurrentValueDec(string prompt, decimal currentValue)
+        {
+            Console.Write(prompt);
+            Console.Write(currentValue.ToString());
+            Console.SetCursorPosition(prompt.Length, Console.CursorTop);
+        }
+
+
     }
 }
