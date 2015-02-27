@@ -22,7 +22,7 @@ namespace FlooringMastery.UI.Screens
 
         public void Display(Order order, DateTime dateTimeObject)
         {
-            DisplayHeader();
+            DisplayMainHeader();
             EditMode = true;
             MyOrder = Manipulation.CloneOrder(order);
             myDateTime = dateTimeObject;

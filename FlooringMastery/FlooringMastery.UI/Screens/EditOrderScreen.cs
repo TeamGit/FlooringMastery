@@ -14,9 +14,9 @@ namespace FlooringMastery.UI.Screens
 
         public override void Display()
         {
-            DisplayHeader();
+            DisplaySecondaryHeader();
 
-            var date = Input.GetDate("Please enter the date from which you would like to edit an order.");
+            var date = Input.GetDate("Enter the date of a file to edit orders from that date: ");
             Output.DisplayAllOrders(date);
 
 
@@ -24,7 +24,9 @@ namespace FlooringMastery.UI.Screens
             var orderNumbers = Calculation.GetAllOrderNumbers(date);
             var allOrders = SetTestOrProd.MyOrderObject.LoadOrders(date);
 
-            int orderNumberToEdit = Input.GetInt("Please enter a valid order number to edit.");
+            //going to work on code for changed input request here
+            int orderNumberToEdit = Input.GetInt("There are no orders for that date. Press 1 to try" +
+                                                 "\nanother date or enter to return to main menu.");
 
             if (orderNumbers.Contains(orderNumberToEdit))
             {

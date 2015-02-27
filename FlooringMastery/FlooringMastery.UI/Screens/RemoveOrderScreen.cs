@@ -13,9 +13,9 @@ namespace FlooringMastery.UI.Screens
     {
         public override void Display()
         {
-            DisplayHeader();
+            DisplaySecondaryHeader();
 
-            var date = Input.GetDate("Please enter the date from which you would like to remove an order.");
+            var date = Input.GetDate("Enter the date of the file from which you would like to remove an order: ");
             Output.DisplayAllOrders(date);
 
 
@@ -23,7 +23,7 @@ namespace FlooringMastery.UI.Screens
             var orderNumbers = Calculation.GetAllOrderNumbers(date);
             var allOrders = SetTestOrProd.MyOrderObject.LoadOrders(date);
             
-            int orderNumberToDelete = Input.GetInt("Please enter a valid order number to delete.");
+            int orderNumberToDelete = Input.GetInt("Enter a valid order number to delete.");
 
             if (orderNumbers.Contains(orderNumberToDelete))
             {

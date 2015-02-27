@@ -11,7 +11,7 @@ namespace FlooringMastery.UI.Screens
     {
         public abstract void Display();
 
-        public void DisplayHeader()
+        public void DisplayMainHeader()
         {
             Console.Clear();
             string companyName = "Welcome to SWC Corp";
@@ -22,6 +22,37 @@ namespace FlooringMastery.UI.Screens
             Console.WriteLine();
         }
 
+        public void DisplaySecondaryHeader(Screen calledScreen)
+        {
+            Console.Clear();
+            string companyName = "SWC Corp";
+            Console.WriteLine(String.Format("{0," + (Console.WindowWidth + companyName.Length) / 2 + "}", companyName));
+            string currentScreen = calledScreen.ToString();
+            string tagline = "";
+            switch (currentScreen)
+            {
+                case "AddOrderScreen":
+                    tagline = "ADD ORDER";
+                    break;
+                case "DisplayOrderScreen":
+                    tagline = "DISPLAY ORDER";
+                    break;
+                case "EditOrderScreen":
+                    tagline = "EDIT ORDER";
+                    break;
+                case "RemoveOrderScreen":
+                    tagline = "REMOVE ORDER";
+                    break;
+                default:
+                    DisplayMainHeader();
+                    break;
+            }
+            if (tagline != "")
+                Console.WriteLine(String.Format("{0," + (Console.WindowWidth + tagline.Length) / 2 + "}", tagline));
+
+        }
+        
+        
         public static void JumpScreen(Screen nextScreen)
         {
             nextScreen.Display();

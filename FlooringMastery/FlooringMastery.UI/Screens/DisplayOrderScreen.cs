@@ -16,9 +16,9 @@ namespace FlooringMastery.UI.Screens
         
         public override void Display()
         {
-            DisplayHeader();
+            DisplaySecondaryHeader();
 
-            var date = Input.GetDate("Please enter the date for which to display orders.");
+            var date = Input.GetDate("Enter the date of a file to display orders from that date:");
             Output.DisplayAllOrders(date);
 
             Output.PauseForReading();

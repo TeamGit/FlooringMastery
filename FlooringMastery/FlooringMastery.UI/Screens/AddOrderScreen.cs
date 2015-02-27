@@ -14,8 +14,7 @@ namespace FlooringMastery.UI.Screens
     {
         //public override void Display()
         //{
-        //    Console.Clear();
-        //    DisplayHeader();
+        //    DisplaySecondaryHeader();
         //    //WorkingMemory.OrderList.Clear();
         //    //Console.WriteLine();
         //    //SetTestOrProd.MyOrderObject.LoadOrderFile(Input.GetDate("Enter the date of the order: "));
