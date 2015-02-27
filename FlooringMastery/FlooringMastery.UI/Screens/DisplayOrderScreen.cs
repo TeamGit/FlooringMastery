@@ -13,11 +13,13 @@ namespace FlooringMastery.UI.Screens
 {
     class DisplayOrderScreen : Screen
     {
-        
+        protected override string GetScreenTitle()
+        {
+            return "DISPLAY ORDERS";
+        }
+
         public override void Display()
         {
-            DisplaySecondaryHeader();
-
             var date = Input.GetDate("Enter the date of a file to display orders from that date:");
             Output.DisplayAllOrders(date);
 

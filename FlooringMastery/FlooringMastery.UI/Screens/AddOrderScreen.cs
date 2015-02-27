@@ -12,9 +12,13 @@ namespace FlooringMastery.UI.Screens
 {
     class AddOrderScreen : Screen
     {
+        protected override string GetScreenTitle()
+        {
+            return "ADD AN ORDER";
+        }
+
         //public override void Display()
         //{
-        //    DisplaySecondaryHeader();
         //    //WorkingMemory.OrderList.Clear();
         //    //Console.WriteLine();
         //    //SetTestOrProd.MyOrderObject.LoadOrderFile(Input.GetDate("Enter the date of the order: "));

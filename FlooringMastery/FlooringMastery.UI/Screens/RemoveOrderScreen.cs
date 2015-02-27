@@ -11,13 +11,15 @@ namespace FlooringMastery.UI.Screens
 {
     class RemoveOrderScreen : Screen
     {
+        protected override string GetScreenTitle()
+        {
+            return "REMOVE AN ORDER";
+        }
+
         public override void Display()
         {
-            DisplaySecondaryHeader();
-
             var date = Input.GetDate("Enter the date of the file from which you would like to remove an order: ");
             Output.DisplayAllOrders(date);
-
 
 
             var orderNumbers = Calculation.GetAllOrderNumbers(date);

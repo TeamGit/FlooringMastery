@@ -10,12 +10,19 @@ namespace FlooringMastery.UI.Screens
 {
     class HomeScreen : Screen
     {
-        public override void Display()
+        protected override void DisplayHeader()
         {
-           
-            Startup.Start();
+            string companyName = "Welcome to SWC Corp";
+            Console.WriteLine(String.Format("{0," + (Console.WindowWidth + companyName.Length) / 2 + "}", companyName));
+            string slogan = "Where the floor is the limit";
+            Console.WriteLine(String.Format("{0," + (Console.WindowWidth + slogan.Length) / 2 + "}", slogan));
+            Console.WriteLine();
+            Console.WriteLine();
+        }
 
-            DisplayMainHeader();
+        public override void Display()
+        {      
+            Startup.Start();
 
             Console.WriteLine("ORDER MANAGEMENT: MAIN MENU\n");
             Console.WriteLine("Select from options 1-5:");
@@ -31,7 +38,6 @@ namespace FlooringMastery.UI.Screens
                 Screen.JumpScreen(next);
         }
             
-
 
         private Screen GetKeyPress()
         {

@@ -48,7 +48,7 @@ namespace FlooringMastery.UI
         public static void Go()
         {
             var Screen = new HomeScreen();
-            Screen.Display();
+            Screen.Run();
         }
 
         public static void DatePrompt(string prompt)

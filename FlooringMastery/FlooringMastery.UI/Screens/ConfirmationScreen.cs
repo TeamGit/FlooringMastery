@@ -22,7 +22,6 @@ namespace FlooringMastery.UI.Screens
 
         public void Display(Order order, DateTime dateTimeObject)
         {
-            DisplayMainHeader();
             EditMode = true;
             MyOrder = Manipulation.CloneOrder(order);
             myDateTime = dateTimeObject;
@@ -38,8 +37,6 @@ namespace FlooringMastery.UI.Screens
 
         public void Display(List<Order> orders, DateTime dateTimeObject)
         {
-            DisplayHeader();
-
             myOrders.Clear();
             myDateTime = dateTimeObject;
 
