@@ -38,7 +38,6 @@ namespace FlooringMastery.UI.Screens
                 Screen.JumpScreen(next);
         }
             
-
         private Screen GetKeyPress()
         {
             while (true)
