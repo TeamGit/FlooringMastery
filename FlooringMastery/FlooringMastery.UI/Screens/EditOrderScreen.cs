@@ -21,14 +21,14 @@ namespace FlooringMastery.UI.Screens
             var date = Input.GetDate("Enter the date of the order: ");
             Output.DisplayAllOrders(date);
 
-
+            //there needs to be some cases for if the date is not found, giving the user an option 
+            //like the message "There's no order for that date. Press 1 to try another date or 
+            //enter to return to main menu." and then the switch cases for that.
 
             var orderNumbers = Calculation.GetAllOrderNumbers(date);
             var allOrders = SetTestOrProd.MyOrderObject.LoadOrders(date);
 
-            //going to work on code for changed input request here
-            int orderNumberToEdit = Input.GetInt("There are no orders for that date. Press 1 to try" +
-                                                 "\nanother date or enter to return to main menu.");
+            int orderNumberToEdit = Input.GetInt("Enter the number of the order to edit: ");
 
             if (orderNumbers.Contains(orderNumberToEdit))
             {

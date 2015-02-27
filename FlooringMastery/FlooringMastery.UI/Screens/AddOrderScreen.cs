@@ -17,27 +17,27 @@ namespace FlooringMastery.UI.Screens
             return "ADD AN ORDER";
         }
 
-        public override void Display()
-        {
-            WorkingMemory.OrderList.Clear();
-            Console.WriteLine();
-            SetTestOrProd.MyOrderObject.LoadOrderFile(Input.GetDate("Enter the date of the order: "));
-            Console.WriteLine();
+        //public override void Display()
+        //{
+            //WorkingMemory.OrderList.Clear();
+            //Console.WriteLine();
+            //SetTestOrProd.MyOrderObject.LoadOrderFile(Input.GetDate("Enter the date of the order: "));
+            //Console.WriteLine();
 
-            Order newOrder = Input.QueryUserForOrder();
+            //Order newOrder = Input.QueryUserForOrder();
 
-            Console.Clear();
-            Output.DisplaySingleOrder(newOrder);
+            //Console.Clear();
+            //Output.DisplaySingleOrder(newOrder);
 
-            var doCommit = Input.QueryForCommit();
+            //var doCommit = Input.QueryForCommit();
 
-            ChangeOrder.CommitAdditionsToFile(doCommit, newOrder);
-            Output.DisplayCommitResults(doCommit);
+            //ChangeOrder.CommitAdditionsToFile(doCommit, newOrder);
+            //Output.DisplayCommitResults(doCommit);
 
-            Screen next = new HomeScreen();
-            Screen.JumpScreen(next);
+            //Screen next = new HomeScreen();
+            //Screen.JumpScreen(next);
 
-        }
+        //}
         public override void Display()
         {
             throw new NotImplementedException();

@@ -18,7 +18,7 @@ namespace FlooringMastery.UI.Screens
 
         public override void Display()
         {
-            var date = Input.GetDate("Enter the date of the file from which you would like to remove an order: ");
+            var date = Input.GetDate("Enter the date of the file to remove: ");
             Output.DisplayAllOrders(date);
 
 
