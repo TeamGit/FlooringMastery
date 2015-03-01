@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using FlooringMaster.Data;
 using FlooringMastery.Models;
+using FlooringMastery.UI;
 
 namespace FlooringMastery.Tests
 {
@@ -63,5 +64,20 @@ namespace FlooringMastery.Tests
             Assert.AreEqual(myTestRepo.FakeDB[i].CustomerName, expected);
         }
 
+
+        //[TestCase(" ", "Press enter to continue")]
+        //public void PauseForReading(string str, string expected)
+        //{
+        //    //Output readingTest = new Output;
+        //    string result = PauseForReading(str);
+        //        Assert.AreEqual(result, expected);
+        //}
+
+        //public void Go(var str, var expected)
+        //{
+        //    Output Homescreen = new Output();
+        //    var result = new HomeScreen;
+        //    Assert.AreEqual(result, expected);
+        //}
     }
 }
