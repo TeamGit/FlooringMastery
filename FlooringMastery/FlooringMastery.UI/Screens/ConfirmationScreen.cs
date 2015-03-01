@@ -46,7 +46,7 @@ namespace FlooringMastery.UI.Screens
                 myOrders.Add(order);
             }
 
-            Output.Prompt("The update list of orders is shown, would you like to save changes to file?");
+            Output.Prompt("The updated list of orders is shown, would you like to save changes to file?");
 
             Screen next = GetKeyPress();
             if (next != null)

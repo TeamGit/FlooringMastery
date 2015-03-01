@@ -21,10 +21,9 @@ namespace FlooringMastery.UI
             Console.WriteLine("Area: {0}", myOrder.Area);
             Console.WriteLine("Product: {0}", myOrder.ProductType);
             string lineOutputFormat = "{0,-30} {1,10:C}";
-            Console.WriteLine(lineOutputFormat, "\tTotal Labor cost: ", myOrder.TotalLaborCost);
-            Console.WriteLine(lineOutputFormat, "\tTotal Material cost: ", myOrder.TotalMaterialCost);
-            Console.WriteLine(lineOutputFormat, "\tTotal Tax cost: ", myOrder.TotalTax);
-
+            Console.WriteLine(lineOutputFormat, "\tTotal Labor Cost: ", myOrder.TotalLaborCost);
+            Console.WriteLine(lineOutputFormat, "\tTotal Material Cost: ", myOrder.TotalMaterialCost);
+            Console.WriteLine(lineOutputFormat, "\tTotal Tax: ", myOrder.TotalTax);
         }
         
         public static void DisplayAllOrders(DateTime dateObject)
@@ -37,11 +36,9 @@ namespace FlooringMastery.UI
             }
         }
 
-
-
         public static void PauseForReading()
         {
-            Console.WriteLine("\n(press enter to continue)");
+            Console.WriteLine("\n(Press enter to continue)");
             Console.ReadLine();
         }
 

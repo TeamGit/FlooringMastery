@@ -21,11 +21,11 @@ namespace FlooringMastery.UI.Screens
         protected virtual void DisplayHeader()
         {
             string companyName = "SWC Corp";
-            Console.WriteLine(String.Format("{0," + (Console.WindowWidth + companyName.Length) / 2 + "}", companyName));
+            Console.WriteLine("{0," + (Console.WindowWidth + companyName.Length) / 2 + "}", companyName);
 
             string screenTitle = this.GetScreenTitle();
             if (screenTitle != null)
-                Console.WriteLine(String.Format("{0," + (Console.WindowWidth + screenTitle.Length) / 2 + "}", screenTitle));
+                Console.WriteLine("{0," + (Console.WindowWidth + screenTitle.Length) / 2 + "}", screenTitle);
             Console.WriteLine();
         }
 

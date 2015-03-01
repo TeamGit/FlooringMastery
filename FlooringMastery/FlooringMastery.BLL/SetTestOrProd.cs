@@ -20,7 +20,7 @@ namespace FlooringMastery.BLL
         /// <param name="TestMode"></param>
         public static void SetTestOrProdMode(bool TestMode)
         {
-            if (TestMode == true)
+            if (TestMode)
             {
                 MyOrderObject = new TestOrders();
                 MyStatesObject = new TestStates();

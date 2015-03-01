@@ -17,30 +17,25 @@ namespace FlooringMastery.UI.Screens
             return "ADD AN ORDER";
         }
 
-        //public override void Display()
-        //{
-            //WorkingMemory.OrderList.Clear();
-            //Console.WriteLine();
-            //SetTestOrProd.MyOrderObject.LoadOrderFile(Input.GetDate("Enter the date of the order: "));
-            //Console.WriteLine();
-
-            //Order newOrder = Input.QueryUserForOrder();
-
-            //Console.Clear();
-            //Output.DisplaySingleOrder(newOrder);
-
-            //var doCommit = Input.QueryForCommit();
-
-            //ChangeOrder.CommitAdditionsToFile(doCommit, newOrder);
-            //Output.DisplayCommitResults(doCommit);
-
-            //Screen next = new HomeScreen();
-            //Screen.JumpScreen(next);
-
-        //}
         public override void Display()
         {
-            throw new NotImplementedException();
+            Console.WriteLine();
+            SetTestOrProd.MyOrderObject.LoadOrders(Input.GetDate("Enter the date of the order: "));
+            Console.WriteLine();
+
+            Order newOrder = Input.GetOrder();
+            Console.Clear();
+
+            Output.DisplayOrder(newOrder);
+
+            var confirm = new ConfirmationScreen();
+
+            //confirm.Display(newOrder, date);
+            Output.PauseForReading();
+
+            Screen HomeScreen = new HomeScreen();
+            Screen.JumpScreen(HomeScreen);
         }
+
     }
 }
