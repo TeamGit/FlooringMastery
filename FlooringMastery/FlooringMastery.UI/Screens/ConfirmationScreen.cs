@@ -25,12 +25,12 @@ namespace FlooringMastery.UI.Screens
             return "EDIT AN ORDER";
         }
 
-        public void Display(Order order, DateTime dateTimeObject)
+        public void Display(Order order, DateTime dateTimeObject, bool editMode =true)
         {
             Console.Clear();
             this.DisplayHeader();
 
-            EditMode = true;
+            EditMode = editMode;
             MyOrder = Manipulation.CloneOrder(order);
             myDateTime = dateTimeObject;
 
@@ -83,7 +83,13 @@ namespace FlooringMastery.UI.Screens
                             myOrders.Remove(OldOrder);
                             myOrders.Add(MyOrder);
                         }
-                        SetTestOrProd.MyOrderObject.SaveOrdersToFile(myDateTime, myOrders);
+                        else
+                        {
+                            myOrders = SetTestOrProd.MyOrderObject.LoadOrders(myDateTime);
+                            myOrders.Add(MyOrder);
+                            SetTestOrProd.MyOrderObject.SaveOrdersToFile(myDateTime, myOrders);
+                        }
+                        
                         return new HomeScreen();
                     case 'N':
                     case 'n':
