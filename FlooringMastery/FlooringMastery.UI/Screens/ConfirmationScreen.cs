@@ -20,15 +20,23 @@ namespace FlooringMastery.UI.Screens
 
         }
 
+        protected override string GetScreenTitle()
+        {
+            return "EDIT AN ORDER";
+        }
+
         public void Display(Order order, DateTime dateTimeObject)
         {
+            Console.Clear();
+            this.DisplayHeader();
+
             EditMode = true;
             MyOrder = Manipulation.CloneOrder(order);
             myDateTime = dateTimeObject;
 
-            Output.DisplayOrder(order);
+            Output.DisplayOrder(order, false);
 
-            Output.Prompt("The edited order is shown, would you like to save changes to file?");
+            Output.Prompt("The new order is shown, would you like to save these changes to file?");
 
             Screen next = GetKeyPress();
             if (next != null)
@@ -37,6 +45,9 @@ namespace FlooringMastery.UI.Screens
 
         public void Display(List<Order> orders, DateTime dateTimeObject)
         {
+            Console.Clear();
+            this.DisplayHeader();
+            
             myOrders.Clear();
             myDateTime = dateTimeObject;
 

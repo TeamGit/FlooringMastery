@@ -21,8 +21,22 @@ namespace FlooringMaster.Data
         public List<Order> LoadOrders(DateTime fileDate)
         {
             List<Order> orders = new List<Order>();
-            FakeDB = new List<Order>();
 
+            if (FakeDB != null)
+            {
+                if (FakeDB.Any())
+                {
+                    foreach (var order in FakeDB)
+                    {
+                        orders.Add(order);
+                    }
+                }
+            }
+            else
+            {
+                FakeDB = new List<Order>();
+            }
+        
             Order myOrder = new Order();
             Order myOrder1 = new Order();
             Order myOrder2 = new Order();
@@ -73,13 +87,7 @@ namespace FlooringMaster.Data
 
             orders.Add(myOrder2);
 
-            if (FakeDB.Any())
-            {
-                foreach (var order in FakeDB)
-                {
-                    orders.Add(order);
-                }
-            }
+
 
             return orders;
 

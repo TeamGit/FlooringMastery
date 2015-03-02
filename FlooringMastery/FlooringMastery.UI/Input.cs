@@ -28,6 +28,19 @@ namespace FlooringMastery.UI
             } while (true);
         }
 
+        public static string GetNonEmptyString(string prompt)
+        {
+            string input;
+
+            do
+            {
+                Output.Prompt(prompt);
+                input = Console.ReadLine();
+            } while (String.IsNullOrEmpty(input));
+
+            return input.Trim();
+        }
+
         public static int GetInt(string prompt)
         {
             int myInt;
@@ -47,6 +60,27 @@ namespace FlooringMastery.UI
             } while (true);
         }
 
+        public static decimal GetDecimal(string prompt)
+        {
+            decimal myDecimal;
+
+            do
+            {
+                Output.Prompt(prompt);
+                string stringInput = Console.ReadLine();
+                if (String.IsNullOrEmpty(stringInput))
+                {
+                    continue;
+                }
+
+                if (decimal.TryParse(stringInput, out myDecimal))
+                {
+                    return myDecimal;
+                }
+            } while (true);
+        }
+
+
         public static string GetStringEdit(string currentValue)
         {
             string input = Console.ReadLine();
@@ -56,6 +90,8 @@ namespace FlooringMastery.UI
             }
             return input.Trim();
         }
+
+        
 
         public static int GetIntEdit(int currentValue)
         {
@@ -87,68 +123,19 @@ namespace FlooringMastery.UI
             return currentValue;
         }
 
-        //public static Order GetOrder()
-        //{
-        //    Order myOrder = new Order();
-                      
-        //    myOrder.CustomerName = (GetStringEdit("Enter the customer name: ")).ToUpper();
+        public static Order GetOrder()
+        {
+            Order myOrder = new Order();
 
-        //    State tempState = GetState();
+            myOrder.CustomerName = GetNonEmptyString("Please enter the customer's name.");
+            myOrder.StateAbbreviation = GetNonEmptyString("Please enter the State Abbreviation");
+            myOrder.Area = GetDecimal("Please enter the are of the floor in feet squared.");
+            myOrder.ProductType = GetNonEmptyString("Please enter the product type.");
+            myOrder.TotalLaborCost = GetDecimal("Please enter the total labor cost.");
+            myOrder.TotalMaterialCost = GetDecimal("Please enter the total material cost.");
+            myOrder.TotalTax = GetDecimal("Please enter the total tax.");
 
-        //    myOrder.StateAbbreviation = tempState.StateAbbreviation.ToString();
-        //    myOrder.TaxRate = tempState.TaxRate;
-
-        //    Product tempProduct = GetProduct();
-        //    myOrder.ProductType = tempProduct.ProductType.ToString();
-        //    myOrder.CostPerSquareFoot = tempProduct.CostPerSquareFoot;
-        //    myOrder.LaborCostPerSquareFoot = tempProduct.LaborCostPerSquareFoot;
-
-        //    myOrder.Area = GetDecimalEdit("Enter the area of the floor in feet squared: ");
-            
-        //    myOrder = ChangeOrder.CalculateRemainingProperties(myOrder);
-
-        //    return myOrder;
-        //}
-
-        //public static State GetState()
-        //{
-        //    bool gotState = false;
-        //    string tempState;
-
-        //    do
-        //    {
-        //        tempState = GetStringEdit("Enter the state abbreviation: ");
-
-        //        if (ProdStates.any(s => s.StateAbbreviation.ToString().Equals(tempState, StringComparison.OrdinalIgnoreCase)))
-        //        {
-        //            gotState = true;
-        //        }
-        //        else
-        //        {
-        //            Console.WriteLine("That isn't recognized as a state in which SWC currently operates.\nPlease try again.");
-        //            Console.WriteLine("SWC currently operates in the following states: ");
-        //            foreach (var state in WorkingMemory.StateList)
-        //            {
-        //                Console.Write("{0}    ", state.StateAbbreviation);
-        //            }
-        //            Console.WriteLine();
-        //        }
-
-        //        Log("state abbreviation", tempState);
-
-        //    } while (!gotState);
-
-        //    var temp = from s in WorkingMemory.StateList
-        //               where s.StateAbbreviation.ToString().Equals(tempState, StringComparison.OrdinalIgnoreCase)
-        //               select s;
-
-        //    State myState = new State();
-
-        //    foreach (var s in temp)
-        //    {
-        //        myState = s;
-        //    }
-        //    return myState;
-        //}
+            return myOrder;
+        }
     }
 }

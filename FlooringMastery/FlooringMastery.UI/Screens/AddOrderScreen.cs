@@ -19,18 +19,16 @@ namespace FlooringMastery.UI.Screens
 
         public override void Display()
         {
-            Console.WriteLine();
-            SetTestOrProd.MyOrderObject.LoadOrders(Input.GetDate("Enter the date of the order: "));
-            Console.WriteLine();
-
+            var date = Input.GetDate("Enter the date of the order: ");
+            
             Order newOrder = Input.GetOrder();
             Console.Clear();
 
-            Output.DisplayOrder(newOrder);
+            Output.DisplayOrder(newOrder, false);
 
             var confirm = new ConfirmationScreen();
 
-            //confirm.Display(newOrder, date);
+            confirm.Display(newOrder, date);
             Output.PauseForReading();
 
             Screen HomeScreen = new HomeScreen();

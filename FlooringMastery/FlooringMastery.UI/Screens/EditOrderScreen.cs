@@ -36,7 +36,7 @@ namespace FlooringMastery.UI.Screens
 
                 var confirm = new ConfirmationScreen();
 
-                //confirm.Display(newOrder);
+                confirm.Display(newOrder, date);
 
             }
             else

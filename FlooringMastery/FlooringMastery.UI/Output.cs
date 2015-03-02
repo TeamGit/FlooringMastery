@@ -12,10 +12,11 @@ namespace FlooringMastery.UI
 {
     public static class Output
     {
-        public static void DisplayOrder(Order myOrder)
+        public static void DisplayOrder(Order myOrder, bool ShowOrderNumber=true)
         {
             Console.WriteLine("");
-            Console.WriteLine("Order Number: {0}", myOrder.OrderNumber);
+            if (ShowOrderNumber)
+                Console.WriteLine("Order Number: {0}", myOrder.OrderNumber);
             Console.WriteLine("Customer Name: {0}", myOrder.CustomerName);
             Console.WriteLine("State: {0}", myOrder.StateAbbreviation);
             Console.WriteLine("Area: {0}", myOrder.Area);
