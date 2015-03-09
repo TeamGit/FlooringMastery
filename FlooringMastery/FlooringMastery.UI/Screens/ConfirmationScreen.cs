@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FlooringMastery.BLL;
 using FlooringMastery.Models;
+using FlooringMaster.Data;
 
 namespace FlooringMastery.UI.Screens
 {
@@ -80,16 +81,18 @@ namespace FlooringMastery.UI.Screens
                         {
                             var OldOrders = SetTestOrProd.MyOrderObject.LoadOrders(myDateTime);
                             var OldOrder = OldOrders.Where(o => o.OrderNumber == MyOrder.OrderNumber).FirstOrDefault();
-                            myOrders.Remove(OldOrder);
-                            myOrders.Add(MyOrder);
+                            OldOrders.Remove(OldOrder);
+                            myOrders = OldOrders;
                         }
                         else
                         {
                             myOrders = SetTestOrProd.MyOrderObject.LoadOrders(myDateTime);
                             myOrders.Add(MyOrder);
-                            SetTestOrProd.MyOrderObject.SaveOrdersToFile(myDateTime, myOrders);
                         }
-                        
+                        //Change below line to settestorprod object
+                        ProdOrders myProdObject = new ProdOrders();
+                        myProdObject.SaveOrdersToFile(myDateTime, myOrders);
+                                                
                         return new HomeScreen();
                     case 'N':
                     case 'n':
