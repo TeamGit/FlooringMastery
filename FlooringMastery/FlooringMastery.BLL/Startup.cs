@@ -13,8 +13,14 @@ namespace FlooringMastery.BLL
 {
     public static class Startup
     {
+        /// <summary>
+        /// set bool TestMode based on the app settings
+        /// </summary>
         public static bool TestMode = Properties.Settings.Default.TestMode;
 
+        /// <summary>
+        /// Set test or prod mode, based on a bool obtained from app settings
+        /// </summary>
         public static void Start()
         {
             SetTestOrProd.SetTestOrProdMode(TestMode);

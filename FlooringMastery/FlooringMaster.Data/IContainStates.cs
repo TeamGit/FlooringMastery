@@ -8,6 +8,9 @@ using FlooringMastery.Models;
 
 namespace FlooringMaster.Data
 {
+    /// <summary>
+    /// State containing data objects
+    /// </summary>
     public interface IContainStates
     {
         List<State> GetStates();

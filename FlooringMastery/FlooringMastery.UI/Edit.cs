@@ -9,6 +9,11 @@ namespace FlooringMastery.UI.Screens
 {
     class Edit
     {
+        /// <summary>
+        /// Given an order object, prompt the user with each current value and set a new value for each field in that order object.  Return the edited object.
+        /// </summary>
+        /// <param name="myOrder"></param>
+        /// <returns></returns>
         public static Order OrderEdit(Order myOrder)
         {
             Order myShinyNewOrder = new Order();

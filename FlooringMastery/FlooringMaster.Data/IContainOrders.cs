@@ -7,6 +7,9 @@ using FlooringMastery.Models;
 
 namespace FlooringMaster.Data
 {
+    /// <summary>
+    /// Interface for the order containing data objects
+    /// </summary>
     public interface IContainOrders
     {
         List<Order> LoadOrders(DateTime fileDate);

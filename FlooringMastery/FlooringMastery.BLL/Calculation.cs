@@ -10,6 +10,11 @@ namespace FlooringMastery.BLL
 {
     public static class Calculation
     {
+        /// <summary>
+        /// Given a DateTime value, load all the orders for that date and return a list of the ordernumbers
+        /// </summary>
+        /// <param name="orderDateTime"></param>
+        /// <returns></returns>
         public static List<int> GetAllOrderNumbers(DateTime orderDateTime)
         {
             var allOrders = SetTestOrProd.MyOrderObject.LoadOrders(orderDateTime);

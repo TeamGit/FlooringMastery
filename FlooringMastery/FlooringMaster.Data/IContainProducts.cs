@@ -7,6 +7,9 @@ using FlooringMastery.Models;
 
 namespace FlooringMaster.Data
 {
+    /// <summary>
+    /// interface for the product containing data objects
+    /// </summary>
     public interface IContainProducts
     {
         List<Product> GetProducts();
