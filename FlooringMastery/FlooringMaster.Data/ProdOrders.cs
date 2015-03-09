@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using FlooringMastery.Models;
@@ -12,45 +13,61 @@ namespace FlooringMaster.Data
     public class ProdOrders : IContainOrders
     {
         /// <summary>
-        /// This method is under construction
+        /// This method has not been tested in the console, or via unit testing.
         /// </summary>
         /// <param name="fileDate"></param>
         /// <returns></returns>
         public List<Order> LoadOrders(DateTime fileDate)
         {
-            //string filePath = DateToFileName(fileDate);
-            //using (StreamReader sr = new StreamReader(filePath))
-            //    while (!sr.EndOfStream)
-            //    {
-            //        string WholeOrder = sr.ReadLine();
-            //        if (!string.IsNullOrEmpty(WholeOrder))
-            //        {
-            //            string[] WholeOrderArray = WholeOrder.Split(',');
+            List<Order> listOrders = new List<Order>();
+            string filePath = DateToFileName(fileDate);
 
-            //            if (WholeOrderArray[0] == "OrderNumber")
-            //            {
-            //                WholeOrder = sr.ReadLine();
-            //                if (!string.IsNullOrEmpty(WholeOrder))
-            //                {
-            //                    WholeOrderArray = WholeOrder.Split(',');
-            //                }
-            //            }
+            using (StreamReader sr = new StreamReader(filePath))
+                while (!sr.EndOfStream)
+                {
+                    string WholeOrder = sr.ReadLine();
+                    if (!string.IsNullOrEmpty(WholeOrder))
+                    {
+                        string[] WholeOrderArray = WholeOrder.Split(',');
 
-            //            Order newOrder = new Order();
+                        if (WholeOrderArray[0] == "OrderNumber")
+                        {
+                            WholeOrder = sr.ReadLine();
+                            if (!string.IsNullOrEmpty(WholeOrder))
+                            {
+                                WholeOrderArray = WholeOrder.Split(',');
+                            }
+                        }
 
+                        Order newOrder = new Order();
 
-            //            return ()
-            //            ;
-            return;
+                        newOrder.OrderNumber = int.Parse(WholeOrderArray[0]);
+                        newOrder.CustomerName = WholeOrderArray[1];
+                        newOrder.ProductType = WholeOrderArray[2];
+                        newOrder.StateAbbreviation = WholeOrderArray[3];
+                        newOrder.TaxRate = decimal.Parse(WholeOrderArray[4]);
+                        newOrder.CostPerSquareFoot = decimal.Parse(WholeOrderArray[5]);
+                        newOrder.LaborCostPerSquareFoot = decimal.Parse(WholeOrderArray[6]);
+                        newOrder.Area = decimal.Parse(WholeOrderArray[7]);
+                        newOrder.TotalLaborCost = decimal.Parse(WholeOrderArray[8]);
+                        newOrder.TotalMaterialCost = decimal.Parse(WholeOrderArray[9]);
+                        newOrder.TotalTax = decimal.Parse(WholeOrderArray[10]);
+                        newOrder.TotalCost = decimal.Parse(WholeOrderArray[11]);
+
+                        listOrders.Add(newOrder);
+                    }
+                }
+
+            return listOrders;
+
         }
 
         /// <summary>
-                    /// Given a date and a list of orders, create a file named using that date, write a header, and write each order to file.
-                    /// </summary>
-                    /// <param name="fileDate"></param>
-                    /// <param name="orders"></param>
-                public
-            void SaveOrdersToFile(DateTime fileDate, List<Order> orders)
+        /// Given a date and a list of orders, create a file named using that date, write a header, and write each order to file.
+        /// </summary>
+        /// <param name="fileDate"></param>
+        /// <param name="orders"></param>
+        public void SaveOrdersToFile(DateTime fileDate, List<Order> orders)
         {
             string filePath = DateToFileName(fileDate);
             File.Create(filePath).Close();
@@ -83,11 +100,11 @@ namespace FlooringMaster.Data
             }
         }
 
-    public static string DateToFileName(DateTime fileDate)
-    {
+        public static string DateToFileName(DateTime fileDate)
+        {
             string strDate = String.Format("{0:MMddyyyy}", fileDate);
             string filePath = "Orders_" + strDate + ".txt";
             return filePath;
-    }
+        }
     }
 }
