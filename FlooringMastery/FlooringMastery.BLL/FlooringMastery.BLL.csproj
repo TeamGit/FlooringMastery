@@ -50,6 +50,7 @@
     </Compile>
     <Compile Include="SetTestOrProd.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Validation.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FlooringMaster.Data\FlooringMastery.Data.csproj">
