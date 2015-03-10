@@ -12,6 +12,11 @@ namespace FlooringMastery.BLL
 {
     public class Manipulation
     {
+        /// <summary>
+        /// Given an order object, serialize it and then desirialize it, returning a different order object with the same values as the input object.
+        /// </summary>
+        /// <param name="myOrder"></param>
+        /// <returns></returns>
         public static Order CloneOrder(Order myOrder)
         {
             using (var ms = new MemoryStream())
