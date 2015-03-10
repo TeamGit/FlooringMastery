@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using NUnit.Framework;
 using FlooringMaster.Data;
+using FlooringMastery.BLL;
 using FlooringMastery.Models;
 using FlooringMastery.UI;
 
@@ -64,20 +66,19 @@ namespace FlooringMastery.Tests
             Assert.AreEqual(myTestRepo.FakeDB[i].CustomerName, expected);
         }
 
+       [Test]
+        public void TestCloneOrder()
+        {
+            Order newOrder = new Order();
+            newOrder.CustomerName = "Mr. Test";
+            newOrder.Area = 420;
+            newOrder.ProductType = "Test Material";
 
-        //[TestCase(" ", "Press enter to continue")]
-        //public void PauseForReading(string str, string expected)
-        //{
-        //    //Output readingTest = new Output;
-        //    string result = PauseForReading(str);
-        //        Assert.AreEqual(result, expected);
-        //}
+            var result = Manipulation.CloneOrder(newOrder);
 
-        //public void Go(var str, var expected)
-        //{
-        //    Output Homescreen = new Output();
-        //    var result = new HomeScreen;
-        //    Assert.AreEqual(result, expected);
-        //}
+            Assert.AreEqual(newOrder.CustomerName, result.CustomerName);
+            Assert.AreEqual(newOrder.Area, result.Area);
+            Assert.AreEqual(newOrder.ProductType, result.ProductType);
+        }
     }
 }
