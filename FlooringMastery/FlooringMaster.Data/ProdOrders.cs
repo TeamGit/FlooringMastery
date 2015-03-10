@@ -39,6 +39,10 @@ namespace FlooringMaster.Data
                                 {
                                     WholeOrderArray = WholeOrder.Split(',');
                                 }
+                                else
+                                {
+                                    return listOrders;
+                                }
                             }
 
                             Order newOrder = new Order();

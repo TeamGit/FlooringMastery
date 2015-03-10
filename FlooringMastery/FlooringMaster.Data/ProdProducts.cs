@@ -12,15 +12,13 @@ namespace FlooringMaster.Data
     public class ProdProducts : IContainProducts
     {
         /// <summary>
-        /// Read the product specification file, store the list in working memory.
-        /// </summary>
+        /// Read the product specification file, return a list or products.
         /// <returns></returns>
-        List<Product> IContainProducts.GetProducts()
+        public List<Product> GetProducts()
         {
-            //Are we creatign a new class in the BLL for this or will the new list product be located in one of the 
-            //existing classes in the BLL?  Or is this not needed anymore?  Same question at the bottom of this class
-            //WorkingMemory.ProductList.Clear();
-            using (StreamReader sr = new StreamReader(@"..\..\..\Documents\Products.txt"))
+            List<Product> myProductList = new List<Product>();
+
+            using (StreamReader sr = new StreamReader(@"Products.txt"))
                 while (!sr.EndOfStream)
                 {
                     string WholeProduct = sr.ReadLine();
@@ -37,9 +35,6 @@ namespace FlooringMaster.Data
                             }
 
                         }
-
-                        //Is this moving to calculation in the BLL?
-
                         Product newProduct = new Product();
 
                         newProduct.ProductType = WholeProductArray[0];
@@ -56,9 +51,7 @@ namespace FlooringMaster.Data
                             newProduct.LaborCostPerSquareFoot = laborCostPerSquareFoot;
                         }
 
-                        //Are we creatign a new class in the BLL for this or will the new list product be located in one of the existing classes in the BLL? Or is this not needed anymore?
-                        //WorkingMemory.ProductList.Add(newProduct);
-
+                        myProductList.Add(newProduct);
                     }
                 }
             return new List<Product>();

@@ -20,8 +20,14 @@ namespace FlooringMastery.UI.Screens
         public override void Display()
         {
             var date = Input.GetDate("Enter the date of the order: ");
-            
+
+            if (!BLL.Calculation.DoesOrderFileExist(date))
+            {
+                SetTestOrProd.MyOrderObject.SaveOrdersToFile(date, new List<Order>());
+            }
+
             Order newOrder = Input.GetOrder();
+            
             Console.Clear();
 
             Output.DisplayOrder(newOrder, false);

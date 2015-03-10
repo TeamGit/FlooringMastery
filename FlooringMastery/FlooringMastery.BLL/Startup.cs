@@ -13,6 +13,8 @@ namespace FlooringMastery.BLL
 {
     public static class Startup
     {
+        public static bool firstRun = true;
+
         /// <summary>
         /// set bool TestMode based on the app settings
         /// </summary>
@@ -24,8 +26,7 @@ namespace FlooringMastery.BLL
         public static void Start()
         {
             SetTestOrProd.SetTestOrProdMode(TestMode);
-            SetTestOrProd.MyStatesObject.GetStates();
-            SetTestOrProd.MyProductObject.GetProducts();
+            firstRun = false;
         }
     }
 }

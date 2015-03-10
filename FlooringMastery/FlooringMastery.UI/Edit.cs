@@ -39,15 +39,28 @@ namespace FlooringMastery.UI.Screens
             Output.PromptPlusCurrentValueStr("Total Labor cost: ", myOrder.TotalLaborCost.ToString());
             Console.SetCursorPosition("Total Labor cost: ".Length, Console.CursorTop);
             myShinyNewOrder.TotalLaborCost = Input.GetDecimalEdit(myOrder.TotalLaborCost);
+            
+            Output.PromptPlusCurrentValueStr("Labor Cost Per Square Foot: ", myOrder.LaborCostPerSquareFoot.ToString());
+            Console.SetCursorPosition("Labor Cost Per Square Foot: ".Length, Console.CursorTop);
+            myShinyNewOrder.LaborCostPerSquareFoot = Input.GetDecimalEdit(myOrder.LaborCostPerSquareFoot);
 
             Output.PromptPlusCurrentValueStr("Total Material cost: ", myOrder.TotalMaterialCost.ToString());
             Console.SetCursorPosition("Total Material cost: ".Length, Console.CursorTop);
             myShinyNewOrder.TotalMaterialCost = Input.GetDecimalEdit(myOrder.TotalMaterialCost);
-            
+
+            Output.PromptPlusCurrentValueStr("Cost Per Square Foot: ", myOrder.CostPerSquareFoot.ToString());
+            Console.SetCursorPosition("Cost Per Square Foot: ".Length, Console.CursorTop);
+            myShinyNewOrder.CostPerSquareFoot = Input.GetDecimalEdit(myOrder.CostPerSquareFoot);
+
+            Output.PromptPlusCurrentValueStr("Tax Rate: ", myOrder.TaxRate.ToString());
+            Console.SetCursorPosition("Tax Rate: ".Length, Console.CursorTop);
+            myShinyNewOrder.TaxRate = Input.GetDecimalEdit(myOrder.TaxRate);
+          
             Output.PromptPlusCurrentValueStr("Total Tax cost: ", myOrder.TotalTax.ToString());
             Console.SetCursorPosition("Total Tax cost: ".Length, Console.CursorTop);
             myShinyNewOrder.TotalTax = Input.GetDecimalEdit(myOrder.TotalTax);
 
+            myShinyNewOrder.OrderNumber = myOrder.OrderNumber;
             return myShinyNewOrder;
         }
     }

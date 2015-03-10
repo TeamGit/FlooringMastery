@@ -21,6 +21,8 @@ namespace FlooringMastery.UI.Screens
         protected virtual void DisplayHeader()
         {
             string companyName = "SWC Corp";
+            if (Startup.TestMode)
+                Console.WriteLine("********TEST MODE ENABLED**********");
             Console.WriteLine("{0," + (Console.WindowWidth + companyName.Length) / 2 + "}", companyName);
 
             string screenTitle = this.GetScreenTitle();

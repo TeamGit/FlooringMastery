@@ -14,6 +14,7 @@ namespace FlooringMastery.UI.Screens
         private List<Order>  myOrders = new List<Order>(); 
         private DateTime myDateTime = new DateTime();
         private bool EditMode;
+        private bool DeleteMode;
         private Order MyOrder = new Order();
 
         public override void Display()
@@ -26,7 +27,7 @@ namespace FlooringMastery.UI.Screens
             return "EDIT AN ORDER";
         }
 
-        public void Display(Order order, DateTime dateTimeObject, bool editMode =true)
+        public void Display(Order order, DateTime dateTimeObject, bool editMode = true)
         {
             Console.Clear();
             this.DisplayHeader();
@@ -44,8 +45,11 @@ namespace FlooringMastery.UI.Screens
                 Screen.JumpScreen(next);
         }
 
-        public void Display(List<Order> orders, DateTime dateTimeObject)
+        public void Display(List<Order> orders, DateTime dateTimeObject, bool deleteMode = false)
         {
+            EditMode = false;
+            DeleteMode = deleteMode;
+
             Console.Clear();
             this.DisplayHeader();
             
@@ -83,15 +87,18 @@ namespace FlooringMastery.UI.Screens
                             var OldOrder = OldOrders.Where(o => o.OrderNumber == MyOrder.OrderNumber).FirstOrDefault();
                             OldOrders.Remove(OldOrder);
                             myOrders = OldOrders;
+                            myOrders.Add(MyOrder);
+                        }
+                        else if (DeleteMode)
+                        {
+                            
                         }
                         else
                         {
                             myOrders = SetTestOrProd.MyOrderObject.LoadOrders(myDateTime);
                             myOrders.Add(MyOrder);
                         }
-                        //Change below line to settestorprod object
-                        ProdOrders myProdObject = new ProdOrders();
-                        myProdObject.SaveOrdersToFile(myDateTime, myOrders);
+                        SetTestOrProd.MyOrderObject.SaveOrdersToFile(myDateTime, myOrders);
                                                 
                         return new HomeScreen();
                     case 'N':

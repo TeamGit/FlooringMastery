@@ -22,6 +22,7 @@ namespace FlooringMastery.UI.Screens
 
         public override void Display()
         {      
+            if (Startup.firstRun)
             Startup.Start();
 
             Console.WriteLine("ORDER MANAGEMENT: MAIN MENU\n");
