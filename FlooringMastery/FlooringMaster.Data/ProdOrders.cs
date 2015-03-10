@@ -13,7 +13,7 @@ namespace FlooringMaster.Data
     public class ProdOrders : IContainOrders
     {
         /// <summary>
-        /// This method has not been tested in the console, or via unit testing.
+        /// Given a date object, return a list of orders from the file for that date.  If there is no file for that date, return null.
         /// </summary>
         /// <param name="fileDate"></param>
         /// <returns></returns>
@@ -22,43 +22,48 @@ namespace FlooringMaster.Data
             List<Order> listOrders = new List<Order>();
             string filePath = DateToFileName(fileDate);
 
-            using (StreamReader sr = new StreamReader(filePath))
-                while (!sr.EndOfStream)
-                {
-                    string WholeOrder = sr.ReadLine();
-                    if (!string.IsNullOrEmpty(WholeOrder))
+            if (File.Exists(filePath))
+            {
+                using (StreamReader sr = new StreamReader(filePath))
+                    while (!sr.EndOfStream)
                     {
-                        string[] WholeOrderArray = WholeOrder.Split(',');
-
-                        if (WholeOrderArray[0] == "OrderNumber")
+                        string WholeOrder = sr.ReadLine();
+                        if (!string.IsNullOrEmpty(WholeOrder))
                         {
-                            WholeOrder = sr.ReadLine();
-                            if (!string.IsNullOrEmpty(WholeOrder))
+                            string[] WholeOrderArray = WholeOrder.Split(',');
+
+                            if (WholeOrderArray[0] == "OrderNumber")
                             {
-                                WholeOrderArray = WholeOrder.Split(',');
+                                WholeOrder = sr.ReadLine();
+                                if (!string.IsNullOrEmpty(WholeOrder))
+                                {
+                                    WholeOrderArray = WholeOrder.Split(',');
+                                }
                             }
+
+                            Order newOrder = new Order();
+
+                            newOrder.OrderNumber = int.Parse(WholeOrderArray[0]);
+                            newOrder.CustomerName = WholeOrderArray[1];
+                            newOrder.StateAbbreviation = WholeOrderArray[2];
+                            newOrder.TaxRate = decimal.Parse(WholeOrderArray[3]);
+                            newOrder.ProductType = WholeOrderArray[4];
+                            newOrder.Area = decimal.Parse(WholeOrderArray[5]);
+                            newOrder.CostPerSquareFoot = decimal.Parse(WholeOrderArray[6]);
+                            newOrder.LaborCostPerSquareFoot = decimal.Parse(WholeOrderArray[7]);
+                            newOrder.TotalMaterialCost = decimal.Parse(WholeOrderArray[8]);
+                            newOrder.TotalLaborCost = decimal.Parse(WholeOrderArray[9]);
+                            newOrder.TotalTax = decimal.Parse(WholeOrderArray[10]);
+                            newOrder.TotalCost = decimal.Parse(WholeOrderArray[11]);
+
+                            listOrders.Add(newOrder);
                         }
-
-                        Order newOrder = new Order();
-
-                        newOrder.OrderNumber = int.Parse(WholeOrderArray[0]);
-                        newOrder.CustomerName = WholeOrderArray[1];
-                        newOrder.ProductType = WholeOrderArray[2];
-                        newOrder.StateAbbreviation = WholeOrderArray[3];
-                        newOrder.TaxRate = decimal.Parse(WholeOrderArray[4]);
-                        newOrder.CostPerSquareFoot = decimal.Parse(WholeOrderArray[5]);
-                        newOrder.LaborCostPerSquareFoot = decimal.Parse(WholeOrderArray[6]);
-                        newOrder.Area = decimal.Parse(WholeOrderArray[7]);
-                        newOrder.TotalLaborCost = decimal.Parse(WholeOrderArray[8]);
-                        newOrder.TotalMaterialCost = decimal.Parse(WholeOrderArray[9]);
-                        newOrder.TotalTax = decimal.Parse(WholeOrderArray[10]);
-                        newOrder.TotalCost = decimal.Parse(WholeOrderArray[11]);
-
-                        listOrders.Add(newOrder);
                     }
-                }
 
-            return listOrders;
+                return listOrders;
+            }
+            else
+                return null;
 
         }
 

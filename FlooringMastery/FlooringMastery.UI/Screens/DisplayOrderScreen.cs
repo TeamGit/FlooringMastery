@@ -21,6 +21,7 @@ namespace FlooringMastery.UI.Screens
         public override void Display()
         {
             var date = Input.GetDate("Enter the date of a file to display:");
+           
             Output.DisplayAllOrders(date);
 
             Output.PauseForReading();

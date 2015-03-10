@@ -38,12 +38,21 @@ namespace FlooringMastery.UI
         /// <param name="dateObject"></param>
         public static void DisplayAllOrders(DateTime dateObject)
         {
-           var allOrders = SetTestOrProd.MyOrderObject.LoadOrders(dateObject);
-
-            foreach (var order in allOrders)
+            ProdOrders myProdObj = new ProdOrders();
+            var allOrders = myProdObj.LoadOrders(dateObject);
+            if (allOrders != null)
             {
-                Output.DisplayOrder(order);
+                foreach (var order in allOrders)
+                {
+                    Output.DisplayOrder(order);
+                }
             }
+            else
+            {
+                Console.WriteLine();
+                Console.WriteLine("No orders for that date.");
+            }
+            
         }
 
         /// <summary>
