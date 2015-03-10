@@ -1,0 +1,3 @@
+OrderNumber,CustomerName,State,TaxRate,ProductType,Area,CostPerSquareFoot,LaborCostPerSquareFoot,MaterialCost,LaborCost,Tax,Total
+1,TEXARKANA,IA,0.0675,Wood,100,5.15,4.75,515.00,475.00,66.82,1056.82
+2,Fred,WI,0.0575,Wood,420,5.15,4.75,2163.00,1995.00,239.08,4397.08

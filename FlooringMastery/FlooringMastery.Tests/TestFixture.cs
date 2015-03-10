@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using FlooringMaster.Data;
+using FlooringMastery.BLL;
 using FlooringMastery.Models;
 using FlooringMastery.UI;
 
@@ -79,5 +80,46 @@ namespace FlooringMastery.Tests
         //    var result = new HomeScreen;
         //    Assert.AreEqual(result, expected);
         //}
+
+        /// <summary>
+        /// Test Calculation.DateToFileName(DateTime fileDate)
+        /// </summary>
+        /// <param name="myDateTime"></param>
+        /// <param name="expected"></param>
+        /// <returns></returns>
+        [TestCase("06/01/2013", true)]
+        [TestCase("09/20/2016", false)]
+        public void Validate_DoesOrderFileExist(string myDateTime, bool expected)
+        {
+            DateTime testDate = DateTime.Parse(myDateTime);
+            bool result = Calculation.DoesOrderFileExist(testDate);
+            Assert.AreEqual(expected, result);
+        }
+
+
+        /// <summary>
+        /// Test Calculation.DateToFileName(DateTime fileDate)
+        /// </summary>
+        /// <param name="fileDate"></param>
+        /// <returns></returns>
+        [TestCase("03/15/2014", "Orders_03152014.txt")]
+        [TestCase("07/01/2015", "Orders_07012015.txt")]
+        [TestCase("04/20/2013", "Orders_04202013.txt")]
+        public void Validate_DateToFileName(string fileDate, string expected)
+        {
+            DateTime testDate = DateTime.Parse(fileDate);
+            string result = Calculation.DateToFileName(testDate);
+            Assert.AreEqual(expected, result);
+        }
+
+
+        [TestCase("06/01/2013", new List<int>(){2, 1})]
+        public void Validate_GetAllOrderNumbers(string orderDateTime, List<int> expected)
+        {
+            DateTime testDate = DateTime.Parse(orderDateTime);
+            List<int> result = Calculation.GetAllOrderNumbers(testDate);
+            Assert.AreEqual(expected, result);
+        }
+
     }
 }
