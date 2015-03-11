@@ -67,7 +67,7 @@ namespace FlooringMastery.Tests
             Assert.AreEqual(myTestRepo.FakeDB[i].CustomerName, expected);
         }
 
-       [Test]
+        [Test]
         public void TestCloneOrder()
         {
             Order newOrder = new Order();
@@ -76,13 +76,8 @@ namespace FlooringMastery.Tests
             newOrder.ProductType = "Test Material";
 
             var result = Manipulation.CloneOrder(newOrder);
+        }
 
-        //public void Go(var str, var expected)
-        //{
-        //    Output Homescreen = new Output();
-        //    var result = new HomeScreen;
-        //    Assert.AreEqual(result, expected);
-        //}
 
         /// <summary>
         /// Test Calculation.DateToFileName(DateTime fileDate)
@@ -116,17 +111,12 @@ namespace FlooringMastery.Tests
         }
 
 
-        [TestCase("06/01/2013", 1, 2]
-        public void Validate_GetAllOrderNumbers(string orderDateTime, int expected, int expected)
+        [TestCase("06/01/2013", 1, 2)]
+        public void Validate_GetAllOrderNumbers(string orderDateTime, int expected, int expected1)
         {
             DateTime testDate = DateTime.Parse(orderDateTime);
             List<int> result = Calculation.GetAllOrderNumbers(testDate);
             Assert.AreEqual(expected, result);
-        }}
-
-            Assert.AreEqual(newOrder.CustomerName, result.CustomerName);
-            Assert.AreEqual(newOrder.Area, result.Area);
-            Assert.AreEqual(newOrder.ProductType, result.ProductType);
         }
 
         [Test]
