@@ -60,6 +60,7 @@
     <Compile Include="Screens\HomeScreen.cs" />
     <Compile Include="Screens\RemoveOrderScreen.cs" />
     <Compile Include="Screens\Screen.cs" />
+    <Compile Include="Screens\ValidationScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\Settings.settings">
@@ -69,6 +70,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Products.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Taxes.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

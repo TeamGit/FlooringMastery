@@ -11,8 +11,10 @@ namespace FlooringMaster.Data
 {
     public class ProdProducts : IContainProducts
     {
+       
         /// <summary>
-        /// Read the product specification file, return a list or products.
+        /// Read the product specification file, return a list of products.
+        /// </summary>
         /// <returns></returns>
         public List<Product> GetProducts()
         {
@@ -54,7 +56,7 @@ namespace FlooringMaster.Data
                         myProductList.Add(newProduct);
                     }
                 }
-            return new List<Product>();
+            return myProductList;
 
         }
         
