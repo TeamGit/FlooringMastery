@@ -26,38 +26,24 @@ namespace FlooringMaster.Data
                     string WholeState = sr.ReadLine();
                     if (!string.IsNullOrEmpty(WholeState))
                     {
+                        if (WholeState.StartsWith("#"))
+                            continue;
+
                         string[] WholeStateArray = WholeState.Split('|');
 
                         State newState = new State();
 
                         if (WholeStateArray[0] == "StateAbbreviation")
-                        {
-                            WholeState = sr.ReadLine();
-                            if (!string.IsNullOrEmpty(WholeState))
-                            {
-                                WholeStateArray = WholeState.Split('|');
-                            }
-                        }
+                            continue;
 
-                        if (WholeStateArray[1] == "StateName")
-                        {
-                            WholeState = sr.ReadLine();
-                            if (!string.IsNullOrEmpty(WholeState))
-                            {
-                                WholeStateArray = WholeState.Split('|');
-                            }
-                        }
-
-                        Decimal taxRate;
-                        if (Decimal.TryParse(WholeStateArray[2], out taxRate))
-                        {
-                            newState.TaxRate = taxRate/100;
-                        }
-
+                        newState.StateAbbreviation = WholeStateArray[0];
+                        newState.StateName = WholeStateArray[1];
+                        newState.TaxRate = Decimal.Parse(WholeStateArray[2]);
+                        
                         myStateList.Add(newState);
                     }
                 }
-            return new List<State>();
+            return myStateList;
         }
 
 
