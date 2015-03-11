@@ -71,7 +71,9 @@
     <Content Include="Orders_01010001.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Orders_06012013.txt" />
+    <Content Include="Orders_06012013.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Products.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
