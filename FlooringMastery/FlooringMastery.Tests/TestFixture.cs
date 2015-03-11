@@ -144,5 +144,7 @@ namespace FlooringMastery.Tests
 
             Assert.AreEqual(6.25, result.TaxRate);
         }
+
+        
     }
 }
