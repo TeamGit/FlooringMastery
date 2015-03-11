@@ -76,7 +76,6 @@ namespace FlooringMastery.Tests
 
             var result = Manipulation.CloneOrder(newOrder);
 
-<<<<<<< HEAD
         //public void Go(var str, var expected)
         //{
         //    Output Homescreen = new Output();
@@ -116,19 +115,18 @@ namespace FlooringMastery.Tests
         }
 
 
-        [TestCase("06/01/2013", new List<int>(){2, 1})]
-        public void Validate_GetAllOrderNumbers(string orderDateTime, List<int> expected)
+        [TestCase("06/01/2013", 1, 2]
+        public void Validate_GetAllOrderNumbers(string orderDateTime, int expected, int expected)
         {
             DateTime testDate = DateTime.Parse(orderDateTime);
             List<int> result = Calculation.GetAllOrderNumbers(testDate);
             Assert.AreEqual(expected, result);
-        }
+        }}
 
-=======
             Assert.AreEqual(newOrder.CustomerName, result.CustomerName);
             Assert.AreEqual(newOrder.Area, result.Area);
             Assert.AreEqual(newOrder.ProductType, result.ProductType);
         }
->>>>>>> origin/master
+
     }
 }
