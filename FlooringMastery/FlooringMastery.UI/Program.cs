@@ -17,6 +17,11 @@ namespace FlooringMastery.UI
     {
         static void Main(string[] args)
         {
+            var date = (DateTime.Parse("01/01/0001"));
+            ProdOrders myOrders = new ProdOrders();
+            var listResult = myOrders.LoadOrders(date);
+            var result = listResult.FirstOrDefault();
+
             Output.Go();
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -79,6 +80,18 @@ namespace FlooringMastery.Tests
             Assert.AreEqual(newOrder.CustomerName, result.CustomerName);
             Assert.AreEqual(newOrder.Area, result.Area);
             Assert.AreEqual(newOrder.ProductType, result.ProductType);
+        }
+
+        [Test]
+        public void TestProdLoadOrders()
+        {
+            var date = (DateTime.Parse("01/01/0001"));
+            ProdOrders myOrders = new ProdOrders();
+            var listResult = myOrders.LoadOrders(date);
+            var result = listResult.FirstOrDefault();
+
+            Assert.AreEqual("Wise", result.CustomerName);
+            Assert.AreEqual(1051.88, result.TotalCost);
         }
     }
 }
