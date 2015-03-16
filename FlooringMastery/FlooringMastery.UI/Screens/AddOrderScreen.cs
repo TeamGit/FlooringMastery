@@ -30,15 +30,10 @@ namespace FlooringMastery.UI.Screens
             
             Console.Clear();
 
-            Output.DisplayOrder(newOrder, false);
+            var validate = new ValidationScreen();
 
-            var confirm = new ConfirmationScreen();
+            validate.Display(newOrder, date, false);
 
-            confirm.Display(newOrder, date, false);
-            Output.PauseForReading();
-
-            Screen HomeScreen = new HomeScreen();
-            Screen.JumpScreen(HomeScreen);
         }
 
     }

@@ -168,9 +168,9 @@ namespace FlooringMastery.UI
             myOrder.StateAbbreviation = GetNonEmptyString("Please enter the State Abbreviation");
             myOrder.Area = GetDecimal("Please enter the are of the floor in feet squared.");
             myOrder.ProductType = GetNonEmptyString("Please enter the product type.");
-            myOrder.TotalLaborCost = GetDecimal("Please enter the total labor cost.");
-            myOrder.TotalMaterialCost = GetDecimal("Please enter the total material cost.");
-            myOrder.TotalTax = GetDecimal("Please enter the total tax.");
+            //myOrder.TotalLaborCost = GetDecimal("Please enter the total labor cost.");
+            //myOrder.TotalMaterialCost = GetDecimal("Please enter the total material cost.");
+            //myOrder.TotalTax = GetDecimal("Please enter the total tax.");
 
             return myOrder;
         }

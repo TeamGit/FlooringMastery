@@ -12,9 +12,21 @@ namespace FlooringMastery.BLL
 {
     public static class Validation
     {
-        private static string GetState(string stateAbbrev)
+        /// <summary>
+        /// Check to see if a given state abbreviation is contained in the current states list.  Return an error message if it's not.
+        /// </summary>
+        /// <param name="stateAbbrev"></param>
+        /// <returns></returns>
+        public static string GetState(string stateAbbrev)
         {
-            if ((stateAbbrev == "MN") || (stateAbbrev == "IA") || (stateAbbrev == "WI") || (stateAbbrev == "ND") || (stateAbbrev == "SD"))
+            List<State> states = SetTestOrProd.MyStatesObject.GetStates();
+            List<String> stateAbbrevs = new List<string>();
+
+            foreach (var state in states)
+            {
+                stateAbbrevs.Add(state.StateAbbreviation);
+            }
+            if (stateAbbrevs.Contains(stateAbbrev, StringComparer.CurrentCultureIgnoreCase))
             {
                 return null;
             }
@@ -24,9 +36,22 @@ namespace FlooringMastery.BLL
             }
         }
 
-        private static string GetProduct(string productOrdered)
+        /// <summary>
+        /// CHeck to see if a given product name is contained in the current products list.  Return an error message if it's not.
+        /// </summary>
+        /// <param name="productOrdered"></param>
+        /// <returns></returns>
+        public static string GetProduct(string productOrdered)
         {
-            if ((productOrdered == "Laminate") || (productOrdered == "Carpet") || (productOrdered == "Wood") || (productOrdered == "Tile"))
+            List<Product> products = SetTestOrProd.MyProductObject.GetProducts();
+            List<String> productNames = new List<string>();
+
+            foreach (var product in products)
+            {
+                productNames.Add(product.ProductType);
+            }
+
+            if (productNames.Contains(productOrdered, StringComparer.CurrentCultureIgnoreCase))
             {
                 return null;
             }
@@ -36,16 +61,22 @@ namespace FlooringMastery.BLL
             }
         }
 
-        private static List<String> GetOrder(Order myOrder)
+        /// <summary>
+        /// Given an order object, run validation methods on it's fields.  Return any error messages generated as a list.
+        /// </summary>
+        /// <param name="myOrder"></param>
+        /// <returns></returns>
+        public static List<String> GetOrder(Order myOrder)
         {
+            List<String> errorMessages = new List<string>();
+
             var resultProd = GetProduct(myOrder.ProductType);
-            List<String> errorProdMessages = new List<string>();
-            errorProdMessages.Add(resultProd);
+            errorMessages.Add(resultProd);
 
             var resultState = GetState(myOrder.StateAbbreviation);
-            List<String> errorStateMessages = new List<string>();
-            errorStateMessages.Add(resultState);
-           
+            errorMessages.Add(resultState);
+
+            return errorMessages;
         }
     }
 }

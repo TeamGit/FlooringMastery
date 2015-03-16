@@ -35,8 +35,13 @@ namespace FlooringMastery.UI.Screens
             EditMode = editMode;
             MyOrder = Manipulation.CloneOrder(order);
             myDateTime = dateTimeObject;
+           
+            if (!editMode)
+            {
+                MyOrder = Calculation.CalculateRemainingProperties(order);
+            }
 
-            Output.DisplayOrder(order, false);
+            Output.DisplayOrder(MyOrder, false);
 
             Output.Prompt("The new order is shown, would you like to save these changes to file?");
 

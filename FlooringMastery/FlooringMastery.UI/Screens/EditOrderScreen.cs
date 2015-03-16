@@ -34,9 +34,11 @@ namespace FlooringMastery.UI.Screens
 
                 Order newOrder = Edit.OrderEdit(MyOrder);
 
-                var confirm = new ConfirmationScreen();
+                Console.Clear();
 
-                confirm.Display(newOrder, date, true);
+                var validate = new ValidationScreen();
+                
+                validate.Display(newOrder, date, true);
 
             }
             else

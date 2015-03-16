@@ -46,6 +46,31 @@ namespace FlooringMastery.BLL
         }
 
         /// <summary>
+        /// Given an order object, calculate most fields based on area, state abbreviation, and product type. Return the order object with all fields populated.
+        /// </summary>
+        /// <param name="myOrder"></param>
+        /// <returns></returns>
+        public static Order CalculateRemainingProperties(Order myOrder)
+        {
+            List<State> myStates = SetTestOrProd.MyStatesObject.GetStates();
+            List<Product> myProducts = SetTestOrProd.MyProductObject.GetProducts();
+
+            State currentState = myStates.FirstOrDefault(s => s.StateAbbreviation.ToUpper() == myOrder.StateAbbreviation.ToUpper());
+            Product currentProduct = myProducts.FirstOrDefault(p => p.ProductType.ToUpper() == myOrder.ProductType.ToUpper());
+
+            myOrder.TaxRate = currentState.TaxRate;
+            myOrder.CostPerSquareFoot = currentProduct.CostPerSquareFoot;
+            myOrder.LaborCostPerSquareFoot = currentProduct.LaborCostPerSquareFoot;
+            myOrder.TotalLaborCost = myOrder.Area*myOrder.LaborCostPerSquareFoot;
+            myOrder.TotalMaterialCost = myOrder.Area*myOrder.CostPerSquareFoot;
+            decimal subtotal = myOrder.TotalLaborCost + myOrder.TotalMaterialCost;
+            myOrder.TotalTax = subtotal*(myOrder.TaxRate/100);
+            myOrder.TotalCost = myOrder.TotalTax + subtotal;
+
+            return myOrder;
+        }
+
+        /// <summary>
         /// Given a datetime value, return a string with the proper file name.
         /// </summary>
         /// <param name="fileDate"></param>
